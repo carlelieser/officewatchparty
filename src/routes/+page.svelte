@@ -43,7 +43,10 @@
 		{/if}
 	</div>
 	<div>
-		<video class="max-w-md m-auto" src="/tv-animated.mp4" autoplay loop />
+		<video class="max-w-md m-auto" autoplay loop muted playsinline>
+			<source src="/tv-animated.webm" type="video/webm" />
+			<source src="/tv-animated.mp4" type="video/mp4" />
+		</video>
 	</div>
 </div>
 
