@@ -1,0 +1,11 @@
+{
+	"name": "officewatchparty",
+	"account_id": "ad4a3d2c7c3037a14f57ea1f826f3399",
+	"compatibility_date": "2025-01-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"assets": {
+		"directory": ".svelte-kit/cloudflare",
+		"binding": "ASSETS"
+	}
+}
