@@ -10,8 +10,8 @@
 >
 	<div class="flex-col p-4 order-1 md:order-[unset]">
 		<div class="flex flex-col gap-4 m-auto">
-			<h1 class="text-6xl font-bold font-display">Superfans only.</h1>
-			<p>Watch <i>The Office: Superfan Episodes</i>. Together. Even if you're from different branches...</p>
+			<h1 class="leading-tight text-6xl font-bold font-display capitalize">The best way to watch The Office</h1>
+			<p>Sign up, create a party, share, and enjoy!</p>
 			<div class="flex flex-row items-center gap-2 mt-4">
 				<DonateButton>
 					{#snippet child({href})}
