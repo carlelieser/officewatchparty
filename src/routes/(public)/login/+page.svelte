@@ -1,12 +1,14 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
+	import {enhance} from '$app/forms';
+	import {Button} from '$lib/components/ui/button';
+	import * as InputGroup from '$lib/components/ui/input-group';
 	import * as InputOTP from '$lib/components/ui/input-otp';
-	import { toast } from 'svelte-sonner';
+	import * as Popover from '$lib/components/ui/popover';
+	import {MailIcon} from '@lucide/svelte';
+	import {toast} from 'svelte-sonner';
 	import Logo from '$lib/components/logo.svelte';
 
-	let { form } = $props();
+	let {form} = $props();
 
 	let email = $state('');
 	let token = $state('');
@@ -37,64 +39,86 @@
 	<div class="w-full max-w-sm space-y-6 m-auto">
 		<div class="space-y-2 flex flex-col text-center">
 			<div class="m-auto mb-12">
-				<Logo />
+				<Logo/>
 			</div>
 			<h1 class="text-2xl font-bold">Welcome</h1>
 			<p class="text-sm text-muted-foreground">
 				{#if otpSent}
 					Enter the code sent to {email}
 				{:else}
-					Sign in with your email
+					Enter your email to get started
 				{/if}
 			</p>
 		</div>
 
 		{#if !otpSent}
 			<form
-				method="POST"
-				action="?/sendOtp"
-				use:enhance={() => {
+					method="POST"
+					action="?/sendOtp"
+					use:enhance={() => {
 					loading = true;
 					return async ({ update }) => {
 						await update();
 						loading = false;
 					};
 				}}
-				class="space-y-4"
+					class="space-y-4"
 			>
-				<Input
-					type="email"
-					name="email"
-					placeholder="you@example.com"
-					bind:value={email}
-					required
-					autofocus
-				/>
+				<InputGroup.Root>
+					<InputGroup.Addon>
+						<MailIcon />
+					</InputGroup.Addon>
+					<InputGroup.Input
+							type="email"
+							name="email"
+							placeholder="you@example.com"
+							bind:value={email}
+							required
+							autofocus
+					/>
+				</InputGroup.Root>
 				<Button type="submit" class="w-full" disabled={loading}>
 					{loading ? 'Sending...' : 'Send code'}
 				</Button>
 			</form>
+			<div class="flex flex-row items-center">
+				<Popover.Root>
+					<Popover.Trigger openOnHover={true} class="mx-auto">
+						{#snippet child({props})}
+							<button
+									{...props}
+									class="text-xs text-muted-foreground hover:underline cursor-pointer mx-auto"
+							>
+								Why do I need an account?
+							</button>
+						{/snippet}
+					</Popover.Trigger>
+					<Popover.Content class="text-sm w-72">
+						Accounts let us keep rooms safe from abuse and give you features like favorites and shareable watch parties.
+					</Popover.Content>
+				</Popover.Root>
+			</div>
 		{:else}
 			<form
-				bind:this={verifyForm}
-				method="POST"
-				action="?/verifyOtp"
-				use:enhance={() => {
+					bind:this={verifyForm}
+					method="POST"
+					action="?/verifyOtp"
+					use:enhance={() => {
 					loading = true;
 					return async ({ update }) => {
 						loading = false;
 						await update();
 					};
 				}}
-				class="space-y-4"
+					class="space-y-4"
 			>
-				<input type="hidden" name="email" value={email} />
+				<input type="hidden" name="email" value={email}/>
 				<div class="flex justify-center">
 					<InputOTP.Root maxlength={8} bind:value={token} name="token">
-						{#snippet children({ cells })}
+						{#snippet children({cells})}
 							<InputOTP.Group>
 								{#each cells as cell}
-									<InputOTP.Slot {cell} />
+									<InputOTP.Slot {cell}/>
 								{/each}
 							</InputOTP.Group>
 						{/snippet}
@@ -104,10 +128,10 @@
 					{loading ? 'Verifying...' : 'Verify'}
 				</Button>
 				<Button
-					variant="ghost"
-					class="w-full"
-					type="button"
-					onclick={() => {
+						variant="ghost"
+						class="w-full"
+						type="button"
+						onclick={() => {
 						otpSent = false;
 						token = '';
 					}}
