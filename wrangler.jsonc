@@ -7,5 +7,9 @@
 	"assets": {
 		"directory": ".svelte-kit/cloudflare",
 		"binding": "ASSETS"
-	}
+	},
+	"routes": [
+		{ "pattern": "officewatchparty.com", "custom_domain": true },
+		{ "pattern": "www.officewatchparty.com", "custom_domain": true }
+	]
 }

@@ -132,3 +132,25 @@
 		@apply size-full;
 	}
 }
+
+@keyframes slide-up-in {
+	from {
+		opacity: 0;
+		transform: translateY(1rem);
+	}
+}
+
+@keyframes slide-down-out {
+	to {
+		opacity: 0;
+		transform: translateY(1rem);
+	}
+}
+
+::view-transition-old(root) {
+	animation: 200ms ease-out slide-down-out;
+}
+
+::view-transition-new(root) {
+	animation: 200ms ease-out slide-up-in;
+}
