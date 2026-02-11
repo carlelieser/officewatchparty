@@ -1,14 +1,22 @@
 <script lang="ts">
-	import EpisodeSelect, { type Episode } from '$lib/components/episode-select.svelte';
-	import { episodes } from '$lib/data/episodes';
+	import type { Episode } from '$lib/types';
+	import EpisodeSelect from '$lib/components/episode-select.svelte';
 
-	let {
-		selected = $bindable<Episode | null>(null),
-		onchange
-	}: {
+	interface OfficeEpisodeSelectProps {
 		selected?: Episode | null;
 		onchange?: (episode: Episode) => void;
-	} = $props();
+		class?: string;
+	}
+
+	let { selected = $bindable<Episode | null>(null), onchange, class: className }: OfficeEpisodeSelectProps = $props();
+
+	let episodes: Episode[] = $state([]);
+
+	$effect(() => {
+		fetch('/api/episodes')
+			.then((r) => r.json())
+			.then((data) => (episodes = data));
+	});
 </script>
 
-<EpisodeSelect {episodes} bind:selected {onchange} />
+<EpisodeSelect {episodes} bind:selected {onchange} class={className} />

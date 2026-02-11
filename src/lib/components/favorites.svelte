@@ -1,72 +1,58 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import * as Empty from '$lib/components/ui/empty';
+	import EpisodeCard from '$lib/components/episode-card.svelte';
 	import OfficeEpisodeSelect from '$lib/components/office-episode-select.svelte';
-	import type { Episode } from '$lib/components/episode-select.svelte';
+	import type { Episode } from '$lib/types';
 	import { Button } from '$lib/components/ui/button';
-	import { Plus, X, Heart } from '@lucide/svelte';
+	import { Plus, Heart } from '@lucide/svelte';
 
-	let {
-		initial = [],
-		onselect
-	}: {
+	interface FavoritesProps {
 		initial?: Episode[];
 		onselect?: (episode: Episode) => void;
-	} = $props();
+	}
+
+	let { initial = [], onselect }: FavoritesProps = $props();
 
 	let favorites: Episode[] = $state(initial);
 	let dialogOpen = $state(false);
 	let pickValue: Episode | null = $state(null);
 
-	const pad = (n: number) => String(n).padStart(2, '0');
-
 	function onPick(ep: Episode) {
 		favorites = [...favorites, ep];
 		dialogOpen = false;
-		const body = new FormData();
-		body.set('season', String(ep.season));
-		body.set('episode', String(ep.episode));
-		fetch('?/addFavorite', { method: 'POST', body });
+		fetch('/api/favorites', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ season: ep.season, episode: ep.episode })
+		});
 	}
 
 	function remove(index: number, e: Event) {
 		e.stopPropagation();
 		const fav = favorites[index];
 		favorites = favorites.filter((_, i) => i !== index);
-		const body = new FormData();
-		body.set('season', String(fav.season));
-		body.set('episode', String(fav.episode));
-		fetch('?/removeFavorite', { method: 'POST', body });
+		fetch('/api/favorites', {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ season: fav.season, episode: fav.episode })
+		});
 	}
 </script>
 
 <div class="flex flex-col gap-3 w-full">
-	<span class="text-xs font-medium uppercase text-muted-foreground">Favorites</span>
+	<span class="text-center md:text-left text-xs font-medium uppercase text-muted-foreground">Favorites</span>
 	{#if favorites.length > 0}
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
 			{#each favorites as fav, i}
-				<div class="relative group aspect-square">
-					<button class="w-full text-left cursor-pointer" onclick={() => onselect?.(fav)}>
-						<Card.Root class="hover:bg-accent aspect-square transition-colors">
-							<Card.Header class="p-3 pb-0">
-								<span class="text-xs font-mono text-muted-foreground"
-									>S{pad(fav.season)}E{pad(fav.episode)}</span
-								>
-								<Card.Title class="text-sm">{fav.label}</Card.Title>
-							</Card.Header>
-							<Card.Content class="p-3 pt-1">
-								<p class="text-xs text-muted-foreground line-clamp-2">{fav.description}</p>
-							</Card.Content>
-						</Card.Root>
-					</button>
-					<button
-						class="absolute top-2 right-2 size-5 rounded-full bg-muted flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-						onclick={(e) => remove(i, e)}
-					>
-						<X class="size-3" />
-					</button>
-				</div>
+				<EpisodeCard
+					season={fav.season}
+					episode={fav.episode}
+					label={fav.label}
+					description={fav.description}
+					onclick={() => onselect?.(fav)}
+					onremove={(e) => remove(i, e)}
+				/>
 			{/each}
 			<button
 				class="aspect-square flex items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 hover:border-muted-foreground/60 transition-colors cursor-pointer"

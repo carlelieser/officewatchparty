@@ -2,7 +2,11 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Check, Copy } from '@lucide/svelte';
 
-	let { text }: { text: string } = $props();
+	interface CopyButtonProps {
+		text: string;
+	}
+
+	let { text }: CopyButtonProps = $props();
 
 	let copied = $state(false);
 	let timeout: ReturnType<typeof setTimeout>;
