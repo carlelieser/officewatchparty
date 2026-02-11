@@ -57,7 +57,10 @@
 					<Command.Group heading="Season {season}">
 						{#each episodes as episode}
 							<Command.Item
-								value="S{String(season).padStart(2, '0')}E{String(episode.episode).padStart(2, '0')} {episode.label}"
+								value="S{String(season).padStart(2, '0')}E{String(episode.episode).padStart(
+									2,
+									'0'
+								)} {episode.label}"
 								onSelect={() => {
 									selected = episode;
 									open = false;
