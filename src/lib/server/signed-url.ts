@@ -19,7 +19,7 @@ async function hmac(message: string): Promise<string> {
 		.join('');
 }
 
-export async function sign(path: string, expiresInSeconds = 14400): Promise<string> {
+export async function sign(path: string, expiresInSeconds = 3600): Promise<string> {
 	const expires = Math.floor(Date.now() / 1000) + expiresInSeconds;
 	const sig = await hmac(`${path}:${expires}`);
 	return `${path}?expires=${expires}&sig=${sig}`;
