@@ -6,7 +6,7 @@
 </script>
 
 <div
-		class="w-full h-screen py-12 max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-8 p-4 *:flex"
+		class="w-full min-h-screen md:h-screen py-12 max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-8 p-4 *:flex"
 >
 	<div class="flex-col p-4 order-1 md:order-[unset]">
 		<div class="flex flex-col gap-4 m-auto">
