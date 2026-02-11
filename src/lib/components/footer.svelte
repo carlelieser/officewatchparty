@@ -61,7 +61,7 @@
 
 		<div class="mt-8 border-t border-border py-4">
 			<p class="text-xs text-muted-foreground py-4">
-				&copy; {new Date().getFullYear()} Office Watch Party
+				&copy; {new Date().getFullYear()} Office Watch Party &middot; v{__APP_VERSION__}
 			</p>
 		</div>
 	</footer>
