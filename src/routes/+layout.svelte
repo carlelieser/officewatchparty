@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Navbar from '$lib/components/navbar.svelte';
+	import Footer from '$lib/components/footer.svelte';
 	import { Toaster } from 'svelte-sonner';
 	import { ModeWatcher } from 'mode-watcher';
 	import { onNavigate, beforeNavigate, afterNavigate } from '$app/navigation';
@@ -36,9 +37,10 @@
 <Toaster />
 <ModeWatcher />
 
-<div class="size-full absolute top-0 left-0 flex flex-col">
+<div class="w-full min-h-full absolute top-0 left-0 flex flex-col">
 	<Navbar />
 	<div class="flex flex-1 flex-col" class:animate-pulse={navigating}>
 		{@render children()}
 	</div>
+	<Footer />
 </div>
