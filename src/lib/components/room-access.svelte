@@ -150,11 +150,7 @@
 							</Dialog.Description>
 						</Dialog.Header>
 						<div class="flex flex-col gap-4">
-							<Input
-								bind:value={email}
-								type="email"
-								placeholder="user@example.com"
-							/>
+							<Input bind:value={email} type="email" placeholder="user@example.com" />
 							<Dialog.Footer>
 								<Dialog.Close class={buttonVariants({ variant: 'outline' })}>Cancel</Dialog.Close>
 								<Button
@@ -166,8 +162,8 @@
 										});
 										email = '';
 										addDialogOpen = false;
-									}}
-								>Add</Button>
+									}}>Add</Button
+								>
 							</Dialog.Footer>
 						</div>
 					</Dialog.Content>

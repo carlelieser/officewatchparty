@@ -17,7 +17,7 @@
 		sort: 'newest' as 'newest' | 'oldest',
 		expanded: false,
 		comments,
-		channel: null,
+		channel: null
 	});
 	setCommentsContext(state);
 

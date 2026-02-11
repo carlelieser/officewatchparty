@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/navbar.svelte';
 	import { Toaster } from 'svelte-sonner';
-	import { ModeWatcher } from "mode-watcher";
+	import { ModeWatcher } from 'mode-watcher';
 	import { onNavigate, beforeNavigate, afterNavigate } from '$app/navigation';
 	import '../app.css';
 

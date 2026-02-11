@@ -53,7 +53,12 @@
 			<Empty.Description>Be the first to say something.</Empty.Description>
 		</Empty.Root>
 	{:else}
-		<div bind:this={containerEl} class="flex flex-col gap-2 relative" class:max-h-48={!context.expanded} class:overflow-hidden={!context.expanded}>
+		<div
+			bind:this={containerEl}
+			class="flex flex-col gap-2 relative"
+			class:max-h-48={!context.expanded}
+			class:overflow-hidden={!context.expanded}
+		>
 			{#each sorted as comment (comment.id)}
 				<Item.Root variant="outline" class="rounded-2xl">
 					<Item.Content class="gap-2">
@@ -74,7 +79,13 @@
 				<div
 					class="w-full flex items-center justify-center sticky bottom-0 left-0 py-4 bg-gradient-to-t from-background to-transparent"
 				>
-					<Button variant="outline" size="sm" onclick={() => { context.expanded = true; }}>
+					<Button
+						variant="outline"
+						size="sm"
+						onclick={() => {
+							context.expanded = true;
+						}}
+					>
 						<span class="text-xs uppercase text-muted-foreground"
 							>Show all {sorted.length} messages</span
 						>

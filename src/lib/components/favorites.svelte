@@ -41,7 +41,9 @@
 </script>
 
 <div class="flex flex-col gap-3 w-full">
-	<span class="text-center md:text-left text-xs font-medium uppercase text-muted-foreground">Favorites</span>
+	<span class="text-center md:text-left text-xs font-medium uppercase text-muted-foreground"
+		>Favorites</span
+	>
 	{#if favorites.length > 0}
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
 			{#each favorites as fav, i}

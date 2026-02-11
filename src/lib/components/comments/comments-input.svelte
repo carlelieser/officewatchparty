@@ -1,15 +1,15 @@
 <script lang="ts">
 	import * as InputGroup from '$lib/components/ui/input-group';
-	import {Spinner} from '$lib/components/ui/spinner';
-	import {ArrowUp} from '@lucide/svelte';
-	import {getCommentsContext} from './comments-context';
-	import {page} from "$app/state";
+	import { Spinner } from '$lib/components/ui/spinner';
+	import { ArrowUp } from '@lucide/svelte';
+	import { getCommentsContext } from './comments-context';
+	import { page } from '$app/state';
 
 	interface CommentsInputProps {
 		roomAlias: string;
 	}
 
-	let {roomAlias}: CommentsInputProps = $props();
+	let { roomAlias }: CommentsInputProps = $props();
 
 	const context = getCommentsContext();
 
@@ -52,21 +52,21 @@
 
 <InputGroup.Root class="rounded-2xl h-16 p-2">
 	<InputGroup.Input
-			bind:value={content}
-			placeholder="Write a comment..."
-			disabled={submitting}
-			onkeydown={onKeydown}
+		bind:value={content}
+		placeholder="Write a comment..."
+		disabled={submitting}
+		onkeydown={onKeydown}
 	/>
 	<InputGroup.Button
-			variant="ghost"
-			class="size-12! rounded-full flex items-center justify-center"
-			disabled={submitting || !content.trim()}
-			onclick={submit}
+		variant="ghost"
+		class="size-12! rounded-full flex items-center justify-center"
+		disabled={submitting || !content.trim()}
+		onclick={submit}
 	>
 		{#if submitting}
-			<Spinner size="sm"/>
+			<Spinner size="sm" />
 		{:else}
-			<ArrowUp size={14}/>
+			<ArrowUp size={14} />
 		{/if}
 	</InputGroup.Button>
 </InputGroup.Root>

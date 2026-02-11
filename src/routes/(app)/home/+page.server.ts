@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const favorites = Episodes.fromFavorites(favData);
 
 	const rooms: OwnedRoom[] = roomData.map((room) => {
-		const episode = Episodes.find(room.season, room.episode)
+		const episode = Episodes.find(room.season, room.episode);
 		return { ...room, label: episode.label };
 	});
 

@@ -5,10 +5,16 @@
 	interface OfficeEpisodeSelectProps {
 		selected?: Episode | null;
 		onchange?: (episode: Episode) => void;
+		disabled?: boolean;
 		class?: string;
 	}
 
-	let { selected = $bindable<Episode | null>(null), onchange, class: className }: OfficeEpisodeSelectProps = $props();
+	let {
+		selected = $bindable<Episode | null>(null),
+		onchange,
+		disabled = false,
+		class: className
+	}: OfficeEpisodeSelectProps = $props();
 
 	let episodes: Episode[] = $state([]);
 
@@ -19,4 +25,4 @@
 	});
 </script>
 
-<EpisodeSelect {episodes} bind:selected {onchange} class={className} />
+<EpisodeSelect {episodes} bind:selected {onchange} {disabled} class={className} />

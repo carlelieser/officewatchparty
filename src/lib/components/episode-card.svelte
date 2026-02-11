@@ -21,9 +21,7 @@
 		<Card.Root class="hover:bg-accent aspect-square transition-colors">
 			<Card.Header>
 				{#if season && episode}
-					<span class="text-xs font-mono text-muted-foreground"
-						>S{pad(season)}E{pad(episode)}</span
-					>
+					<span class="text-xs font-mono text-muted-foreground">S{pad(season)}E{pad(episode)}</span>
 					<Card.Title class="text-sm">{label}</Card.Title>
 				{:else}
 					<Card.Title class="text-sm text-muted-foreground">No episode selected</Card.Title>

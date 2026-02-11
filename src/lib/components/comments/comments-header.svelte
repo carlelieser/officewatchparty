@@ -4,7 +4,7 @@
 	import { ArrowDownUp, ChevronsDownUp } from '@lucide/svelte';
 	import { getCommentsContext } from './comments-context';
 
-	let {class: className} = $props();
+	let { class: className } = $props();
 
 	const context = getCommentsContext();
 </script>
@@ -32,8 +32,10 @@
 				</Button>
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content align="end">
-				<DropdownMenu.Item onclick={() => (context.sort = 'newest')}>Newest first</DropdownMenu.Item>
-				<DropdownMenu.Item onclick={() => (context.sort = 'oldest')}>Oldest first</DropdownMenu.Item>
+				<DropdownMenu.Item onclick={() => (context.sort = 'newest')}>Newest first</DropdownMenu.Item
+				>
+				<DropdownMenu.Item onclick={() => (context.sort = 'oldest')}>Oldest first</DropdownMenu.Item
+				>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	</div>

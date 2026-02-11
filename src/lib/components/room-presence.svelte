@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type {SupabaseClient, RealtimeChannel} from '@supabase/supabase-js';
+	import type { SupabaseClient, RealtimeChannel } from '@supabase/supabase-js';
 	import * as Popover from '$lib/components/ui/popover';
-	import {Avatar, AvatarFallback} from '$lib/components/ui/avatar';
-	import {Circle} from '@lucide/svelte';
-	import {Button} from '$lib/components/ui/button';
-	import {page} from "$app/state";
+	import { Avatar, AvatarFallback } from '$lib/components/ui/avatar';
+	import { Circle } from '@lucide/svelte';
+	import { Button } from '$lib/components/ui/button';
+	import { page } from '$app/state';
 
 	interface RoomPresenceProps {
 		supabase: SupabaseClient;
@@ -15,7 +15,7 @@
 		email: string;
 	}
 
-	let {supabase, roomId}: RoomPresenceProps = $props();
+	let { supabase, roomId }: RoomPresenceProps = $props();
 
 	let users: PresenceUser[] = $state([]);
 	let channel: RealtimeChannel | undefined;
@@ -30,25 +30,25 @@
 
 	$effect(() => {
 		channel = supabase.channel(`room:${roomId}`, {
-			config: {presence: {key: page.data.user?.email}}
+			config: { presence: { key: page.data.user?.email } }
 		});
 
 		channel
-			.on('presence', {event: 'sync'}, () => {
+			.on('presence', { event: 'sync' }, () => {
 				const state = channel!.presenceState<PresenceUser>();
 				const seen = new Set<string>();
 				const list: PresenceUser[] = [];
 				for (const key of Object.keys(state)) {
 					if (!seen.has(key)) {
 						seen.add(key);
-						list.push({email: key});
+						list.push({ email: key });
 					}
 				}
 				users = list;
 			})
 			.subscribe(async (status) => {
 				if (status === 'SUBSCRIBED') {
-					await channel!.track({email: page.data.user?.email});
+					await channel!.track({ email: page.data.user?.email });
 				}
 			});
 
@@ -64,7 +64,7 @@
 
 <Popover.Root>
 	<Popover.Trigger>
-		{#snippet child({props})}
+		{#snippet child({ props })}
 			<Button {...props} variant="outline" class="h-8 gap-1 px-1!">
 				<div class="flex flex-row -space-x-2">
 					{#each visible as user (user.email)}
@@ -76,14 +76,14 @@
 				{#if overflow > 0}
 					<span class="text-xs text-muted-foreground">+{overflow}</span>
 				{/if}
-				<Circle class="mr-1 size-2 fill-green-500 text-green-500 animate-pulse"/>
+				<Circle class="mr-1 size-2 fill-green-500 text-green-500 animate-pulse" />
 			</Button>
 		{/snippet}
 	</Popover.Trigger>
 	<Popover.Content class="w-56 p-0" align="start">
 		<div class="px-3 py-2">
 			<span class="text-xs font-medium uppercase text-muted-foreground"
-			>Online — {users.length}</span
+				>Online — {users.length}</span
 			>
 		</div>
 		<div class="max-h-48 overflow-y-auto px-2 pb-2">
