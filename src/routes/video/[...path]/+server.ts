@@ -1,25 +1,25 @@
 import { error } from '@sveltejs/kit';
 import { SEEDBOX_BASE_URL, SEEDBOX_CREDENTIALS } from '$env/static/private';
+import { verify } from '$lib/server/signed-url';
 import type { RequestHandler } from './$types';
 
-const pad = (n: number) => String(n).padStart(2, '0');
+export const GET: RequestHandler = async ({ params, url, request }) => {
+	const expires = url.searchParams.get('expires');
+	const sig = url.searchParams.get('sig');
 
-export const GET: RequestHandler = async ({ params, request }) => {
-	const season = Number(params.season);
-	const episode = Number(params.episode);
+	if (!expires || !sig) error(403, 'Forbidden');
 
-	if (!season || !episode) error(400, 'Invalid season or episode');
+	const path = `/video/${params.path}`;
+	const valid = await verify(path, expires, sig);
 
-	const paddedSeason = pad(season);
-	const paddedEpisode = pad(episode);
-	const upstream = `${SEEDBOX_BASE_URL}/S${paddedSeason}/S${paddedSeason}E${paddedEpisode}.mp4`;
+	if (!valid) error(403, 'Forbidden');
 
+	const upstream = `${SEEDBOX_BASE_URL}/${params.path}`;
 	const headers: Record<string, string> = {
 		Authorization: `Basic ${btoa(SEEDBOX_CREDENTIALS)}`
 	};
 
 	const range = request.headers.get('range');
-
 	if (range) {
 		headers['Range'] = range;
 	}

@@ -53,29 +53,29 @@
 			<Command.Input placeholder="Search episodes..." />
 			<Command.List>
 				<Command.Empty>No episodes found.</Command.Empty>
-				{#each grouped as [season, eps]}
+				{#each grouped as [season, episodes]}
 					<Command.Group heading="Season {season}">
-						{#each eps as ep}
+						{#each episodes as episode}
 							<Command.Item
-								value="{ep.label} {ep.description}"
+								value="S{String(season).padStart(2, '0')}E{String(episode.episode).padStart(2, '0')} {episode.label}"
 								onSelect={() => {
-									selected = ep;
+									selected = episode;
 									open = false;
-									onchange?.(ep);
+									onchange?.(episode);
 								}}
 							>
 								<div class="p-2 rounded-full flex items-center justify-center font-mono">
-									{#if isSelected(ep)}
+									{#if isSelected(episode)}
 										<Check />
 									{:else}
 										<span class="text-xs font-bold uppercase text-muted-foreground"
-											>{String(ep.episode).padStart(2, '0')}</span
+											>{String(episode.episode).padStart(2, '0')}</span
 										>
 									{/if}
 								</div>
 								<div class="flex flex-col gap-0 min-w-0">
-									<span class="font-medium">{ep.label}</span>
-									<span class="truncate text-muted-foreground">{ep.description}</span>
+									<span class="font-medium">{episode.label}</span>
+									<span class="truncate text-muted-foreground">{episode.description}</span>
 								</div>
 							</Command.Item>
 						{/each}

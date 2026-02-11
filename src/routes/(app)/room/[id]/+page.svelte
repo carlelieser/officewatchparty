@@ -8,7 +8,17 @@
 
 	let { data } = $props();
 	let episode: Episode | null = $state(data ? data.episode : null);
-	let videoUrl = $derived(episode ? `/season/${episode.season}/episode/${episode.episode}` : '');
+	let videoUrl = $state('');
+
+	async function fetchVideoUrl(ep: Episode) {
+		const response = await fetch(`/api/video-url?season=${ep.season}&episode=${ep.episode}`);
+		const { url } = await response.json();
+		videoUrl = url;
+	}
+
+	$effect(() => {
+		if (episode) fetchVideoUrl(episode);
+	});
 
 	function onEpisodeChange(ep: Episode) {
 		fetch(`/api/rooms/${data.room.alias}/episode`, {
