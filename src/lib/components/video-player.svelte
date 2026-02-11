@@ -6,6 +6,13 @@
 	import 'video.js/dist/video-js.css';
 	import 'videojs-theme-kit/videojs-skin.min.js';
 	import 'videojs-theme-kit/style.css';
+	import chromecastPlugin from '@silvermine/videojs-chromecast';
+	import '@silvermine/videojs-chromecast/dist/silvermine-videojs-chromecast.css';
+	import airPlayPlugin from '@silvermine/videojs-airplay';
+	import '@silvermine/videojs-airplay/dist/silvermine-videojs-airplay.css';
+
+	chromecastPlugin(videojs);
+	airPlayPlugin(videojs);
 
 	interface VideoPlayerProps {
 		supabase: SupabaseClient;
@@ -20,6 +27,13 @@
 	let player: Player;
 	let syncing = false;
 	let playerChannel: RealtimeChannel | undefined;
+
+	function loadCastSdk() {
+		if (document.querySelector('script[src*="cast_sender"]')) return;
+		const script = document.createElement('script');
+		script.src = 'https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1';
+		document.head.appendChild(script);
+	}
 
 	function broadcastState(isPlaying: boolean, time: number) {
 		playerChannel?.send({
@@ -74,10 +88,17 @@
 
 	// Initialize player
 	$effect(() => {
+		loadCastSdk();
+
 		player = videojs(videoEl, {
 			controls: isOwner,
 			fill: true,
-			preload: 'auto'
+			preload: 'auto',
+			techOrder: ['chromecast', 'html5'],
+			plugins: {
+				chromecast: {},
+				airPlay: {}
+			}
 		});
 
 		player.on('ready', () => {

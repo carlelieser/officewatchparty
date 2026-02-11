@@ -33,7 +33,6 @@
 					<RoomPresence
 							supabase={data.supabase}
 							roomId={data.room.id}
-							userEmail={data.user?.email ?? ''}
 					/>
 				</div>
 			</div>

@@ -16,7 +16,7 @@
 		"supabase:stop": "supabase stop",
 		"supabase:status": "supabase status",
 		"cf:dev": "wrangler dev",
-		"cf:deploy": "wrangler deploy"
+		"cf:deploy": "npm run build && wrangler deploy"
 	},
 	"devDependencies": {
 		"@internationalized/date": "^3.11.0",
@@ -44,6 +44,8 @@
 		"wrangler": "^4.63.0"
 	},
 	"dependencies": {
+		"@silvermine/videojs-airplay": "^1.3.0",
+		"@silvermine/videojs-chromecast": "^1.5.0",
 		"@supabase/ssr": "^0.8.0",
 		"@supabase/supabase-js": "^2.95.3",
 		"clsx": "^2.1.1",
