@@ -5,10 +5,12 @@
 	import { Button } from '$lib/components/ui/button';
 	import { MessageSquare } from '@lucide/svelte';
 	import { getCommentsContext } from './comments-context';
+	import { emailInitials, emailUsername } from '$lib/shared/user';
+	import { timeAgo } from '$lib/shared/time';
 
 	const context = getCommentsContext();
 
-	let containerEl: HTMLDivElement = $state(undefined!);
+	let containerElement: HTMLDivElement = $state(undefined!);
 	let overflows = $state(false);
 
 	const sorted = $derived(
@@ -22,25 +24,10 @@
 
 	$effect(() => {
 		context.comments;
-		if (containerEl && !context.expanded) {
-			overflows = containerEl.scrollHeight > containerEl.clientHeight;
+		if (containerElement && !context.expanded) {
+			overflows = containerElement.scrollHeight > containerElement.clientHeight;
 		}
 	});
-
-	function initials(email: string) {
-		return email.split('@')[0].slice(0, 2).toUpperCase();
-	}
-
-	function timeAgo(date: string) {
-		const seconds = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
-		if (seconds < 60) return 'just now';
-		const minutes = Math.floor(seconds / 60);
-		if (minutes < 60) return `${minutes}m ago`;
-		const hours = Math.floor(minutes / 60);
-		if (hours < 24) return `${hours}h ago`;
-		const days = Math.floor(hours / 24);
-		return `${days}d ago`;
-	}
 </script>
 
 <div class="flex flex-col gap-2 flex-1 min-h-0 overflow-y-auto">
@@ -54,7 +41,7 @@
 		</Empty.Root>
 	{:else}
 		<div
-			bind:this={containerEl}
+			bind:this={containerElement}
 			class="flex flex-col gap-2 relative"
 			class:max-h-48={!context.expanded}
 			class:overflow-hidden={!context.expanded}
@@ -66,9 +53,9 @@
 						<Item.Description class="w-full flex flex-row items-center justify-between">
 							<div class="flex flex-row items-center gap-2">
 								<Avatar class="size-5 flex items-center justify-center">
-									<AvatarFallback class="text-[10px]">{initials(comment.email)}</AvatarFallback>
+									<AvatarFallback class="text-[10px]">{emailInitials(comment.email)}</AvatarFallback>
 								</Avatar>
-								{comment.email.split('@')[0]}
+								{emailUsername(comment.email)}
 							</div>
 							<span class="text-xs font-normal">{timeAgo(comment.created_at)}</span>
 						</Item.Description>

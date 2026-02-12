@@ -1,6 +1,13 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { Episodes } from '$lib/server/episodes';
+import { sign } from '$lib/server/signed-url';
+import { padNumber } from '$lib/shared/format';
+
+function buildVideoPath(season: number, episode: number): string {
+	const seasonCode = `S${padNumber(season)}`;
+	return `/video/${seasonCode}/${seasonCode}E${padNumber(episode)}.mp4`;
+}
 
 export const load: PageServerLoad = async ({ params, locals }) => {
 	const room = await locals.repos.rooms.findByAlias(params.id);
@@ -9,8 +16,16 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
 	const isOwner = room.owner_id === locals.user.id;
 	const members = await locals.repos.rooms.getMembers(room.id);
-	const episode = Episodes.find(room.season, room.episode);
+	const episode = room.season !== null && room.episode !== null
+		? Episodes.find(room.season, room.episode)
+		: null;
 	const comments = await locals.repos.rooms.getComments(room.id);
 
-	return { room, members, isOwner, episode, comments };
+	let videoUrl = '';
+	if (room.season !== null && room.episode !== null) {
+		const path = buildVideoPath(room.season, room.episode);
+		videoUrl = await sign(path);
+	}
+
+	return { room, members, isOwner, episode, comments, videoUrl };
 };

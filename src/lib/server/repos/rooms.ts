@@ -1,39 +1,57 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Comment, Member, Room } from '$lib/types';
+import type { Comment } from '$lib/features/comments/types';
+import type { Member, Room } from '$lib/features/rooms/types';
+
+type RoomInsert = {
+	owner_id: string;
+	season: number;
+	episode: number;
+};
+
+type OwnedRoomRow = {
+	alias: string;
+	season: number;
+	episode: number;
+	guests: number;
+};
 
 export function createRoomsRepo(supabase: SupabaseClient) {
 	return {
-		async findByAlias(alias: string) {
-			const { data } = await supabase.from('rooms').select('*').eq('alias', alias).single();
+		async findByAlias(alias: string): Promise<Room | null> {
+			const { data, error } = await supabase.from('rooms').select('*').eq('alias', alias).single();
 
+			if (error) throw error;
 			return data;
 		},
 
-		async findIdByAlias(alias: string) {
-			const { data } = await supabase.from('rooms').select('id').eq('alias', alias).single();
+		async findIdByAlias(alias: string): Promise<string | null> {
+			const { data, error } = await supabase
+				.from('rooms')
+				.select('id')
+				.eq('alias', alias)
+				.single();
 
-			return data?.id as string | null;
+			if (error) throw error;
+			return data?.id ?? null;
 		},
 
-		async create(ownerId: string, season: number = 1, episode: number = 1) {
-			const insert: Record<string, unknown> = { owner_id: ownerId, season, episode };
+		async create(ownerId: string, season: number = 1, episode: number = 1): Promise<string> {
+			const insert: RoomInsert = { owner_id: ownerId, season, episode };
 
 			const { data, error } = await supabase.from('rooms').insert(insert).select('alias').single();
 
-			console.log(error);
-
 			if (error || !data) throw error ?? new Error('Failed to create room');
 
-			return data.alias as string;
+			return data.alias;
 		},
 
-		async updateEpisode(alias: string, season: number, episode: number) {
+		async updateEpisode(alias: string, season: number, episode: number): Promise<void> {
 			const { error } = await supabase.from('rooms').update({ season, episode }).eq('alias', alias);
 
 			if (error) throw error;
 		},
 
-		async updateAccessType(alias: string, accessType: 'invite_only' | 'link') {
+		async updateAccessType(alias: string, accessType: 'invite_only' | 'link'): Promise<void> {
 			const { error } = await supabase
 				.from('rooms')
 				.update({ access_type: accessType })
@@ -47,7 +65,7 @@ export function createRoomsRepo(supabase: SupabaseClient) {
 			ownerId: string,
 			isPlaying: boolean,
 			playerTime: number
-		) {
+		): Promise<void> {
 			const { error } = await supabase
 				.from('rooms')
 				.update({
@@ -62,16 +80,20 @@ export function createRoomsRepo(supabase: SupabaseClient) {
 		},
 
 		async getMembers(roomId: string): Promise<Array<Member>> {
-			const { data } = await supabase.rpc('get_room_members', { p_room_id: roomId });
-			return data || [];
+			const { data, error } = await supabase.rpc('get_room_members', { p_room_id: roomId });
+
+			if (error) throw error;
+			return data ?? [];
 		},
 
 		async getComments(roomId: string): Promise<Array<Comment>> {
-			const { data } = await supabase.rpc('get_room_comments', { p_room_id: roomId });
-			return data || [];
+			const { data, error } = await supabase.rpc('get_room_comments', { p_room_id: roomId });
+
+			if (error) throw error;
+			return data ?? [];
 		},
 
-		async grantAccess(roomId: string, email: string) {
+		async grantAccess(roomId: string, email: string): Promise<void> {
 			const { error } = await supabase.rpc('grant_room_access', {
 				p_room_id: roomId,
 				p_email: email
@@ -80,7 +102,7 @@ export function createRoomsRepo(supabase: SupabaseClient) {
 			if (error) throw error;
 		},
 
-		async revokeAccess(roomId: string, userId: string) {
+		async revokeAccess(roomId: string, userId: string): Promise<void> {
 			const { error } = await supabase
 				.from('room_access')
 				.delete()
@@ -90,21 +112,23 @@ export function createRoomsRepo(supabase: SupabaseClient) {
 			if (error) throw error;
 		},
 
-		async findByOwnerId(ownerId: string) {
-			const { data } = await supabase
+		async findByOwnerId(ownerId: string): Promise<Array<OwnedRoomRow>> {
+			const { data, error } = await supabase
 				.from('rooms')
 				.select('alias, season, episode, room_access(count)')
 				.eq('owner_id', ownerId)
 				.order('created_at', { ascending: false });
 
+			if (error) throw error;
+
 			const rooms = data ?? [];
 			return rooms.map((room) => {
-				const { room_access, ...rest } = room;
-				return { ...rest, guests: room_access[0]?.count ?? 0 };
+				const { room_access, ...roomFields } = room;
+				return { ...roomFields, guests: room_access[0]?.count ?? 0 };
 			});
 		},
 
-		async delete(alias: string, ownerId: string) {
+		async delete(alias: string, ownerId: string): Promise<void> {
 			const { error } = await supabase
 				.from('rooms')
 				.delete()

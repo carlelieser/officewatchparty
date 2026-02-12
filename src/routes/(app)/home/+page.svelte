@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/state';
-	import OfficeEpisodeSelect from '$lib/components/office-episode-select.svelte';
-	import Favorites from '$lib/components/favorites.svelte';
-	import Rooms from '$lib/components/rooms.svelte';
+	import OfficeEpisodeSelect from '$lib/features/episodes/components/office-episode-select.svelte';
+	import Favorites from '$lib/features/favorites/components/favorites.svelte';
+	import Rooms from '$lib/features/rooms/components/rooms.svelte';
 	import TvAnimation from '$lib/components/tv-animation.svelte';
-	import type { Episode } from '$lib/types';
+	import type { Episode } from '$lib/features/episodes/types';
 	import { goto } from '$app/navigation';
 	import { toast } from 'svelte-sonner';
 

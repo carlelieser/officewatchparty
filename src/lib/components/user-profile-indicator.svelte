@@ -2,11 +2,10 @@
 	import { page } from '$app/state';
 	import { Avatar, AvatarFallback } from '$lib/components/ui/avatar';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import { emailInitials } from '$lib/shared/user';
 
 	const user = $derived(page.data.user);
-	const initials = $derived(
-		user?.email ? user.email.split('@')[0].slice(0, 2).toUpperCase() : '??'
-	);
+	const initials = $derived(user?.email ? emailInitials(user.email) : '??');
 </script>
 
 <DropdownMenu.Root>

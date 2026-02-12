@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
 	import { X } from '@lucide/svelte';
+	import { formatEpisodeCode } from '$lib/shared/format';
 
 	interface EpisodeCardProps {
 		season?: number | null;
@@ -8,12 +9,10 @@
 		label?: string | null;
 		description?: string | null;
 		onclick?: () => void;
-		onremove?: (e: Event) => void;
+		onremove?: (event: Event) => void;
 	}
 
 	let { season, episode, label, description, onclick, onremove }: EpisodeCardProps = $props();
-
-	const pad = (n: number) => String(n).padStart(2, '0');
 </script>
 
 <div class="relative group aspect-square">
@@ -21,7 +20,7 @@
 		<Card.Root class="hover:bg-accent aspect-square transition-colors">
 			<Card.Header>
 				{#if season && episode}
-					<span class="text-xs font-mono text-muted-foreground">S{pad(season)}E{pad(episode)}</span>
+					<span class="text-xs font-mono text-muted-foreground">{formatEpisodeCode(season, episode)}</span>
 					<Card.Title class="text-sm">{label}</Card.Title>
 				{:else}
 					<Card.Title class="text-sm text-muted-foreground">No episode selected</Card.Title>

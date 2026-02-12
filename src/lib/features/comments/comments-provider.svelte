@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { SupabaseClient } from '@supabase/supabase-js';
-	import type { Comment } from '$lib/types';
+	import type { Comment } from '$lib/features/comments/types';
 	import { setCommentsContext, type CommentsState } from './comments-context';
 
 	interface CommentsProviderProps {

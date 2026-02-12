@@ -4,6 +4,7 @@
 	import { ArrowUp } from '@lucide/svelte';
 	import { getCommentsContext } from './comments-context';
 	import { page } from '$app/state';
+	import { postComment } from '$lib/features/comments/api';
 
 	interface CommentsInputProps {
 		roomAlias: string;
@@ -16,20 +17,16 @@
 	let content = $state('');
 	let submitting = $state(false);
 
-	function onKeydown(event: KeyboardEvent) {
+	function onKeydown(event: KeyboardEvent): void {
 		if (event.key === 'Enter') submit();
 	}
 
-	async function submit() {
+	async function submit(): Promise<void> {
 		if (submitting || !content.trim()) return;
 		submitting = true;
 		const trimmed = content.trim();
 		try {
-			await fetch(`/api/rooms/${roomAlias}/comments`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ content: trimmed })
-			});
+			await postComment(roomAlias, trimmed);
 			context.channel?.send({
 				type: 'broadcast',
 				event: 'new_comment',
@@ -41,8 +38,8 @@
 					created_at: new Date().toISOString()
 				}
 			});
-		} catch (err) {
-			console.log(err);
+		} catch (submitError) {
+			console.error(submitError);
 		} finally {
 			content = '';
 			submitting = false;

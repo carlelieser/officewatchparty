@@ -16,23 +16,41 @@
 	let loading = $state(false);
 	let verifyForm!: HTMLFormElement;
 
-	$effect(() => {
-		if (token.length === 8) {
-			verifyForm.requestSubmit();
-		}
-	});
+	function handleTokenInput(value: string): void {
+		token = value;
+		if (value.length === 8) verifyForm.requestSubmit();
+	}
 
-	$effect(() => {
-		if (form?.error) {
-			toast.error(form.error);
-		}
-		if (form?.otpSent) {
-			otpSent = true;
-			email = form.email;
-		} else if (form?.email) {
-			email = form.email;
-		}
-	});
+	function handleSendOtpSubmit(): ({ update }: { update: () => Promise<void> }) => Promise<void> {
+		loading = true;
+		return async ({ update }) => {
+			await update();
+			loading = false;
+			if (form?.error) {
+				toast.error(form.error);
+			}
+			if (form?.otpSent) {
+				otpSent = true;
+				email = form.email;
+			} else if (form?.email) {
+				email = form.email;
+			}
+		};
+	}
+
+	function handleVerifyOtpSubmit(): ({ update }: { update: () => Promise<void> }) => Promise<void> {
+		loading = true;
+		return async ({ update }) => {
+			loading = false;
+			await update();
+			if (form?.error) {
+				toast.error(form.error);
+			}
+			if (form?.email) {
+				email = form.email;
+			}
+		};
+	}
 </script>
 
 <div class="flex flex-col flex-1">
@@ -55,13 +73,7 @@
 			<form
 					method="POST"
 					action="?/sendOtp"
-					use:enhance={() => {
-					loading = true;
-					return async ({ update }) => {
-						await update();
-						loading = false;
-					};
-				}}
+					use:enhance={handleSendOtpSubmit}
 					class="space-y-4"
 			>
 				<InputGroup.Root>
@@ -103,18 +115,12 @@
 					bind:this={verifyForm}
 					method="POST"
 					action="?/verifyOtp"
-					use:enhance={() => {
-					loading = true;
-					return async ({ update }) => {
-						loading = false;
-						await update();
-					};
-				}}
+					use:enhance={handleVerifyOtpSubmit}
 					class="space-y-4"
 			>
 				<input type="hidden" name="email" value={email}/>
 				<div class="flex justify-center">
-					<InputOTP.Root maxlength={8} bind:value={token} name="token">
+					<InputOTP.Root maxlength={8} value={token} onValueChange={handleTokenInput} name="token">
 						{#snippet children({cells})}
 							<InputOTP.Group>
 								{#each cells as cell}

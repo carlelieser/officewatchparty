@@ -1,6 +1,7 @@
 <script lang="ts">
-	import type { Episode } from '$lib/types';
-	import EpisodeSelect from '$lib/components/episode-select.svelte';
+	import type { Episode } from '$lib/features/episodes/types';
+	import EpisodeSelect from '$lib/features/episodes/components/episode-select.svelte';
+	import { page } from '$app/state';
 
 	interface OfficeEpisodeSelectProps {
 		selected?: Episode | null;
@@ -16,13 +17,7 @@
 		class: className
 	}: OfficeEpisodeSelectProps = $props();
 
-	let episodes: Episode[] = $state([]);
-
-	$effect(() => {
-		fetch('/api/episodes')
-			.then((r) => r.json())
-			.then((data) => (episodes = data));
-	});
+	const episodes = $derived(page.data.episodes as Array<Episode>);
 </script>
 
 <EpisodeSelect {episodes} bind:selected {onchange} {disabled} class={className} />

@@ -1,31 +1,20 @@
 <script lang="ts">
-	import RoomAccess from '$lib/components/room-access.svelte';
-	import RoomPresence from '$lib/components/room-presence.svelte';
-	import * as Comments from '$lib/components/comments';
-	import OfficeEpisodeSelect from '$lib/components/office-episode-select.svelte';
-	import VideoPlayer from '$lib/components/video-player.svelte';
-	import type { Episode } from '$lib/types';
+	import RoomAccess from '$lib/features/rooms/components/room-access.svelte';
+	import RoomPresence from '$lib/features/rooms/components/room-presence.svelte';
+	import * as Comments from '$lib/features/comments';
+	import OfficeEpisodeSelect from '$lib/features/episodes/components/office-episode-select.svelte';
+	import VideoPlayer from '$lib/features/video/components/video-player.svelte';
+	import type { Episode } from '$lib/features/episodes/types';
+	import { updateEpisode } from '$lib/features/rooms/api';
+	import { fetchVideoUrl } from '$lib/features/video/api';
 
 	let { data } = $props();
-	let episode: Episode | null = $state(data ? data.episode : null);
-	let videoUrl = $state('');
+	let episode: Episode | null = $state(data.episode);
+	let videoUrl = $state(data.videoUrl);
 
-	async function fetchVideoUrl(ep: Episode) {
-		const response = await fetch(`/api/video-url?season=${ep.season}&episode=${ep.episode}`);
-		const { url } = await response.json();
-		videoUrl = url;
-	}
-
-	$effect(() => {
-		if (episode) fetchVideoUrl(episode);
-	});
-
-	function onEpisodeChange(ep: Episode) {
-		fetch(`/api/rooms/${data.room.alias}/episode`, {
-			method: 'PUT',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ season: ep.season, episode: ep.episode })
-		});
+	async function onEpisodeChange(selected: Episode): Promise<void> {
+		updateEpisode(data.room.alias, selected.season, selected.episode);
+		videoUrl = await fetchVideoUrl(selected.season, selected.episode);
 	}
 </script>
 

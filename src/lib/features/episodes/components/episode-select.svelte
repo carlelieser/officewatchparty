@@ -1,13 +1,14 @@
 <script lang="ts">
-	import type { Episode } from '$lib/types';
+	import type { Episode } from '$lib/features/episodes/types';
 	import * as Popover from '$lib/components/ui/popover';
 	import * as Command from '$lib/components/ui/command';
 	import { Button } from '$lib/components/ui/button';
 	import { Check, ChevronsUpDown, TvIcon } from '@lucide/svelte';
 	import { cn } from '$lib/utils';
+	import { formatEpisodeCode, padNumber } from '$lib/shared/format';
 
 	interface EpisodeSelectProps {
-		episodes: Episode[];
+		episodes: Array<Episode>;
 		selected: Episode | null;
 		onchange?: (episode: Episode) => void;
 		disabled?: boolean;
@@ -24,11 +25,11 @@
 
 	let open = $state(false);
 
-	function isSelected(ep: Episode) {
-		return selected?.season === ep.season && selected?.episode === ep.episode;
+	function isSelected(entry: Episode): boolean {
+		return selected?.season === entry.season && selected?.episode === entry.episode;
 	}
 
-	const grouped = $derived(Map.groupBy(episodes, (ep) => ep.season));
+	const grouped = $derived(Map.groupBy(episodes, (entry) => entry.season));
 </script>
 
 <Popover.Root bind:open>
@@ -53,32 +54,29 @@
 			<Command.Input placeholder="Search episodes..." />
 			<Command.List>
 				<Command.Empty>No episodes found.</Command.Empty>
-				{#each grouped as [season, episodes]}
+				{#each grouped as [season, seasonEpisodes]}
 					<Command.Group heading="Season {season}">
-						{#each episodes as episode}
+						{#each seasonEpisodes as entry}
 							<Command.Item
-								value="S{String(season).padStart(2, '0')}E{String(episode.episode).padStart(
-									2,
-									'0'
-								)} {episode.label}"
+								value="{formatEpisodeCode(season, entry.episode)} {entry.label}"
 								onSelect={() => {
-									selected = episode;
+									selected = entry;
 									open = false;
-									onchange?.(episode);
+									onchange?.(entry);
 								}}
 							>
 								<div class="p-2 rounded-full flex items-center justify-center font-mono">
-									{#if isSelected(episode)}
+									{#if isSelected(entry)}
 										<Check />
 									{:else}
 										<span class="text-xs font-bold uppercase text-muted-foreground"
-											>{String(episode.episode).padStart(2, '0')}</span
+											>{padNumber(entry.episode)}</span
 										>
 									{/if}
 								</div>
 								<div class="flex flex-col gap-0 min-w-0">
-									<span class="font-medium">{episode.label}</span>
-									<span class="truncate text-muted-foreground">{episode.description}</span>
+									<span class="font-medium">{entry.label}</span>
+									<span class="truncate text-muted-foreground">{entry.description}</span>
 								</div>
 							</Command.Item>
 						{/each}

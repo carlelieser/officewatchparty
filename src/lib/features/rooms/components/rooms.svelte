@@ -1,27 +1,27 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
 	import * as Empty from '$lib/components/ui/empty';
-	import type { OwnedRoom } from '$lib/types';
+	import type { OwnedRoom } from '$lib/features/rooms/types';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Plus, Tv, Users, X } from '@lucide/svelte';
 	import { goto } from '$app/navigation';
+	import { deleteRoom } from '$lib/features/rooms/api';
+	import { formatEpisodeCode } from '$lib/shared/format';
 
 	interface RoomsProps {
-		initial?: OwnedRoom[];
+		initial?: Array<OwnedRoom>;
 	}
 
 	let { initial = [] }: RoomsProps = $props();
 
-	let rooms: OwnedRoom[] = $state(initial);
+	let rooms: Array<OwnedRoom> = $state(initial);
 
-	const pad = (n: number) => String(n).padStart(2, '0');
-
-	function remove(index: number, e: Event) {
-		e.stopPropagation();
+	function remove(index: number, clickEvent: Event): void {
+		clickEvent.stopPropagation();
 		const room = rooms[index];
-		rooms = rooms.filter((_, i) => i !== index);
-		fetch(`/api/rooms/${room.alias}`, { method: 'DELETE' });
+		rooms = rooms.filter((_, filterIndex) => filterIndex !== index);
+		deleteRoom(room.alias);
 	}
 </script>
 
@@ -31,7 +31,7 @@
 	>
 	{#if rooms.length > 0}
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-			{#each rooms as room, i}
+			{#each rooms as room, index}
 				<div class="relative group">
 					<button
 						class="w-full text-left cursor-pointer"
@@ -41,7 +41,7 @@
 							<Card.Header>
 								<Card.Title class="font-display">{room.label}</Card.Title>
 								<span class="text-xs font-mono text-muted-foreground"
-									>S{pad(room.season)}E{pad(room.episode)}</span
+									>{formatEpisodeCode(room.season, room.episode)}</span
 								>
 							</Card.Header>
 							<Card.Content class="flex-1"></Card.Content>
@@ -56,7 +56,7 @@
 					</button>
 					<button
 						class="absolute top-2 right-2 size-5 rounded-full bg-muted flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-						onclick={(e) => remove(i, e)}
+						onclick={(clickEvent) => remove(index, clickEvent)}
 					>
 						<X class="size-3" />
 					</button>

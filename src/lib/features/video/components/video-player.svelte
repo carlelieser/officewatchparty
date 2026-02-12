@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { SupabaseClient, RealtimeChannel } from '@supabase/supabase-js';
-	import type { Room } from '$lib/types';
+	import type { Room } from '$lib/features/rooms/types';
 	import videojs from 'video.js';
 	import type Player from 'video.js/dist/types/player';
 	import 'video.js/dist/video-js.css';
@@ -10,6 +10,7 @@
 	import '@silvermine/videojs-chromecast/dist/silvermine-videojs-chromecast.css';
 	import airPlayPlugin from '@silvermine/videojs-airplay';
 	import '@silvermine/videojs-airplay/dist/silvermine-videojs-airplay.css';
+	import { updatePlayerState } from '$lib/features/rooms/api';
 
 	chromecastPlugin(videojs);
 	airPlayPlugin(videojs);
@@ -23,19 +24,19 @@
 
 	let { supabase, room, isOwner, videoUrl }: VideoPlayerProps = $props();
 
-	let videoEl: HTMLVideoElement;
+	let videoElement: HTMLVideoElement;
 	let player: Player;
 	let syncing = false;
 	let playerChannel: RealtimeChannel | undefined;
 
-	function loadCastSdk() {
+	function loadCastSdk(): void {
 		if (document.querySelector('script[src*="cast_sender"]')) return;
 		const script = document.createElement('script');
 		script.src = 'https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1';
 		document.head.appendChild(script);
 	}
 
-	function broadcastState(isPlaying: boolean, time: number) {
+	function broadcastState(isPlaying: boolean, time: number): void {
 		playerChannel?.send({
 			type: 'broadcast',
 			event: 'player_state',
@@ -43,29 +44,25 @@
 		});
 	}
 
-	function persistState(isPlaying: boolean, time: number) {
-		fetch(`/api/rooms/${room.alias}/player`, {
-			method: 'PUT',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ is_playing: isPlaying, player_time: time })
-		});
+	function persistState(isPlaying: boolean, time: number): void {
+		updatePlayerState(room.alias, isPlaying, time);
 	}
 
-	function handleOwnerPlay() {
+	function handleOwnerPlay(): void {
 		if (syncing) return;
 		const time = player.currentTime() ?? 0;
 		broadcastState(true, time);
 		persistState(true, time);
 	}
 
-	function handleOwnerPause() {
+	function handleOwnerPause(): void {
 		if (syncing) return;
 		const time = player.currentTime() ?? 0;
 		broadcastState(false, time);
 		persistState(false, time);
 	}
 
-	function handleOwnerSeeked() {
+	function handleOwnerSeeked(): void {
 		if (syncing) return;
 		const time = player.currentTime() ?? 0;
 		const isPlaying = !player.paused();
@@ -73,7 +70,7 @@
 		persistState(isPlaying, time);
 	}
 
-	function applyState(isPlaying: boolean, time: number) {
+	function applyState(isPlaying: boolean, time: number): void {
 		syncing = true;
 		player.currentTime(time);
 		if (isPlaying) {
@@ -90,7 +87,7 @@
 	$effect(() => {
 		loadCastSdk();
 
-		player = videojs(videoEl, {
+		player = videojs(videoElement, {
 			controls: isOwner,
 			fill: true,
 			preload: 'auto',
@@ -116,8 +113,10 @@
 			player.one('loadedmetadata', () => {
 				let time = room.player_time ?? 0;
 				if (room.is_playing && room.player_updated_at) {
-					const elapsed = (Date.now() - new Date(room.player_updated_at).getTime()) / 1000;
-					time += elapsed;
+					const updatedAtTimestamp = new Date(room.player_updated_at).getTime();
+					const elapsedMilliseconds = Date.now() - updatedAtTimestamp;
+					const elapsedSeconds = elapsedMilliseconds / 1000;
+					time += elapsedSeconds;
 				}
 				syncing = true;
 				player.currentTime(time);
@@ -166,6 +165,6 @@
 	});
 </script>
 
-<video bind:this={videoEl} class="video-js vjs-big-play-centered m-auto">
+<video bind:this={videoElement} class="video-js vjs-big-play-centered m-auto">
 	<track kind="captions" />
 </video>

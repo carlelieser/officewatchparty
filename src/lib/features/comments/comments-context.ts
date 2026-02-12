@@ -1,13 +1,13 @@
 import { getContext, setContext } from 'svelte';
 import type { RealtimeChannel } from '@supabase/supabase-js';
-import type { Comment } from '$lib/types';
+import type { Comment } from '$lib/features/comments/types';
 
 type Sort = 'newest' | 'oldest';
 
 export interface CommentsState {
 	sort: Sort;
 	expanded: boolean;
-	comments: Comment[];
+	comments: Array<Comment>;
 	channel: RealtimeChannel | null;
 }
 

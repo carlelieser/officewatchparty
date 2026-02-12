@@ -1,8 +1,7 @@
 import { error, json } from '@sveltejs/kit';
 import { sign } from '$lib/server/signed-url';
+import { padNumber } from '$lib/shared/format';
 import type { RequestHandler } from './$types';
-
-const pad = (n: number) => String(n).padStart(2, '0');
 
 export const GET: RequestHandler = async ({ url }) => {
 	const season = Number(url.searchParams.get('season'));
@@ -10,7 +9,8 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	if (!season || !episode) error(400, 'season and episode are required');
 
-	const path = `/video/S${pad(season)}/S${pad(season)}E${pad(episode)}.mp4`;
+	const seasonCode = `S${padNumber(season)}`;
+	const path = `/video/${seasonCode}/${seasonCode}E${padNumber(episode)}.mp4`;
 	const signedUrl = await sign(path);
 
 	return json({ url: signedUrl });

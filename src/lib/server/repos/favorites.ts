@@ -1,9 +1,9 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Favorite } from '$lib/types';
+import type { Favorite } from '$lib/features/favorites/types';
 
 export function createFavoritesRepo(supabase: SupabaseClient) {
 	return {
-		async findByUserId(userId: string): Promise<Favorite[]> {
+		async findByUserId(userId: string): Promise<Array<Favorite>> {
 			const { data, error } = await supabase
 				.from('favorites')
 				.select('season, episode')
@@ -14,7 +14,7 @@ export function createFavoritesRepo(supabase: SupabaseClient) {
 			return data;
 		},
 
-		async insert(userId: string, season: number, episode: number) {
+		async insert(userId: string, season: number, episode: number): Promise<void> {
 			const { error } = await supabase
 				.from('favorites')
 				.insert({ user_id: userId, season, episode });
@@ -22,7 +22,7 @@ export function createFavoritesRepo(supabase: SupabaseClient) {
 			if (error) throw error;
 		},
 
-		async delete(userId: string, season: number, episode: number) {
+		async delete(userId: string, season: number, episode: number): Promise<void> {
 			const { error } = await supabase
 				.from('favorites')
 				.delete()

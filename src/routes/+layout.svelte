@@ -4,6 +4,7 @@
 	import { Toaster } from 'svelte-sonner';
 	import { ModeWatcher } from 'mode-watcher';
 	import { onNavigate, beforeNavigate, afterNavigate } from '$app/navigation';
+	import type { OnNavigate } from '@sveltejs/kit';
 	import '../app.css';
 
 	let { children } = $props();
@@ -17,7 +18,7 @@
 		navigating = false;
 	});
 
-	onNavigate((navigation) => {
+	function handleViewTransition(navigation: OnNavigate): Promise<void> | undefined {
 		if (!document.startViewTransition) return;
 
 		return new Promise((resolve) => {
@@ -26,7 +27,9 @@
 				await navigation.complete;
 			});
 		});
-	});
+	}
+
+	onNavigate(handleViewTransition);
 </script>
 
 <svelte:head>

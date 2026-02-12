@@ -5,6 +5,7 @@
 	import { Circle } from '@lucide/svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/state';
+	import { emailInitials, emailUsername } from '$lib/shared/user';
 
 	interface RoomPresenceProps {
 		supabase: SupabaseClient;
@@ -17,15 +18,24 @@
 
 	let { supabase, roomId }: RoomPresenceProps = $props();
 
-	let users: PresenceUser[] = $state([]);
+	let users: Array<PresenceUser> = $state([]);
 	let channel: RealtimeChannel | undefined;
 
-	function initials(email: string) {
-		return email.split('@')[0].slice(0, 2).toUpperCase();
+	function handlePresenceSync(): void {
+		const state = channel!.presenceState<PresenceUser>();
+		const seen = new Set<string>();
+		const list: Array<PresenceUser> = [];
+		for (const key of Object.keys(state)) {
+			if (!seen.has(key)) {
+				seen.add(key);
+				list.push({ email: key });
+			}
+		}
+		users = list;
 	}
 
-	function username(email: string) {
-		return email.split('@')[0];
+	async function handleChannelSubscribed(): Promise<void> {
+		await channel!.track({ email: page.data.user?.email });
 	}
 
 	$effect(() => {
@@ -34,21 +44,10 @@
 		});
 
 		channel
-			.on('presence', { event: 'sync' }, () => {
-				const state = channel!.presenceState<PresenceUser>();
-				const seen = new Set<string>();
-				const list: PresenceUser[] = [];
-				for (const key of Object.keys(state)) {
-					if (!seen.has(key)) {
-						seen.add(key);
-						list.push({ email: key });
-					}
-				}
-				users = list;
-			})
+			.on('presence', { event: 'sync' }, handlePresenceSync)
 			.subscribe(async (status) => {
 				if (status === 'SUBSCRIBED') {
-					await channel!.track({ email: page.data.user?.email });
+					await handleChannelSubscribed();
 				}
 			});
 
@@ -69,7 +68,7 @@
 				<div class="flex flex-row -space-x-2">
 					{#each visible as user (user.email)}
 						<Avatar class="size-6">
-							<AvatarFallback class="text-[10px]">{initials(user.email)}</AvatarFallback>
+							<AvatarFallback class="text-[10px]">{emailInitials(user.email)}</AvatarFallback>
 						</Avatar>
 					{/each}
 				</div>
@@ -90,9 +89,9 @@
 			{#each users as user (user.email)}
 				<div class="flex items-center gap-2 rounded-md px-2 py-1.5">
 					<Avatar class="size-6">
-						<AvatarFallback class="text-[10px]">{initials(user.email)}</AvatarFallback>
+						<AvatarFallback class="text-[10px]">{emailInitials(user.email)}</AvatarFallback>
 					</Avatar>
-					<span class="truncate text-sm">{username(user.email)}</span>
+					<span class="truncate text-sm">{emailUsername(user.email)}</span>
 					{#if user.email === page.data.user?.email}
 						<span class="text-xs text-muted-foreground ml-auto">(you)</span>
 					{/if}

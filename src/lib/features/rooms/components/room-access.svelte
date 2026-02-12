@@ -10,13 +10,13 @@
 	import CopyButton from '$lib/components/copy-button.svelte';
 	import * as Empty from '$lib/components/ui/empty';
 	import { ChevronDown, Globe, Lock, Plus, Search, Users, X, ShareIcon } from '@lucide/svelte';
-
-	import type { Member, Room } from '$lib/types';
+	import type { Member, Room } from '$lib/features/rooms/types';
+	import { updateAccessType, addMember, removeMember } from '$lib/features/rooms/api';
 
 	interface RoomAccessProps {
 		alias: string;
 		room: Room;
-		members: Member[];
+		members: Array<Member>;
 		isOwner: boolean;
 	}
 
@@ -28,8 +28,26 @@
 	let accessType = $state(room.access_type);
 
 	const filtered = $derived(
-		members.filter((m) => m.email.toLowerCase().includes(search.toLowerCase()))
+		members.filter((member) => member.email.toLowerCase().includes(search.toLowerCase()))
 	);
+
+	function handleAccessTypeChange(value: string | undefined): void {
+		if (value === 'invite_only' || value === 'link') {
+			accessType = value;
+			updateAccessType(alias, value);
+		}
+	}
+
+	function handleRemoveMember(member: Member): void {
+		removeMember(alias, member.user_id);
+		members = members.filter((existing) => existing.user_id !== member.user_id);
+	}
+
+	async function handleAddMember(): Promise<void> {
+		await addMember(alias, email);
+		email = '';
+		addDialogOpen = false;
+	}
 </script>
 
 <Popover.Root>
@@ -68,16 +86,7 @@
 					<DropdownMenu.Content align="end">
 						<DropdownMenu.RadioGroup
 							value={accessType}
-							onValueChange={(value) => {
-								if (value === 'invite_only' || value === 'link') {
-									accessType = value;
-									fetch(`/api/rooms/${alias}/access-type`, {
-										method: 'PUT',
-										headers: { 'Content-Type': 'application/json' },
-										body: JSON.stringify({ access_type: value })
-									});
-								}
-							}}
+							onValueChange={handleAccessTypeChange}
 						>
 							<DropdownMenu.RadioItem value="invite_only">Restricted</DropdownMenu.RadioItem>
 							<DropdownMenu.RadioItem value="link">Anyone with the link</DropdownMenu.RadioItem>
@@ -107,14 +116,7 @@
 							variant="ghost"
 							size="icon-sm"
 							class="size-6 shrink-0"
-							onclick={() => {
-								fetch(`/api/rooms/${alias}/members`, {
-									method: 'DELETE',
-									headers: { 'Content-Type': 'application/json' },
-									body: JSON.stringify({ user_id: member.user_id })
-								});
-								members = members.filter((m) => m.user_id !== member.user_id);
-							}}
+							onclick={() => handleRemoveMember(member)}
 						>
 							<X size={12} />
 						</Button>
@@ -153,17 +155,7 @@
 							<Input bind:value={email} type="email" placeholder="user@example.com" />
 							<Dialog.Footer>
 								<Dialog.Close class={buttonVariants({ variant: 'outline' })}>Cancel</Dialog.Close>
-								<Button
-									onclick={async () => {
-										await fetch(`/api/rooms/${alias}/members`, {
-											method: 'POST',
-											headers: { 'Content-Type': 'application/json' },
-											body: JSON.stringify({ email })
-										});
-										email = '';
-										addDialogOpen = false;
-									}}>Add</Button
-								>
+								<Button onclick={handleAddMember}>Add</Button>
 							</Dialog.Footer>
 						</div>
 					</Dialog.Content>
