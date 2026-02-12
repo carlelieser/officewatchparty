@@ -56,7 +56,7 @@
 	{
 		"season": 2,
 		"episode": 4,
-		"label": "The Fire",
+		"label": "Fire",
 		"description": "Ryan starts a fire in the kitchen with a cheese pita, forcing everyone into the parking lot for the day. Michael uses the downtime to mentor Ryan while the staff plays \"Desert Island\" and Jim realizes Pam doesn't consider him her desert island pick."
 	},
 	{
@@ -308,234 +308,276 @@
 	{
 		"season": 4,
 		"episode": 1,
-		"label": "Fun Run",
-		"description": "Michael hits Meredith with his car and organizes a rabies awareness fun run to make amends. Angela breaks up with Dwight after he mercy-kills her cat Sprinkles."
+		"label": "Fun Run Part 1",
+		"description": "Michael hits Meredith with his car in the parking lot and learns she needs treatment for rabies. He becomes convinced a curse has befallen the office and vows to make things right."
 	},
 	{
 		"season": 4,
 		"episode": 2,
-		"label": "Dunder Mifflin Infinity",
-		"description": "Ryan returns from corporate to modernize the company with a new website, threatening Michael with obsolescence. Michael tries to prove old-school sales methods are superior by dumping gift baskets in a lake."
+		"label": "Fun Run Part 2",
+		"description": "Michael organizes a rabies awareness fun run to raise money for science, but the poorly planned race quickly falls apart. Angela breaks up with Dwight after he mercy-kills her cat Sprinkles."
 	},
 	{
 		"season": 4,
 		"episode": 3,
-		"label": "Launch Party",
-		"description": "Michael attends the Dunder Mifflin Infinity website launch party in New York while Scranton hosts a satellite party. Dwight competes against the website to see who can sell more paper in one day."
+		"label": "Dunder Mifflin Infinity Part 1",
+		"description": "Ryan returns from corporate to launch a new website and push the company into the digital age. Michael feels threatened by the changes and clashes with Ryan over the direction of the branch."
 	},
 	{
 		"season": 4,
 		"episode": 4,
-		"label": "Money",
-		"description": "Michael struggles with mounting debt from Jan's condo renovations and takes a second job as a telemarketer. Jim and Pam spend a night at Dwight's agritourism bed and breakfast on Schrute Farms."
+		"label": "Dunder Mifflin Infinity Part 2",
+		"description": "Michael tries to prove old-school sales methods are superior to Ryan's website by winning back former clients with gift baskets, which he ends up dumping in a lake. Dwight struggles to compete with the online sales platform."
 	},
 	{
 		"season": 4,
 		"episode": 5,
+		"label": "Launch Party Part 1",
+		"description": "The Dunder Mifflin Infinity website launch party is held in New York, and Michael is eager to attend the corporate event. Back in Scranton, Dwight challenges the website to a sales competition."
+	},
+	{
+		"season": 4,
+		"episode": 6,
+		"label": "Launch Party Part 2",
+		"description": "The Scranton branch hosts its own satellite launch party while Michael attends the corporate event in New York. Dwight's battle against the website intensifies as he races to outsell the online platform."
+	},
+	{
+		"season": 4,
+		"episode": 7,
+		"label": "Money Part 1",
+		"description": "Michael struggles with mounting debt from Jan's expensive condo renovations and considers drastic measures to fix his finances. Jim and Pam book a night at Dwight's agritourism bed and breakfast on Schrute Farms."
+	},
+	{
+		"season": 4,
+		"episode": 8,
+		"label": "Money Part 2",
+		"description": "Michael takes a second job as a telemarketer to cover his debts while trying to hide his financial problems from the office. Jim and Pam endure a memorably bad night at Schrute Farms."
+	},
+	{
+		"season": 4,
+		"episode": 9,
 		"label": "Local Ad",
 		"description": "Michael insists on creating his own local Dunder Mifflin commercial instead of using the one made by a professional ad agency. Andy tries to confide in Dwight about his new relationship with Angela."
 	},
 	{
 		"season": 4,
-		"episode": 6,
+		"episode": 10,
 		"label": "Branch Wars",
 		"description": "Michael and Dwight raid the Utica branch after Karen tries to poach Stanley. Jim, Pam, Oscar, and Toby form the exclusive Finer Things Club, making the rest of the office jealous."
 	},
 	{
 		"season": 4,
-		"episode": 7,
+		"episode": 11,
 		"label": "Survivor Man",
 		"description": "After being excluded from Ryan's corporate wilderness retreat, Michael ventures into the woods alone to prove he can survive. Jim revolutionizes the office birthday party system while in charge."
 	},
 	{
 		"season": 4,
-		"episode": 8,
+		"episode": 12,
 		"label": "The Deposition",
 		"description": "Michael is called to testify in Jan's wrongful termination lawsuit against Dunder Mifflin, and his diary is entered into evidence. Darryl beats Jim at ping-pong, prompting Kelly to trash-talk Pam."
 	},
 	{
 		"season": 4,
-		"episode": 9,
+		"episode": 13,
 		"label": "Dinner Party",
 		"description": "Michael and Jan host Jim, Pam, Andy, and Angela for a couples dinner party that devolves into chaos. Jan's jealousy, Michael's tiny plasma TV, and Hunter's CD create an unforgettable evening."
 	},
 	{
 		"season": 4,
-		"episode": 10,
+		"episode": 14,
 		"label": "Chair Model",
 		"description": "Michael becomes infatuated with a woman in a furniture catalog and asks the office to set him up on dates. Kevin and Andy team up to reclaim stolen parking spaces from the other businesses in the office park."
 	},
 	{
 		"season": 4,
-		"episode": 11,
+		"episode": 15,
 		"label": "Night Out",
 		"description": "Michael and Dwight go clubbing with Ryan in New York, where Ryan is spiraling out of control. The rest of the office gets locked in overnight after Jim forgets to inform the security guard they are working late."
 	},
 	{
 		"season": 4,
-		"episode": 12,
+		"episode": 16,
 		"label": "Did I Stutter?",
 		"description": "Stanley openly disrespects Michael during a meeting, forcing Michael to confront his own authority. Dwight buys Andy's Xterra and immediately flips it for a profit."
 	},
 	{
 		"season": 4,
-		"episode": 13,
+		"episode": 17,
 		"label": "Job Fair",
 		"description": "Michael recruits at a high school job fair but struggles to attract any students to Dunder Mifflin. Jim, Andy, and Kevin play golf with a prospective client while the rest of the office leaves early."
 	},
 	{
 		"season": 4,
-		"episode": 14,
-		"label": "Goodbye, Toby",
-		"description": "Michael throws an extravagant going-away party for Toby and instantly falls for his replacement, Holly Flax. Jim's plan to propose to Pam is upstaged when Andy proposes to Angela first, and Ryan is arrested for fraud."
+		"episode": 18,
+		"label": "Goodbye, Toby Part 1",
+		"description": "Michael throws an extravagant going-away party for Toby and instantly falls for his replacement, Holly Flax. Jim prepares to propose to Pam at the party."
+	},
+	{
+		"season": 4,
+		"episode": 19,
+		"label": "Goodbye, Toby Part 2",
+		"description": "Jim's plan to propose to Pam is upstaged when Andy proposes to Angela first. Ryan is arrested for fraud while Michael and Holly grow closer at Toby's farewell celebration."
 	},
 	{
 		"season": 5,
 		"episode": 1,
-		"label": "Weight Loss",
-		"description": "The office competes in a company-wide weight loss challenge over the summer. Jim proposes to Pam at a gas station rest stop between Scranton and New York, where she is attending art school."
+		"label": "Weight Loss Part 1",
+		"description": "The office begins competing in a company-wide weight loss challenge over the summer. Jim and Pam adjust to their long-distance relationship while she attends art school in New York."
 	},
 	{
 		"season": 5,
 		"episode": 2,
+		"label": "Weight Loss Part 2",
+		"description": "The weight loss competition intensifies as the office tries increasingly desperate strategies to win. Jim proposes to Pam at a gas station rest stop between Scranton and New York."
+	},
+	{
+		"season": 5,
+		"episode": 3,
 		"label": "Business Ethics",
 		"description": "Holly conducts a business ethics seminar that backfires when Meredith admits she sleeps with a supplier in exchange for discounts and Outback Steakhouse gift cards."
 	},
 	{
 		"season": 5,
-		"episode": 3,
+		"episode": 4,
 		"label": "Baby Shower",
 		"description": "Michael plans a baby shower for Jan, who arrives having already given birth to her daughter Astrid via sperm donor. Michael and Holly begin dating after Jan warns him to stay away from her."
 	},
 	{
 		"season": 5,
-		"episode": 4,
+		"episode": 5,
 		"label": "Crime Aid",
 		"description": "The office is robbed after Michael and Holly leave the door unlocked following an after-hours tryst. Michael stages a charity auction with questionable items, including nonexistent Bruce Springsteen tickets."
 	},
 	{
 		"season": 5,
-		"episode": 5,
+		"episode": 6,
 		"label": "Employee Transfer",
 		"description": "Holly is transferred to the Nashua branch after corporate discovers her relationship with Michael, and they break up. Dwight applies to Cornell to get under Andy's skin."
 	},
 	{
 		"season": 5,
-		"episode": 6,
+		"episode": 7,
 		"label": "Customer Survey",
 		"description": "Jim and Dwight receive suspiciously poor customer survey results, which turn out to be Kelly's revenge for them missing her party."
 	},
 	{
 		"season": 5,
-		"episode": 7,
+		"episode": 8,
 		"label": "Business Trip",
 		"description": "Michael takes Oscar and Andy on a business trip to Winnipeg, where Andy and Oscar bond and Michael spirals over Holly. Pam returns early from art school after failing a class."
 	},
 	{
 		"season": 5,
-		"episode": 8,
+		"episode": 9,
 		"label": "Frame Toby",
 		"description": "Michael and Dwight scheme to get Toby fired after his return from Costa Rica, culminating in an attempt to frame him for marijuana possession using a bag of Caprese salad. Jim buys his parents' house for himself and Pam."
 	},
 	{
 		"season": 5,
-		"episode": 9,
+		"episode": 10,
 		"label": "The Surplus",
 		"description": "Oscar discovers a budget surplus that must be spent by the end of the day, splitting the office into factions fighting over a new copier versus new chairs. Dwight tricks Angela into a secret wedding ceremony at his farm."
 	},
 	{
 		"season": 5,
-		"episode": 10,
+		"episode": 11,
 		"label": "Moroccan Christmas",
 		"description": "Phyllis hosts a Moroccan-themed Christmas party where Meredith's hair catches fire from a candle. Phyllis uses her knowledge of Angela and Dwight's affair as leverage over Angela on the party planning committee."
 	},
 	{
 		"season": 5,
-		"episode": 11,
+		"episode": 12,
 		"label": "The Duel",
 		"description": "Andy learns about Angela's affair with Dwight and challenges him to a duel in the parking lot. Both men ultimately dump Angela after discovering she was deceiving them both."
 	},
 	{
 		"season": 5,
-		"episode": 12,
+		"episode": 13,
 		"label": "Prince Family Paper",
 		"description": "Michael goes undercover to spy on a small family-owned paper company and feels guilty about putting them out of business. The rest of the office passionately debates whether Hilary Swank is hot."
 	},
 	{
 		"season": 5,
-		"episode": 13,
-		"label": "Stress Relief",
-		"description": "Dwight's simulated fire drill causes mass panic and Stanley has a heart attack. Michael agrees to let the office roast him to relieve stress, and the staff takes CPR training where Dwight cuts the face off the practice dummy."
+		"episode": 14,
+		"label": "Stress Relief Part 1",
+		"description": "Dwight's simulated fire drill causes mass panic and Stanley has a heart attack. The staff is required to take a CPR training course where Dwight cuts the face off the practice dummy."
 	},
 	{
 		"season": 5,
-		"episode": 14,
+		"episode": 15,
+		"label": "Stress Relief Part 2",
+		"description": "Michael agrees to let the office roast him to relieve workplace stress, but the staff's jokes cut deeper than expected. Michael retaliates with his own set of comebacks at the end of the night."
+	},
+	{
+		"season": 5,
+		"episode": 16,
 		"label": "Lecture Circuit",
 		"description": "Michael tours other branches to lecture about Scranton's success, with Pam as his assistant, and visits Karen in Utica, who is now pregnant and married. Back in Scranton, Jim and Dwight run the party planning committee and botch Kelly's birthday."
 	},
 	{
 		"season": 5,
-		"episode": 15,
+		"episode": 17,
 		"label": "Blood Drive",
 		"description": "A blood drive on Valentine's Day leads Michael to connect with a mysterious woman, but she disappears before he can get her number. He organizes a singles mixer to find her."
 	},
 	{
 		"season": 5,
-		"episode": 16,
+		"episode": 18,
 		"label": "Golden Ticket",
 		"description": "Michael hides Willy Wonka-style golden tickets in paper shipments for 10% discounts, but one major client receives all five tickets. He tries to get Dwight to take the blame until David Wallace praises the idea."
 	},
 	{
 		"season": 5,
-		"episode": 17,
+		"episode": 19,
 		"label": "New Boss",
 		"description": "Charles Miner arrives as the new VP and immediately clashes with Michael by disbanding the party planning committee and canceling Michael's 15th anniversary party. Michael quits Dunder Mifflin in protest."
 	},
 	{
 		"season": 5,
-		"episode": 18,
+		"episode": 20,
 		"label": "Two Weeks",
 		"description": "Michael serves out his two weeks' notice while trying to steal clients and recruit employees for his new company. Pam quits to join him after an argument with Charles."
 	},
 	{
 		"season": 5,
-		"episode": 19,
+		"episode": 21,
 		"label": "Dream Team",
 		"description": "Michael launches the Michael Scott Paper Company with Pam and Ryan operating out of a tiny closet in the office building. Jim struggles under Charles Miner, who forces him into a parking lot soccer game."
 	},
 	{
 		"season": 5,
-		"episode": 20,
-		"label": "Michael Scott Paper Company",
+		"episode": 22,
+		"label": "The Michael Scott Paper Company",
 		"description": "The startup struggles in cramped quarters but gains momentum after Pam makes her first sale. Charles asks Jim for a \"rundown\" and Jim spends all day trying to figure out what that means."
 	},
 	{
 		"season": 5,
-		"episode": 21,
+		"episode": 23,
 		"label": "Heavy Competition",
 		"description": "Michael and Dwight compete for the same clients after Dwight steals Michael's Rolodex. Andy, dealing with his broken engagement to Angela, seeks emotional support exclusively from Jim."
 	},
 	{
 		"season": 5,
-		"episode": 22,
+		"episode": 24,
 		"label": "Broke",
 		"description": "The Michael Scott Paper Company is going broke from unsustainably low prices, but Michael bluffs his way through buyout negotiations with David Wallace. He secures his old job back plus positions for Pam and Ryan."
 	},
 	{
 		"season": 5,
-		"episode": 23,
+		"episode": 25,
 		"label": "Casual Friday",
 		"description": "Michael mediates disputes between the returning salespeople and the existing team over client assignments. The office takes Casual Friday too far, with Meredith's outfit being particularly inappropriate."
 	},
 	{
 		"season": 5,
-		"episode": 24,
+		"episode": 26,
 		"label": "Cafe Disco",
 		"description": "Michael opens a cafe-disco in his old Michael Scott Paper Company office space to boost morale under Charles's strict atmosphere. Pam and Jim consider eloping after getting swept up in the dancing."
 	},
 	{
 		"season": 5,
-		"episode": 25,
+		"episode": 27,
 		"label": "Company Picnic",
 		"description": "Michael and Holly reunite and perform an awkward skit together at the Dunder Mifflin company picnic. Pam sprains her ankle during volleyball and discovers she's pregnant during the X-ray."
 	},
@@ -560,126 +602,138 @@
 	{
 		"season": 6,
 		"episode": 4,
-		"label": "Niagara",
-		"description": "The office travels to Niagara Falls for Jim and Pam's wedding, where Michael and Dwight try to meet women and Andy tears his scrotum dancing. Jim and Pam sneak away to exchange vows privately on the Maid of the Mist."
+		"label": "Niagara Part 1",
+		"description": "The office travels to Niagara Falls for Jim and Pam's wedding. Michael and Dwight try to meet women at the hotel while guests cause problems at the rehearsal dinner."
 	},
 	{
 		"season": 6,
 		"episode": 5,
+		"label": "Niagara Part 2",
+		"description": "Chaos ensues at the wedding ceremony as Andy tears his scrotum dancing and coworkers recreate an internet video in the aisle. Jim and Pam sneak away to exchange vows privately on the Maid of the Mist."
+	},
+	{
+		"season": 6,
+		"episode": 6,
 		"label": "Mafia",
 		"description": "Andy and Dwight convince Michael that an insurance salesman visiting the office is a mobster. Meanwhile, Kevin uses Jim's office and does a terrible job of keeping Jim and Pam's honeymoon from being interrupted."
 	},
 	{
 		"season": 6,
-		"episode": 6,
+		"episode": 7,
 		"label": "The Lover",
 		"description": "Pam is furious when she discovers Michael is dating her mother, Helene. Dwight plants listening devices in Jim's office as a supposed peace offering."
 	},
 	{
 		"season": 6,
-		"episode": 7,
+		"episode": 8,
 		"label": "Koi Pond",
 		"description": "Michael falls into a koi pond during a client visit and the office ridicules him relentlessly. Security footage reveals Jim actually let Michael fall instead of catching him."
 	},
 	{
 		"season": 6,
-		"episode": 8,
+		"episode": 9,
 		"label": "Double Date",
 		"description": "Jim and Pam reluctantly go to lunch with Michael and Pam's mother Helene. Michael breaks up with Helene at the restaurant after learning it's her birthday and realizing her age, and Pam slaps him."
 	},
 	{
 		"season": 6,
-		"episode": 9,
+		"episode": 10,
 		"label": "Murder",
 		"description": "Amid rumors that Dunder Mifflin is going bankrupt, Michael distracts the office with a murder mystery game called Belles, Bourbon, and Bullets. Andy uses the game as cover to ask Erin out."
 	},
 	{
 		"season": 6,
-		"episode": 10,
+		"episode": 11,
 		"label": "Shareholder Meeting",
 		"description": "Michael makes unauthorized promises at Dunder Mifflin's shareholder meeting, creating problems for management. Jim struggles to be taken seriously as co-manager when Ryan ignores his authority."
 	},
 	{
 		"season": 6,
-		"episode": 11,
+		"episode": 12,
 		"label": "Scott's Tots",
 		"description": "Michael must face a class of high school seniors he promised ten years ago to pay their college tuition if they graduated. He can only offer them laptop batteries instead, while Dwight schemes to undermine Jim."
 	},
 	{
 		"season": 6,
-		"episode": 12,
+		"episode": 13,
 		"label": "Secret Santa",
 		"description": "Michael is upset when Phyllis plays Santa at the Christmas party, so he one-ups her by dressing as Jesus. The office learns that Dunder Mifflin has been sold to Sabre, a printer company, amid corporate leadership upheaval."
 	},
 	{
 		"season": 6,
-		"episode": 13,
+		"episode": 14,
 		"label": "The Banker",
 		"description": "An investment banker visits the branch to evaluate Dunder Mifflin for Sabre's acquisition, and Toby downplays the office's many liabilities. The episode revisits key moments from the series through flashbacks."
 	},
 	{
 		"season": 6,
-		"episode": 14,
+		"episode": 15,
 		"label": "Sabre",
 		"description": "Sabre officially completes its acquisition of Dunder Mifflin and CEO Jo Bennett visits with her Great Danes. Michael and the staff adjust to new corporate policies, including a no-cap commission structure for salespeople."
 	},
 	{
 		"season": 6,
-		"episode": 15,
+		"episode": 16,
 		"label": "The Manager and the Salesman",
 		"description": "Jo Bennett decides the branch only needs one manager, forcing Jim and Michael to choose who steps down. After some back and forth, Jim returns to sales while Michael stays as sole manager."
 	},
 	{
 		"season": 6,
-		"episode": 16,
-		"label": "The Delivery",
-		"description": "Pam goes into labor at the office and tries to delay going to the hospital to avoid an extra night's stay. She and Jim welcome baby Cecelia Marie Halpert, while Dwight and Angela draft a bizarre procreation contract."
+		"episode": 17,
+		"label": "The Delivery Part 1",
+		"description": "Pam goes into labor at the office and tries to delay going to the hospital to avoid an extra night's stay. Her contractions intensify while Jim tries to convince her to leave."
 	},
 	{
 		"season": 6,
-		"episode": 17,
+		"episode": 18,
+		"label": "The Delivery Part 2",
+		"description": "Jim and Pam welcome baby Cecelia Marie Halpert at the hospital. Back at the office, Dwight and Angela draft a bizarre procreation contract."
+	},
+	{
+		"season": 6,
+		"episode": 19,
 		"label": "St. Patrick's Day",
 		"description": "Jo Bennett's visit forces everyone to stay late on St. Patrick's Day despite wanting to celebrate at the bars. Darryl impresses Jo with a shipping improvement idea and earns a promotion to an upstairs office."
 	},
 	{
 		"season": 6,
-		"episode": 18,
+		"episode": 20,
 		"label": "New Leads",
 		"description": "Michael hides valuable sales leads from the salespeople after they start bossing around the rest of the office. The sales staff goes on a scavenger hunt to recover the leads from hiding spots around town."
 	},
 	{
 		"season": 6,
-		"episode": 19,
+		"episode": 21,
 		"label": "Happy Hour",
 		"description": "The office goes to happy hour where Michael's alter ego \"Date Mike\" ruins Pam's attempt to set him up with her friend. Andy and Erin try to keep their new relationship a secret from their coworkers."
 	},
 	{
 		"season": 6,
-		"episode": 20,
+		"episode": 22,
 		"label": "Secretary's Day",
 		"description": "Andy goes all out to give Erin a special Secretary's Day, but Michael accidentally reveals that Andy was previously engaged to Angela. Oscar circulates a viral video comparing Kevin's voice to Cookie Monster."
 	},
 	{
 		"season": 6,
-		"episode": 21,
+		"episode": 23,
 		"label": "Body Language",
 		"description": "Michael misreads flirtatious signals from Donna, a restaurant manager he and Pam are pitching as a client. Jim and Pam disagree over whether Donna is actually interested in Michael or just being professional."
 	},
 	{
 		"season": 6,
-		"episode": 22,
+		"episode": 24,
 		"label": "The Cover-Up",
 		"description": "Michael suspects his new girlfriend Donna is cheating on him and sends Dwight to investigate. Dwight confirms Donna is married, but Michael initially refuses to believe it."
 	},
 	{
 		"season": 6,
-		"episode": 23,
+		"episode": 25,
 		"label": "The Chump",
 		"description": "Michael continues seeing Donna after learning she's married, making him the other man. Dwight and Angela take their baby contract dispute to an arbitrator, and new parents Jim and Pam can barely stay awake at work."
 	},
 	{
 		"season": 6,
-		"episode": 24,
+		"episode": 26,
 		"label": "Whistleblower",
 		"description": "Jo Bennett hunts for the person who leaked to the press that Sabre printers are catching fire. Multiple employees confess to spreading the information, and the investigation strains office relationships."
 	},
