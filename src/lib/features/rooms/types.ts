@@ -8,6 +8,8 @@ export type Room = {
 	player_time: number;
 	player_updated_at: string | null;
 	access_type: 'invite_only' | 'link';
+	binge_mode: boolean;
+	autoplay: boolean;
 };
 
 export type Member = {

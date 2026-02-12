@@ -79,7 +79,7 @@
 			</Button>
 		{/snippet}
 	</Popover.Trigger>
-	<Popover.Content class="w-56 p-0" align="start">
+	<Popover.Content class="w-56 p-0" align="center">
 		<div class="px-3 py-2">
 			<span class="text-xs font-medium uppercase text-muted-foreground"
 				>Online — {users.length}</span

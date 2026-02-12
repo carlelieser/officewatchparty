@@ -41,3 +41,19 @@ export async function updatePlayerState(alias: string, isPlaying: boolean, playe
 		body: JSON.stringify({ is_playing: isPlaying, player_time: playerTime })
 	});
 }
+
+export async function updateBingeMode(alias: string, bingeMode: boolean): Promise<void> {
+	await fetch(`/api/rooms/${alias}/binge-mode`, {
+		method: 'PUT',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ binge_mode: bingeMode })
+	});
+}
+
+export async function updateAutoplay(alias: string, autoplay: boolean): Promise<void> {
+	await fetch(`/api/rooms/${alias}/autoplay`, {
+		method: 'PUT',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ autoplay })
+	});
+}

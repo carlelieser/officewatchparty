@@ -3,6 +3,15 @@
 	import type { Room } from '$lib/features/rooms/types';
 	import videojs from 'video.js';
 	import type Player from 'video.js/dist/types/player';
+
+	type ThemeConfig = {
+		skin?: 'slate' | 'spaced' | 'sleek' | 'zen';
+		color?: string;
+	};
+
+	type ThemedPlayer = Player & {
+		theme?: (options: ThemeConfig) => void;
+	};
 	import 'video.js/dist/video-js.css';
 	import 'videojs-theme-kit/videojs-skin.min.js';
 	import 'videojs-theme-kit/style.css';
@@ -20,14 +29,18 @@
 		room: Room;
 		isOwner: boolean;
 		videoUrl: string;
+		autoplay: boolean;
+		onended?: () => void;
+		onnearingend?: () => void;
 	}
 
-	let { supabase, room, isOwner, videoUrl }: VideoPlayerProps = $props();
+	let { supabase, room, isOwner, videoUrl, autoplay, onended, onnearingend }: VideoPlayerProps = $props();
 
 	let videoElement: HTMLVideoElement;
-	let player: Player;
+	let player: ThemedPlayer;
 	let syncing = false;
 	let playerChannel: RealtimeChannel | undefined;
+	let nearingEndFired = false;
 
 	function loadCastSdk(): void {
 		if (document.querySelector('script[src*="cast_sender"]')) return;
@@ -70,6 +83,20 @@
 		persistState(isPlaying, time);
 	}
 
+	function handleOwnerEnded(): void {
+		onended?.();
+	}
+
+	function handleOwnerTimeUpdate(): void {
+		if (nearingEndFired) return;
+		const duration = player.duration() ?? 0;
+		const currentTime = player.currentTime() ?? 0;
+		if (duration > 0 && duration - currentTime <= 35) {
+			nearingEndFired = true;
+			onnearingend?.();
+		}
+	}
+
 	function applyState(isPlaying: boolean, time: number): void {
 		syncing = true;
 		player.currentTime(time);
@@ -99,13 +126,15 @@
 		});
 
 		player.on('ready', () => {
-			(player as any).theme({ skin: 'spaced' });
+			player.theme?.({ skin: 'spaced' });
 		});
 
 		if (isOwner) {
 			player.on('play', handleOwnerPlay);
 			player.on('pause', handleOwnerPause);
 			player.on('seeked', handleOwnerSeeked);
+			player.on('ended', handleOwnerEnded);
+			player.on('timeupdate', handleOwnerTimeUpdate);
 		}
 
 		// Apply initial player state for non-owners
@@ -137,7 +166,14 @@
 	// Set video source when URL changes
 	$effect(() => {
 		if (player && videoUrl) {
+			nearingEndFired = false;
 			player.src({ src: videoUrl, type: 'video/mp4' });
+			player.theme?.({ skin: 'spaced' });
+			if (autoplay) {
+				player.ready(() => {
+					player.play();
+				});
+			}
 		}
 	});
 

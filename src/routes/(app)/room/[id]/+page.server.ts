@@ -19,7 +19,10 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 	const episode = room.season !== null && room.episode !== null
 		? Episodes.find(room.season, room.episode)
 		: null;
-	const comments = await locals.repos.rooms.getComments(room.id);
+	const [comments, favorites] = await Promise.all([
+		locals.repos.rooms.getComments(room.id),
+		locals.repos.favorites.findByUserId(locals.user.id)
+	]);
 
 	let videoUrl = '';
 	if (room.season !== null && room.episode !== null) {
@@ -27,5 +30,5 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		videoUrl = await sign(path);
 	}
 
-	return { room, members, isOwner, episode, comments, videoUrl };
+	return { room, members, isOwner, episode, comments, videoUrl, favorites };
 };

@@ -60,6 +60,24 @@ export function createRoomsRepo(supabase: SupabaseClient) {
 			if (error) throw error;
 		},
 
+		async updateBingeMode(alias: string, bingeMode: boolean): Promise<void> {
+			const { error } = await supabase
+				.from('rooms')
+				.update({ binge_mode: bingeMode })
+				.eq('alias', alias);
+
+			if (error) throw error;
+		},
+
+		async updateAutoplay(alias: string, autoplay: boolean): Promise<void> {
+			const { error } = await supabase
+				.from('rooms')
+				.update({ autoplay })
+				.eq('alias', alias);
+
+			if (error) throw error;
+		},
+
 		async updatePlayerState(
 			alias: string,
 			ownerId: string,
