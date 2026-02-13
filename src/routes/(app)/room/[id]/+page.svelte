@@ -191,6 +191,7 @@
 							isOwner={data.isOwner}
 							{videoUrl}
 							{autoplay}
+							{episode}
 							onended={data.isOwner ? handleEpisodeEnded : undefined}
 							onnearingend={data.isOwner ? handleNearingEnd : undefined}
 					/>
