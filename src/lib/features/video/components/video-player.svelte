@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { SupabaseClient, RealtimeChannel } from '@supabase/supabase-js';
 	import type { Room } from '$lib/features/rooms/types';
+	import type { Episode } from '$lib/features/episodes/types';
+	import { formatEpisodeCode } from '$lib/shared/format';
 	import videojs from 'video.js';
 	import type Player from 'video.js/dist/types/player';
 
@@ -30,17 +32,45 @@
 		isOwner: boolean;
 		videoUrl: string;
 		autoplay: boolean;
+		episode: Episode | null;
 		onended?: () => void;
 		onnearingend?: () => void;
 	}
 
-	let { supabase, room, isOwner, videoUrl, autoplay, onended, onnearingend }: VideoPlayerProps = $props();
+	let { supabase, room, isOwner, videoUrl, autoplay, episode, onended, onnearingend }: VideoPlayerProps = $props();
 
 	let videoElement: HTMLVideoElement;
 	let player: ThemedPlayer;
 	let syncing = false;
 	let playerChannel: RealtimeChannel | undefined;
 	let nearingEndFired = false;
+
+	function updateMediaSession(current: Episode): void {
+		if (!('mediaSession' in navigator)) return;
+
+		const episodeCode = formatEpisodeCode(current.season, current.episode);
+
+		navigator.mediaSession.metadata = new MediaMetadata({
+			title: `${episodeCode} — ${current.label}`,
+			artist: 'The Office',
+			album: `Season ${current.season}`
+		});
+	}
+
+	function clearMediaSession(): void {
+		if (!('mediaSession' in navigator)) return;
+		navigator.mediaSession.metadata = null;
+	}
+
+	function getChromecastTitle(): string {
+		if (!episode) return 'The Office';
+		return `${formatEpisodeCode(episode.season, episode.episode)} — ${episode.label}`;
+	}
+
+	function getChromecastSubtitle(): string {
+		if (!episode) return '';
+		return episode.description;
+	}
 
 	function loadCastSdk(): void {
 		if (document.querySelector('script[src*="cast_sender"]')) return;
@@ -119,6 +149,10 @@
 			fill: true,
 			preload: 'auto',
 			techOrder: ['chromecast', 'html5'],
+			chromecast: {
+				requestTitleFn: getChromecastTitle,
+				requestSubtitleFn: getChromecastSubtitle
+			},
 			plugins: {
 				chromecast: {},
 				airPlay: {}
@@ -175,6 +209,13 @@
 				});
 			}
 		}
+	});
+
+	// Update device now-playing metadata
+	$effect(() => {
+		if (!episode) return;
+		updateMediaSession(episode);
+		return clearMediaSession;
 	});
 
 	// Player sync channel
