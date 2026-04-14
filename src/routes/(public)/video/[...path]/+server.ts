@@ -1,10 +1,9 @@
 import { error } from '@sveltejs/kit';
-import { SEEDBOX_BASE_URL, SEEDBOX_CREDENTIALS } from '$env/static/private';
+import { SEEDBOX_BASE_URL } from '$env/static/private';
 import { verify } from '$lib/server/signed-url';
 import type { RequestHandler } from './$types';
 
 type UpstreamRequestHeaders = {
-	Authorization: string;
 	Range?: string;
 };
 
@@ -20,9 +19,7 @@ export const GET: RequestHandler = async ({ params, url, request }) => {
 	if (!valid) error(403, 'Forbidden');
 
 	const upstream = `${SEEDBOX_BASE_URL}/${params.path}`;
-	const headers: UpstreamRequestHeaders = {
-		Authorization: `Basic ${btoa(SEEDBOX_CREDENTIALS)}`
-	};
+	const headers: UpstreamRequestHeaders = {};
 
 	const range = request.headers.get('range');
 	if (range) {
