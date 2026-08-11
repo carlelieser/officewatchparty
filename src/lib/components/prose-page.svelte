@@ -3,7 +3,7 @@
 
 	interface ProsePageProps {
 		title: string;
-		lastUpdated: string;
+		lastUpdated?: string;
 		children: Snippet;
 	}
 
@@ -13,7 +13,9 @@
 <div class="mx-auto w-full max-w-screen-md px-4 py-12">
 	<article class="prose dark:prose-invert max-w-none">
 		<h1>{title}</h1>
-		<p class="text-muted-foreground text-sm">Last updated: {lastUpdated}</p>
+		{#if lastUpdated}
+			<p class="text-muted-foreground text-sm">Last updated: {lastUpdated}</p>
+		{/if}
 		{@render children()}
 	</article>
 </div>

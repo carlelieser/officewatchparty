@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import Logo from '$lib/components/logo.svelte';
-	import DonateButton from '$lib/components/donate-button.svelte';
 	import { Button } from '$lib/components/ui/button';
 </script>
 
@@ -46,14 +45,8 @@
 								'noopener noreferrer'
 							)}
 						</li>
-						<li>{@render link('Support', 'mailto:support@officewatchparty.com')}</li>
-						<li>
-							<DonateButton>
-								{#snippet child({ href })}
-									{@render link('Donate', href, '_blank', 'noopener noreferrer')}
-								{/snippet}
-							</DonateButton>
-						</li>
+						<li>{@render link('Contact', 'mailto:support@officewatchparty.com')}</li>
+						<li>{@render link('Support', '/support')}</li>
 					</ul>
 				</div>
 			</div>

@@ -3,7 +3,7 @@
 	import UserProfileIndicator from '$lib/components/user-profile-indicator.svelte';
 	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
-	import DonateButton from '$lib/components/donate-button.svelte';
+	import { HandCoinsIcon } from '@lucide/svelte';
 	import ModeToggle from '$lib/components/mode-toggle.svelte';
 </script>
 
@@ -14,7 +14,10 @@
 		>
 			<Logo />
 			<div class="flex flex-row items-center gap-2">
-				<DonateButton />
+				<Button variant="secondary" size="sm" href="/support" aria-label="Support">
+					<HandCoinsIcon />
+					<span class="hidden sm:inline">Support</span>
+				</Button>
 				<ModeToggle />
 				{#if page.data.user}
 					<UserProfileIndicator />
