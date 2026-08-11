@@ -162,3 +162,12 @@
 [data-sonner-toaster] {
 	--width: 440px !important;
 }
+
+/* Matches svelte-sonner's own selector so the icon spacing overrides cleanly. */
+[data-sonner-toaster][dir='ltr'] {
+	--toast-icon-margin-end: 12px;
+}
+
+[data-sonner-toaster][dir='rtl'] {
+	--toast-icon-margin-start: 12px;
+}
