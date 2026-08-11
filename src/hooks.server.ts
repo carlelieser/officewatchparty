@@ -12,7 +12,13 @@ type CookieToSet = {
 
 function setAllCookies(cookiesToSet: Array<CookieToSet>, event: Parameters<Handle>[0]['event']): void {
 	cookiesToSet.forEach(({ name, value, options }) => {
-		event.cookies.set(name, value, { ...options, path: '/' });
+		try {
+			event.cookies.set(name, value, { ...options, path: '/' });
+		} catch {
+			// Supabase refreshed the session after the response was already sent, so
+			// SvelteKit rejects the write. The refreshed token is persisted on the next
+			// request, so skipping it here is safe.
+		}
 	});
 }
 
