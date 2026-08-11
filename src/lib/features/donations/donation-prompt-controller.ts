@@ -1,4 +1,5 @@
 import { toast } from 'svelte-sonner';
+import { HeartIcon } from '@lucide/svelte';
 import { shouldShowDonationPrompt } from './should-show-prompt';
 import { recordDismissal, recordEpisodeWatched } from './api';
 import type { DonationPromptState } from './types';
@@ -66,6 +67,7 @@ export function createDonationPromptController(
 
 		toastId = toast('Enjoying the party?', {
 			description: 'Help keep the project alive by showing your support.',
+			icon: HeartIcon,
 			duration: Infinity,
 			action: {
 				label: 'Support',
