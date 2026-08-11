@@ -18,6 +18,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Your Rooms - OWP</title>
+</svelte:head>
+
 <div
 	class="w-full h-screen max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-8 p-4 py-12 *:p-4 *:flex"
 >

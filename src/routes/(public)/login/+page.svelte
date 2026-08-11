@@ -53,6 +53,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Sign In - OWP</title>
+</svelte:head>
+
 <div class="flex flex-col flex-1">
 	<div class="w-full max-w-sm space-y-6 m-auto">
 		<div class="space-y-2 flex flex-col text-center">
