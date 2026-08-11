@@ -1,7 +1,6 @@
 import { toast } from 'svelte-sonner';
 import { shouldShowDonationPrompt } from './should-show-prompt';
-import { recordDismissal, recordDonation, recordEpisodeWatched } from './api';
-import DonationToastContent from './components/donation-toast-content.svelte';
+import { recordDismissal, recordEpisodeWatched } from './api';
 import type { DonationPromptState } from './types';
 
 export type DonationPromptControllerOptions = {
@@ -47,12 +46,6 @@ export function createDonationPromptController(
 		recordDismissal();
 	}
 
-	function handleAlreadyDonated(): void {
-		dismissToast();
-		state = { ...state, donated_at: new Date().toISOString() };
-		recordDonation();
-	}
-
 	async function episodeWatched(): Promise<void> {
 		episodesThisSession = episodesThisSession + 1;
 
@@ -71,12 +64,16 @@ export function createDonationPromptController(
 
 		shownThisSession = true;
 
-		toastId = toast.custom(DonationToastContent, {
+		toastId = toast('Enjoying the party?', {
+			description: 'Help keep the project alive by showing your support.',
 			duration: Infinity,
-			componentProps: {
-				onSupport: handleSupport,
-				onDismiss: handleDismiss,
-				onAlreadyDonated: handleAlreadyDonated
+			action: {
+				label: 'Support',
+				onClick: handleSupport
+			},
+			cancel: {
+				label: 'Not now',
+				onClick: handleDismiss
 			}
 		});
 	}
