@@ -1,6 +1,6 @@
 import type { DonationPromptState } from './types';
 
-export type DonationPromptAction = 'episode-completed' | 'dismissed' | 'donated';
+export type DonationPromptAction = 'episode-watched' | 'dismissed' | 'donated';
 
 async function postAction(action: DonationPromptAction): Promise<DonationPromptState | null> {
 	const response = await fetch('/api/donations', {
@@ -15,8 +15,8 @@ async function postAction(action: DonationPromptAction): Promise<DonationPromptS
 	return payload.state ?? null;
 }
 
-export async function recordEpisodeCompleted(): Promise<DonationPromptState | null> {
-	return postAction('episode-completed');
+export async function recordEpisodeWatched(): Promise<DonationPromptState | null> {
+	return postAction('episode-watched');
 }
 
 export async function recordDismissal(): Promise<void> {

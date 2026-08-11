@@ -1,6 +1,6 @@
 import { toast } from 'svelte-sonner';
 import { shouldShowDonationPrompt } from './should-show-prompt';
-import { recordDismissal, recordDonation, recordEpisodeCompleted } from './api';
+import { recordDismissal, recordDonation, recordEpisodeWatched } from './api';
 import DonationToastContent from './components/donation-toast-content.svelte';
 import type { DonationPromptState } from './types';
 
@@ -11,8 +11,7 @@ export type DonationPromptControllerOptions = {
 };
 
 export type DonationPromptController = {
-	episodeCompleted: () => Promise<void>;
-	playbackSettled: () => void;
+	episodeWatched: () => Promise<void>;
 	destroy: () => void;
 };
 
@@ -54,14 +53,12 @@ export function createDonationPromptController(
 		recordDonation();
 	}
 
-	async function episodeCompleted(): Promise<void> {
+	async function episodeWatched(): Promise<void> {
 		episodesThisSession = episodesThisSession + 1;
 
-		const updated = await recordEpisodeCompleted();
+		const updated = await recordEpisodeWatched();
 		if (updated) state = updated;
-	}
 
-	function playbackSettled(): void {
 		const decision = shouldShowDonationPrompt({
 			state,
 			isOwner: getIsOwner(),
@@ -85,8 +82,7 @@ export function createDonationPromptController(
 	}
 
 	return {
-		episodeCompleted,
-		playbackSettled,
+		episodeWatched,
 
 		destroy(): void {
 			dismissToast();

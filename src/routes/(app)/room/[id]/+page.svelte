@@ -84,17 +84,15 @@
 
 	function handleEpisodeEnded(): void {
 		if (!episode) return;
-
-		donationPrompt.episodeCompleted();
-
 		if (!bingeMode) return;
+
 		const followingEpisode = findNextEpisode(episode, episodes);
 		if (!followingEpisode) return;
 		onEpisodeChange(followingEpisode, true);
 	}
 
 	function handleSettledPlayback(): void {
-		donationPrompt.playbackSettled();
+		donationPrompt.episodeWatched();
 	}
 
 	function handleNearingEnd(): void {

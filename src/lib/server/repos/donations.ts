@@ -27,7 +27,7 @@ export function createDonationsRepo(supabase: SupabaseClient) {
 	return {
 		findByUserId,
 
-		async recordEpisodeCompleted(userId: string): Promise<DonationPromptState> {
+		async recordEpisodeWatched(userId: string): Promise<DonationPromptState> {
 			const current = await findByUserId(userId);
 			const next: DonationPromptState = {
 				...current,

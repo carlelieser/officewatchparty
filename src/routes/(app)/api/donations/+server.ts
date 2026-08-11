@@ -2,7 +2,7 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import type { DonationPromptAction } from '$lib/features/donations/api';
 
-const VALID_ACTIONS: Array<DonationPromptAction> = ['episode-completed', 'dismissed', 'donated'];
+const VALID_ACTIONS: Array<DonationPromptAction> = ['episode-watched', 'dismissed', 'donated'];
 
 function isValidAction(value: unknown): value is DonationPromptAction {
 	return VALID_ACTIONS.includes(value as DonationPromptAction);
@@ -13,8 +13,8 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 
 	if (!isValidAction(action)) error(400, 'A valid action is required');
 
-	if (action === 'episode-completed') {
-		const state = await locals.repos.donations.recordEpisodeCompleted(locals.user.id);
+	if (action === 'episode-watched') {
+		const state = await locals.repos.donations.recordEpisodeWatched(locals.user.id);
 		return json({ state });
 	}
 
