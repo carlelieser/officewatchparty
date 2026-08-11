@@ -156,3 +156,9 @@
 ::view-transition-new(root) {
 	animation: 200ms ease-out slide-up-in;
 }
+
+/* svelte-sonner sets --width inline from a hardcoded constant, so overriding
+   it needs !important to beat the inline style. */
+[data-sonner-toaster] {
+	--width: 440px !important;
+}
