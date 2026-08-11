@@ -17,6 +17,7 @@
 	import {fetchVideoUrl} from '$lib/features/video/api';
 	import {findNextEpisode, findPreviousEpisode} from '$lib/features/episodes/next-episode';
 	import {formatEpisodeCode} from '$lib/shared/format';
+	import {createDonationPromptController} from '$lib/features/donations';
 	import {toast} from 'svelte-sonner';
 	import {page} from '$app/state';
 	import {onDestroy} from 'svelte';
@@ -40,8 +41,20 @@
 			(favorite) => favorite.season === current.season && favorite.episode === current.episode
 		);
 	});
+	const pageTitle = $derived.by((): string => {
+		const current = episode;
+		if (!current) return 'Watch Party - OWP';
+		const episodeCode = formatEpisodeCode(current.season, current.episode);
+		return `${episodeCode} ${current.label} - OWP`;
+	});
 
 	let episodeChannel: RealtimeChannel | undefined;
+
+	const donationPrompt = createDonationPromptController({
+		getInitialState: () => data.donationPrompt,
+		getIsOwner: () => data.isOwner,
+		supportUrl: '/support'
+	});
 
 	function dismissUpNextToast(): void {
 		if (upNextToastId !== undefined) {
@@ -70,10 +83,18 @@
 	}
 
 	function handleEpisodeEnded(): void {
-		if (!bingeMode || !episode) return;
-		const nextEpisode = findNextEpisode(episode, episodes);
-		if (!nextEpisode) return;
-		onEpisodeChange(nextEpisode, true);
+		if (!episode) return;
+
+		donationPrompt.episodeCompleted();
+
+		if (!bingeMode) return;
+		const followingEpisode = findNextEpisode(episode, episodes);
+		if (!followingEpisode) return;
+		onEpisodeChange(followingEpisode, true);
+	}
+
+	function handleSettledPlayback(): void {
+		donationPrompt.playbackSettled();
 	}
 
 	function handleNearingEnd(): void {
@@ -155,8 +176,13 @@
 
 	onDestroy(() => {
 		dismissUpNextToast();
+		donationPrompt.destroy();
 	});
 </script>
+
+<svelte:head>
+	<title>{pageTitle}</title>
+</svelte:head>
 
 <Comments.Provider supabase={data.supabase} roomId={data.room.id} comments={data.comments}>
 	<div class="size-full p-2">
@@ -194,6 +220,7 @@
 							{episode}
 							onended={data.isOwner ? handleEpisodeEnded : undefined}
 							onnearingend={data.isOwner ? handleNearingEnd : undefined}
+							onsettledplayback={data.isOwner ? handleSettledPlayback : undefined}
 					/>
 				</div>
 			</div>

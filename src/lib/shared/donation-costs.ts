@@ -1,0 +1,3 @@
+export const MONTHLY_COST_ESTIMATE = 25;
+
+export const MONTHLY_COST_LABEL = `$${MONTHLY_COST_ESTIMATE}`;

@@ -35,15 +35,29 @@
 		episode: Episode | null;
 		onended?: () => void;
 		onnearingend?: () => void;
+		onsettledplayback?: () => void;
 	}
 
-	let { supabase, room, isOwner, videoUrl, autoplay, episode, onended, onnearingend }: VideoPlayerProps = $props();
+	let {
+		supabase,
+		room,
+		isOwner,
+		videoUrl,
+		autoplay,
+		episode,
+		onended,
+		onnearingend,
+		onsettledplayback
+	}: VideoPlayerProps = $props();
+
+	const SETTLED_PLAYBACK_SECONDS = 150;
 
 	let videoElement: HTMLVideoElement;
 	let player: ThemedPlayer;
 	let syncing = false;
 	let playerChannel: RealtimeChannel | undefined;
 	let nearingEndFired = false;
+	let settledPlaybackFired = false;
 
 	function updateMediaSession(current: Episode): void {
 		if (!('mediaSession' in navigator)) return;
@@ -118,9 +132,15 @@
 	}
 
 	function handleOwnerTimeUpdate(): void {
-		if (nearingEndFired) return;
 		const duration = player.duration() ?? 0;
 		const currentTime = player.currentTime() ?? 0;
+
+		if (!settledPlaybackFired && currentTime >= SETTLED_PLAYBACK_SECONDS) {
+			settledPlaybackFired = true;
+			onsettledplayback?.();
+		}
+
+		if (nearingEndFired) return;
 		if (duration > 0 && duration - currentTime <= 35) {
 			nearingEndFired = true;
 			onnearingend?.();
@@ -201,6 +221,7 @@
 	$effect(() => {
 		if (player && videoUrl) {
 			nearingEndFired = false;
+			settledPlaybackFired = false;
 			player.src({ src: videoUrl, type: 'video/mp4' });
 			player.theme?.({ skin: 'spaced' });
 			if (autoplay) {
