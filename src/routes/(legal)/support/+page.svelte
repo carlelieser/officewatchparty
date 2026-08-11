@@ -54,6 +54,10 @@
 		if a few regulars cover the bill, it stays free for everyone else.
 	</p>
 
+	<blockquote>
+		Donate whatever you're comfortable with. A couple dollars here and there helps keep the project alive for everyone!
+	</blockquote>
+
 	<div class="not-prose my-8 flex flex-col items-center gap-3">
 		<DonateButton>
 			{#snippet child({ href })}
