@@ -4,48 +4,54 @@
 	import OfficeEpisodeSelect from '$lib/features/episodes/components/office-episode-select.svelte';
 	import Favorites from '$lib/features/favorites/components/favorites.svelte';
 	import Rooms from '$lib/features/rooms/components/rooms.svelte';
-	import TvAnimation from '$lib/components/tv-animation.svelte';
-	import type { Episode } from '$lib/features/episodes/types';
-	import { goto } from '$app/navigation';
-	import { toast } from 'svelte-sonner';
+	import ContinueWatching from '$lib/features/episodes/components/continue-watching.svelte';
+	import PageHeader from '$lib/components/page-header.svelte';
+	import { ChevronRight } from '@lucide/svelte';
+	import type { Episode, ContinueWatchingItem } from '$lib/features/episodes/types';
+	import { watchEpisode } from '$lib/features/episodes/start-room';
 
 	let selected: Episode | null = $state(null);
-
-	async function onEpisodeSelect(episode: Episode) {
-		toast.loading('Prepping your room.');
-		await goto(`/room/new?season=${episode.season}&episode=${episode.episode}`);
-		toast.dismiss();
-	}
+	let continueWatching = $derived((page.data.continueWatching as Array<ContinueWatchingItem>) ?? []);
 </script>
 
 <svelte:head>
-	<title>Your Rooms - OWP</title>
+	<title>Home - OWP</title>
 </svelte:head>
 
-<div
-	class="w-full h-screen max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-8 p-4 py-12 *:p-4 *:flex"
->
-	<div class="flex-col order-1 md:order-[unset]">
-		<div class="flex flex-col gap-4 w-full mx-auto md:m-auto">
-			<h1 class="text-6xl lg:text-8xl font-bold font-display">Hello, superfan.</h1>
-			<p>
-				<span class="text-sm text-muted-foreground">Choose an episode to get started.</span>
-				<Button href="#favorites" variant="link" class="!px-0">Or pick a favorite.</Button>
-			</p>
-			<div class="w-full">
-				<OfficeEpisodeSelect bind:selected onchange={onEpisodeSelect} class="w-full" />
-			</div>
+<div class="mx-auto flex w-full max-w-screen-lg flex-col gap-8 p-4 md:p-6">
+	<section class="flex flex-col gap-4">
+		<PageHeader title="Hello, superfan." description="Choose an episode to start a watch party." />
+		<div class="w-full max-w-md">
+			<OfficeEpisodeSelect bind:selected onchange={watchEpisode} class="w-full" />
 		</div>
-	</div>
-	<div>
-		<TvAnimation />
-	</div>
-</div>
+	</section>
 
-<div id="favorites" class="w-full max-w-screen-lg mx-auto px-4 pb-12">
-	<Favorites initial={page.data.favorites} onselect={onEpisodeSelect} />
-</div>
+	{#if continueWatching.length > 0}
+		<section class="flex flex-col gap-3">
+			<span class="text-xs font-medium uppercase text-muted-foreground">Continue Watching</span>
+			<ContinueWatching items={continueWatching} />
+		</section>
+	{/if}
 
-<div class="w-full max-w-screen-lg mx-auto px-4 pb-12">
-	<Rooms initial={page.data.rooms} />
+	<section class="flex flex-col gap-3">
+		<div class="flex items-center justify-between">
+			<span class="text-xs font-medium uppercase text-muted-foreground">Favorites</span>
+			<Button variant="link" size="sm" href="/favorites" class="!px-0">
+				See all
+				<ChevronRight class="size-4" />
+			</Button>
+		</div>
+		<Favorites initial={page.data.favorites} onselect={watchEpisode} showHeading={false} />
+	</section>
+
+	<section class="flex flex-col gap-3">
+		<div class="flex items-center justify-between">
+			<span class="text-xs font-medium uppercase text-muted-foreground">Your Rooms</span>
+			<Button variant="link" size="sm" href="/rooms" class="!px-0">
+				See all
+				<ChevronRight class="size-4" />
+			</Button>
+		</div>
+		<Rooms initial={page.data.rooms} showHeading={false} />
+	</section>
 </div>

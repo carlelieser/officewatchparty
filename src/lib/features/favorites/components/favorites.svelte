@@ -11,9 +11,10 @@
 	interface FavoritesProps {
 		initial?: Array<Episode>;
 		onselect?: (episode: Episode) => void;
+		showHeading?: boolean;
 	}
 
-	let { initial = [], onselect }: FavoritesProps = $props();
+	let { initial = [], onselect, showHeading = true }: FavoritesProps = $props();
 
 	let favorites: Array<Episode> = $state(initial);
 	let dialogOpen = $state(false);
@@ -39,23 +40,24 @@
 </script>
 
 <div class="flex flex-col gap-3 w-full">
-	<span class="text-center md:text-left text-xs font-medium uppercase text-muted-foreground"
-		>Favorites</span
-	>
+	{#if showHeading}
+		<span class="text-center md:text-left text-xs font-medium uppercase text-muted-foreground"
+			>Favorites</span
+		>
+	{/if}
 	{#if favorites.length > 0}
-		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
 			{#each favorites as favorite, index}
 				<EpisodeCard
 					season={favorite.season}
 					episode={favorite.episode}
 					label={favorite.label}
-					description={favorite.description}
 					onclick={() => onselect?.(favorite)}
 					onremove={(clickEvent) => remove(index, clickEvent)}
 				/>
 			{/each}
 			<button
-				class="aspect-square flex items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 hover:border-muted-foreground/60 transition-colors cursor-pointer"
+				class="aspect-[2/1] flex items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 hover:border-muted-foreground/60 transition-colors cursor-pointer"
 				onclick={openAddDialog}
 			>
 				<Plus class="size-5 text-muted-foreground/50" />

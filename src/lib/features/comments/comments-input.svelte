@@ -4,13 +4,12 @@
 	import { ArrowUp } from '@lucide/svelte';
 	import { getCommentsContext } from './comments-context';
 	import { page } from '$app/state';
-	import { postComment } from '$lib/features/comments/api';
 
 	interface CommentsInputProps {
-		roomAlias: string;
+		post: (content: string) => Promise<void>;
 	}
 
-	let { roomAlias }: CommentsInputProps = $props();
+	let { post }: CommentsInputProps = $props();
 
 	const context = getCommentsContext();
 
@@ -26,7 +25,7 @@
 		submitting = true;
 		const trimmed = content.trim();
 		try {
-			await postComment(roomAlias, trimmed);
+			await post(trimmed);
 			context.channel?.send({
 				type: 'broadcast',
 				event: 'new_comment',

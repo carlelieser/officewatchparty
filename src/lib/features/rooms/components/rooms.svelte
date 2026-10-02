@@ -1,19 +1,19 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
 	import * as Empty from '$lib/components/ui/empty';
+	import EpisodeCard from '$lib/features/episodes/components/episode-card.svelte';
 	import type { OwnedRoom } from '$lib/features/rooms/types';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Plus, Tv, Users, X } from '@lucide/svelte';
+	import { Plus, Tv, Users } from '@lucide/svelte';
 	import { goto } from '$app/navigation';
 	import { deleteRoom } from '$lib/features/rooms/api';
-	import { formatEpisodeCode } from '$lib/shared/format';
 
 	interface RoomsProps {
 		initial?: Array<OwnedRoom>;
+		showHeading?: boolean;
 	}
 
-	let { initial = [] }: RoomsProps = $props();
+	let { initial = [], showHeading = true }: RoomsProps = $props();
 
 	let rooms: Array<OwnedRoom> = $state(initial);
 
@@ -23,47 +23,38 @@
 		rooms = rooms.filter((_, filterIndex) => filterIndex !== index);
 		deleteRoom(room.alias);
 	}
+
+	function formatGuests(count: number): string {
+		return `${count} ${count === 1 ? 'guest' : 'guests'}`;
+	}
 </script>
 
 <div class="flex flex-col gap-3 w-full">
-	<span class="text-center md:text-left text-xs font-medium uppercase text-muted-foreground"
-		>Your Rooms</span
-	>
+	{#if showHeading}
+		<span class="text-center md:text-left text-xs font-medium uppercase text-muted-foreground"
+			>Your Rooms</span
+		>
+	{/if}
 	{#if rooms.length > 0}
-		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
 			{#each rooms as room, index}
-				<div class="relative group">
-					<button
-						class="w-full text-left cursor-pointer"
-						onclick={() => goto(`/room/${room.alias}`)}
-					>
-						<Card.Root class="aspect-square hover:bg-accent transition-colors">
-							<Card.Header>
-								<Card.Title class="font-display">{room.label}</Card.Title>
-								<span class="text-xs font-mono text-muted-foreground"
-									>{formatEpisodeCode(room.season, room.episode)}</span
-								>
-							</Card.Header>
-							<Card.Content class="flex-1"></Card.Content>
-							<Card.Footer class="flex justify-end">
-								<Badge variant="secondary">
-									<Users class="size-3" />
-									{room.guests}
-									{room.guests === 1 ? 'guest' : 'guests'}
-								</Badge>
-							</Card.Footer>
-						</Card.Root>
-					</button>
-					<button
-						class="absolute top-2 right-2 size-5 rounded-full bg-muted flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-						onclick={(clickEvent) => remove(index, clickEvent)}
-					>
-						<X class="size-3" />
-					</button>
-				</div>
+				<EpisodeCard
+					season={room.season}
+					episode={room.episode}
+					label={room.label}
+					onclick={() => goto(`/room/${room.alias}`)}
+					onremove={(clickEvent) => remove(index, clickEvent)}
+				>
+					{#snippet footer()}
+						<Badge variant="secondary">
+							<Users class="size-3" />
+							{formatGuests(room.guests)}
+						</Badge>
+					{/snippet}
+				</EpisodeCard>
 			{/each}
 			<button
-				class="aspect-square flex items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 hover:border-muted-foreground/60 transition-colors cursor-pointer"
+				class="aspect-[2/1] flex items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 hover:border-muted-foreground/60 transition-colors cursor-pointer"
 				onclick={() => goto('/room/new')}
 			>
 				<Plus class="size-5 text-muted-foreground/50" />
