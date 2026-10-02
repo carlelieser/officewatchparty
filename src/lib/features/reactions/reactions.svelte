@@ -1,17 +1,20 @@
 <script lang="ts">
 	import type { SupabaseClient, RealtimeChannel } from '@supabase/supabase-js';
 	import type { ReactionCount, ReactionBroadcast } from './types';
-	import { addReaction, removeReaction } from './api';
 	import * as Popover from '$lib/components/ui/popover';
 	import { Button } from '$lib/components/ui/button';
 	import { SmilePlus } from '@lucide/svelte';
 
 	interface ReactionsProps {
 		supabase: SupabaseClient;
-		roomId: string;
-		roomAlias: string;
+		// A stable key for the realtime broadcast channel (room id or episode key).
+		channelKey: string;
 		season: number;
 		episode: number;
+		fetchCounts: (season: number, episode: number) => Promise<Array<ReactionCount>>;
+		fetchUserReactions: (season: number, episode: number) => Promise<Array<string>>;
+		onAdd: (season: number, episode: number, emoji: string) => void;
+		onRemove: (season: number, episode: number, emoji: string) => void;
 	}
 
 	const EMOJI_GRID: Array<string> = [
@@ -21,7 +24,16 @@
 		'💯', '🎉', '😬', '🥲', '🫠', '🤩'
 	];
 
-	let { supabase, roomId, roomAlias, season, episode }: ReactionsProps = $props();
+	let {
+		supabase,
+		channelKey,
+		season,
+		episode,
+		fetchCounts,
+		fetchUserReactions,
+		onAdd,
+		onRemove
+	}: ReactionsProps = $props();
 
 	let counts: Record<string, number> = $state({});
 	let userReactions: Set<string> = $state(new Set());
@@ -36,25 +48,13 @@
 	});
 
 	async function fetchReactions(targetSeason: number, targetEpisode: number): Promise<void> {
-		const [countsResult, userResult] = await Promise.all([
-			supabase.rpc('get_room_reaction_counts', {
-				p_room_id: roomId,
-				p_season: targetSeason,
-				p_episode: targetEpisode
-			}),
-			supabase.rpc('get_user_reactions', {
-				p_room_id: roomId,
-				p_season: targetSeason,
-				p_episode: targetEpisode
-			})
+		const [countsData, userData] = await Promise.all([
+			fetchCounts(targetSeason, targetEpisode),
+			fetchUserReactions(targetSeason, targetEpisode)
 		]);
 
-		counts = Object.fromEntries(
-			(countsResult.data ?? []).map((entry: ReactionCount) => [entry.emoji, entry.count])
-		);
-		userReactions = new Set(
-			(userResult.data ?? []).map((row: { emoji: string }) => row.emoji)
-		);
+		counts = Object.fromEntries(countsData.map((entry) => [entry.emoji, entry.count]));
+		userReactions = new Set(userData);
 	}
 
 	function handleBroadcast(message: { payload: ReactionBroadcast }): void {
@@ -74,12 +74,12 @@
 		if (hasReacted) {
 			userReactions.delete(emoji);
 			counts[emoji] = Math.max(0, current - 1);
-			removeReaction(roomAlias, season, episode, emoji);
+			onRemove(season, episode, emoji);
 			broadcast(emoji, 'remove');
 		} else {
 			userReactions.add(emoji);
 			counts[emoji] = current + 1;
-			addReaction(roomAlias, season, episode, emoji);
+			onAdd(season, episode, emoji);
 			broadcast(emoji, 'add');
 		}
 	}
@@ -106,7 +106,7 @@
 
 	// Broadcast channel
 	$effect(() => {
-		channel = supabase.channel(`reactions:${roomId}`, {
+		channel = supabase.channel(`reactions:${channelKey}`, {
 			config: { broadcast: { self: false } }
 		});
 

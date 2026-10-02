@@ -7,11 +7,11 @@
 	interface CommentsProviderProps {
 		children: Snippet;
 		supabase: SupabaseClient;
-		roomId: string;
+		channelKey: string;
 		comments: Comment[];
 	}
 
-	let { children, supabase, roomId, comments }: CommentsProviderProps = $props();
+	let { children, supabase, channelKey, comments }: CommentsProviderProps = $props();
 
 	const state: CommentsState = $state({
 		sort: 'newest' as 'newest' | 'oldest',
@@ -22,7 +22,7 @@
 	setCommentsContext(state);
 
 	$effect(() => {
-		const channel = supabase.channel(`comments:${roomId}`, {
+		const channel = supabase.channel(`comments:${channelKey}`, {
 			config: { broadcast: { self: true } }
 		});
 
