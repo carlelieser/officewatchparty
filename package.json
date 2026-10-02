@@ -19,6 +19,7 @@
 		"cf:deploy": "npm run build && wrangler deploy"
 	},
 	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20260210.0",
 		"@internationalized/date": "^3.11.0",
 		"@lucide/svelte": "^0.561.0",
 		"@sveltejs/adapter-cloudflare": "^7.2.6",

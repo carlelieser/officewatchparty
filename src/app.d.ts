@@ -20,6 +20,15 @@ declare global {
 			session: Session | null;
 			user: User | null;
 		}
+		interface Platform {
+			env: {
+				VIDEOS: import('@cloudflare/workers-types').R2Bucket;
+			};
+			ctx: import('@cloudflare/workers-types').ExecutionContext;
+			caches: import('@cloudflare/workers-types').CacheStorage & {
+				default: import('@cloudflare/workers-types').Cache;
+			};
+		}
 	}
 }
 
