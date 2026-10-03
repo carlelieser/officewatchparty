@@ -25,7 +25,17 @@
 	import { Avatar, AvatarFallback } from '$lib/components/ui/avatar';
 	import { PartyPopperIcon, ChevronsUpDown } from '@lucide/svelte';
 	import { emailInitials } from '$lib/shared/user';
+	import { useSidebar } from '$lib/components/ui/sidebar';
+	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
+
+	const sidebar = useSidebar();
+
+	// On mobile the sidebar is a sheet overlay; close it after navigating so it
+	// doesn't stay open covering the new page.
+	afterNavigate(() => {
+		if (sidebar.isMobile) sidebar.setOpenMobile(false);
+	});
 
 	let userEmail = $derived(page.data.user?.email ?? '');
 	let initials = $derived(userEmail ? emailInitials(userEmail) : '??');
