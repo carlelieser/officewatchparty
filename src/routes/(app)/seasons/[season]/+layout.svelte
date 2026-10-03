@@ -83,7 +83,7 @@
 					size="icon-sm"
 					aria-label="Scroll seasons left"
 					onclick={() => scrollByStep(-1)}
-					class="absolute left-0 top-1/2 -translate-y-1/2 rounded-full shadow-sm"
+					class="absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-background shadow-sm dark:bg-background"
 				>
 					<ChevronLeft class="size-4" />
 				</Button>
@@ -95,7 +95,7 @@
 					size="icon-sm"
 					aria-label="Scroll seasons right"
 					onclick={() => scrollByStep(1)}
-					class="absolute right-0 top-1/2 -translate-y-1/2 rounded-full shadow-sm"
+					class="absolute right-0 top-1/2 -translate-y-1/2 rounded-full bg-background shadow-sm dark:bg-background"
 				>
 					<ChevronRight class="size-4" />
 				</Button>

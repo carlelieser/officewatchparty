@@ -35,6 +35,6 @@
 			</Carousel.Item>
 		{/each}
 	</Carousel.Content>
-	<Carousel.Previous class="start-1 hidden sm:flex" />
-	<Carousel.Next class="end-1 hidden sm:flex" />
+	<Carousel.Previous class="start-1 hidden bg-background dark:bg-background sm:flex" />
+	<Carousel.Next class="end-1 hidden bg-background dark:bg-background sm:flex" />
 </Carousel.Root>
