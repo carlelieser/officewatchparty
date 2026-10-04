@@ -20,7 +20,7 @@
 
 <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-8 p-4 md:p-6">
 	<section class="flex flex-col gap-4">
-		<PageHeader title="Hello, superfan." description="Choose an episode to start a watch party." />
+		<PageHeader title="Hello, superfan." />
 		<div class="w-full max-w-md">
 			<OfficeEpisodeSelect bind:selected onchange={watchEpisode} class="w-full" />
 		</div>
