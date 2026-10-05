@@ -60,6 +60,6 @@ export default [
 	prettier,
 	...sveltePlugin.configs['flat/prettier'],
 	{
-		ignores: ['.svelte-kit/', 'build/', 'node_modules/', '.wrangler/']
+		ignores: ['.svelte-kit/', 'build/', 'node_modules/', '.wrangler/', '.claude/']
 	}
 ];
