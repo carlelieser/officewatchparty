@@ -23,10 +23,8 @@
 
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Avatar, AvatarFallback } from '$lib/components/ui/avatar';
-	import { PartyPopperIcon, ChevronsUpDown } from '@lucide/svelte';
-	import { emailInitials } from '$lib/shared/user';
+	import SidebarUserMenu from '$lib/components/sidebar-user-menu.svelte';
+	import { PartyPopperIcon } from '@lucide/svelte';
 	import { useSidebar } from '$lib/components/ui/sidebar';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
@@ -40,7 +38,6 @@
 	});
 
 	let userEmail = $derived(page.data.user?.email ?? '');
-	let initials = $derived(userEmail ? emailInitials(userEmail) : '??');
 	let watchHref = $derived(
 		(page.data.watchHref as string | undefined) ?? `${resolve('/watch')}?season=1&episode=1`
 	);
@@ -92,33 +89,7 @@
 		<Sidebar.Footer>
 			<Sidebar.Menu>
 				<Sidebar.MenuItem>
-					<DropdownMenu.Root>
-						<DropdownMenu.Trigger>
-							{#snippet child({ props })}
-								<Sidebar.MenuButton
-									{...props}
-									size="lg"
-									tooltipContent={userEmail}
-									class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-								>
-									<Avatar class="size-8 rounded-lg">
-										<AvatarFallback class="rounded-lg text-xs font-bold">{initials}</AvatarFallback>
-									</Avatar>
-									<span class="flex-1 truncate text-left text-sm">{userEmail}</span>
-									<ChevronsUpDown class="ml-auto size-4" />
-								</Sidebar.MenuButton>
-							{/snippet}
-						</DropdownMenu.Trigger>
-						<DropdownMenu.Content side="right" align="end" class="w-56">
-							<DropdownMenu.Label class="truncate text-xs text-muted-foreground">
-								{userEmail}
-							</DropdownMenu.Label>
-							<DropdownMenu.Separator />
-							<a href={resolve('/auth/logout')}>
-								<DropdownMenu.Item>Log out</DropdownMenu.Item>
-							</a>
-						</DropdownMenu.Content>
-					</DropdownMenu.Root>
+					<SidebarUserMenu email={userEmail} />
 				</Sidebar.MenuItem>
 			</Sidebar.Menu>
 		</Sidebar.Footer>
