@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import Logo from '$lib/components/logo.svelte';
 	import { Button } from '$lib/components/ui/button';
+	import { GUIDE_PATH } from '$lib/features/guide';
 </script>
 
 {#snippet link(label: string, href: string, target?: string, rel?: string)}
@@ -47,6 +48,7 @@
 						</li>
 						<li>{@render link('Contact', 'mailto:support@officewatchparty.com')}</li>
 						<li>{@render link('Support', '/support')}</li>
+						<li>{@render link('Episode Guide', GUIDE_PATH)}</li>
 					</ul>
 				</div>
 			</div>
