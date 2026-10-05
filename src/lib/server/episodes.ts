@@ -6,7 +6,10 @@ export class Episodes {
 	static readonly all = data as Array<Episode>;
 
 	static find(season: number, episode: number): Episode | null {
-		return this.all.find((candidate) => candidate.season === season && candidate.episode === episode) ?? null;
+		return (
+			this.all.find((candidate) => candidate.season === season && candidate.episode === episode) ??
+			null
+		);
 	}
 
 	static bySeason(): Array<Season> {

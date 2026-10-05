@@ -3,7 +3,11 @@ import type { ReactionCount } from '$lib/features/reactions/types';
 
 export function createReactionsRepo(supabase: SupabaseClient) {
 	return {
-		async getCounts(roomId: string, season: number, episode: number): Promise<Array<ReactionCount>> {
+		async getCounts(
+			roomId: string,
+			season: number,
+			episode: number
+		): Promise<Array<ReactionCount>> {
 			const { data, error } = await supabase.rpc('get_room_reaction_counts', {
 				p_room_id: roomId,
 				p_season: season,
@@ -14,7 +18,11 @@ export function createReactionsRepo(supabase: SupabaseClient) {
 			return data ?? [];
 		},
 
-		async getUserReactions(roomId: string, season: number, episode: number): Promise<Array<string>> {
+		async getUserReactions(
+			roomId: string,
+			season: number,
+			episode: number
+		): Promise<Array<string>> {
 			const { data, error } = await supabase.rpc('get_user_reactions', {
 				p_room_id: roomId,
 				p_season: season,
@@ -25,7 +33,13 @@ export function createReactionsRepo(supabase: SupabaseClient) {
 			return (data ?? []).map((row: { emoji: string }) => row.emoji);
 		},
 
-		async add(roomId: string, userId: string, season: number, episode: number, emoji: string): Promise<void> {
+		async add(
+			roomId: string,
+			userId: string,
+			season: number,
+			episode: number,
+			emoji: string
+		): Promise<void> {
 			const { error } = await supabase
 				.from('reactions')
 				.insert({ room_id: roomId, user_id: userId, season, episode, emoji });
@@ -33,7 +47,13 @@ export function createReactionsRepo(supabase: SupabaseClient) {
 			if (error) throw error;
 		},
 
-		async remove(roomId: string, userId: string, season: number, episode: number, emoji: string): Promise<void> {
+		async remove(
+			roomId: string,
+			userId: string,
+			season: number,
+			episode: number,
+			emoji: string
+		): Promise<void> {
 			const { error } = await supabase
 				.from('reactions')
 				.delete()

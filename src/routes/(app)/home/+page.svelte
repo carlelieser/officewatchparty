@@ -11,7 +11,9 @@
 	import { watchEpisode } from '$lib/features/episodes/start-room';
 
 	let selected: Episode | null = $state(null);
-	let continueWatching = $derived((page.data.continueWatching as Array<ContinueWatchingItem>) ?? []);
+	let continueWatching = $derived(
+		(page.data.continueWatching as Array<ContinueWatchingItem>) ?? []
+	);
 </script>
 
 <svelte:head>

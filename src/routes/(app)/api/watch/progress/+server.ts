@@ -8,12 +8,6 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		error(400, 'progress and duration are required');
 	}
 
-	await locals.repos.watchHistory.saveProgress(
-		locals.user.id,
-		season,
-		episode,
-		progress,
-		duration
-	);
+	await locals.repos.watchHistory.saveProgress(locals.user.id, season, episode, progress, duration);
 	return json({ success: true });
 };

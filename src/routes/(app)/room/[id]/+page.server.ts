@@ -16,9 +16,8 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
 	const isOwner = room.owner_id === locals.user.id;
 	const members = await locals.repos.rooms.getMembers(room.id);
-	const episode = room.season !== null && room.episode !== null
-		? Episodes.find(room.season, room.episode)
-		: null;
+	const episode =
+		room.season !== null && room.episode !== null ? Episodes.find(room.season, room.episode) : null;
 	const [comments, favorites, donationPrompt] = await Promise.all([
 		locals.repos.rooms.getComments(room.id),
 		locals.repos.favorites.findByUserId(locals.user.id),

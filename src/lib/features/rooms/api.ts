@@ -2,7 +2,10 @@ export async function deleteRoom(alias: string): Promise<void> {
 	await fetch(`/api/rooms/${alias}`, { method: 'DELETE' });
 }
 
-export async function updateAccessType(alias: string, accessType: 'invite_only' | 'link'): Promise<void> {
+export async function updateAccessType(
+	alias: string,
+	accessType: 'invite_only' | 'link'
+): Promise<void> {
 	await fetch(`/api/rooms/${alias}/access-type`, {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
@@ -34,7 +37,11 @@ export async function updateEpisode(alias: string, season: number, episode: numb
 	});
 }
 
-export async function updatePlayerState(alias: string, isPlaying: boolean, playerTime: number): Promise<void> {
+export async function updatePlayerState(
+	alias: string,
+	isPlaying: boolean,
+	playerTime: number
+): Promise<void> {
 	await fetch(`/api/rooms/${alias}/player`, {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },

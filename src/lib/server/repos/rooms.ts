@@ -25,11 +25,7 @@ export function createRoomsRepo(supabase: SupabaseClient) {
 		},
 
 		async findIdByAlias(alias: string): Promise<string | null> {
-			const { data, error } = await supabase
-				.from('rooms')
-				.select('id')
-				.eq('alias', alias)
-				.single();
+			const { data, error } = await supabase.from('rooms').select('id').eq('alias', alias).single();
 
 			if (error) throw error;
 			return data?.id ?? null;
@@ -70,10 +66,7 @@ export function createRoomsRepo(supabase: SupabaseClient) {
 		},
 
 		async updateAutoplay(alias: string, autoplay: boolean): Promise<void> {
-			const { error } = await supabase
-				.from('rooms')
-				.update({ autoplay })
-				.eq('alias', alias);
+			const { error } = await supabase.from('rooms').update({ autoplay }).eq('alias', alias);
 
 			if (error) throw error;
 		},

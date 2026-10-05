@@ -29,7 +29,12 @@ export async function roomUserReactions(
 	return (data ?? []).map((row: { emoji: string }) => row.emoji);
 }
 
-export async function addReaction(alias: string, season: number, episode: number, emoji: string): Promise<void> {
+export async function addReaction(
+	alias: string,
+	season: number,
+	episode: number,
+	emoji: string
+): Promise<void> {
 	await fetch(`/api/rooms/${alias}/reactions`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
@@ -37,7 +42,12 @@ export async function addReaction(alias: string, season: number, episode: number
 	});
 }
 
-export async function removeReaction(alias: string, season: number, episode: number, emoji: string): Promise<void> {
+export async function removeReaction(
+	alias: string,
+	season: number,
+	episode: number,
+	emoji: string
+): Promise<void> {
 	await fetch(`/api/rooms/${alias}/reactions`, {
 		method: 'DELETE',
 		headers: { 'Content-Type': 'application/json' },

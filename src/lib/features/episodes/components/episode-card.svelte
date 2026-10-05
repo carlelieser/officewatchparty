@@ -16,8 +16,16 @@
 		progress?: number;
 	}
 
-	let { season, episode, label, onclick, onremove, footer, menu, progress = 0 }: EpisodeCardProps =
-		$props();
+	let {
+		season,
+		episode,
+		label,
+		onclick,
+		onremove,
+		footer,
+		menu,
+		progress = 0
+	}: EpisodeCardProps = $props();
 
 	let progressPercent = $derived(Math.min(100, Math.max(0, progress * 100)));
 

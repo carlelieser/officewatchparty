@@ -13,9 +13,7 @@ function daysSince(timestamp: string, now: Date): number {
 	return elapsed / MILLISECONDS_PER_DAY;
 }
 
-export function shouldShowDonationPrompt(
-	context: DonationPromptContext
-): DonationPromptDecision {
+export function shouldShowDonationPrompt(context: DonationPromptContext): DonationPromptDecision {
 	const { state, isOwner, episodesThisSession, shownThisSession, now } = context;
 
 	if (!isOwner) {

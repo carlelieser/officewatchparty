@@ -33,7 +33,5 @@
 			</Toggle>
 		{/snippet}
 	</Tooltip.Trigger>
-	<Tooltip.Content>
-		Automatically play the next episode
-	</Tooltip.Content>
+	<Tooltip.Content>Automatically play the next episode</Tooltip.Content>
 </Tooltip.Root>

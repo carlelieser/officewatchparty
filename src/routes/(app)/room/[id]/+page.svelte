@@ -63,7 +63,10 @@
 		}
 	}
 
-	async function onEpisodeChange(selected: Episode, shouldAutoplay: boolean = false): Promise<void> {
+	async function onEpisodeChange(
+		selected: Episode,
+		shouldAutoplay: boolean = false
+	): Promise<void> {
 		dismissUpNextToast();
 		episode = selected;
 
@@ -138,7 +141,8 @@
 				async (message: { payload: { season: number; episode: number; autoplay: boolean } }) => {
 					const payload = message.payload;
 					const found = episodes.find(
-						(candidate) => candidate.season === payload.season && candidate.episode === payload.episode
+						(candidate) =>
+							candidate.season === payload.season && candidate.episode === payload.episode
 					);
 					if (!found) return;
 					episode = found;

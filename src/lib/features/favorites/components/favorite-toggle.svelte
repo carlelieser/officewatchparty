@@ -9,7 +9,12 @@
 		class?: string;
 	}
 
-	let { favorited, onchange, disabled = false, class: className = '' }: FavoriteToggleProps = $props();
+	let {
+		favorited,
+		onchange,
+		disabled = false,
+		class: className = ''
+	}: FavoriteToggleProps = $props();
 
 	function handlePressedChange(pressed: boolean): void {
 		onchange(pressed);
