@@ -28,8 +28,8 @@
 	}
 </script>
 
-<Carousel.Root opts={{ align: 'start', dragFree: true }} setApi={registerApi} class="w-full">
-	<Carousel.Content class="-ml-3">
+<Carousel.Root opts={{ align: 'start', dragFree: true }} setApi={registerApi} class="-mx-4 sm:mx-0">
+	<Carousel.Content class="ml-1 sm:-ml-3">
 		{#each items as item (key(item))}
 			<Carousel.Item class="basis-2/3 pl-3 sm:basis-1/2 lg:basis-1/3">
 				{@render card(item)}
