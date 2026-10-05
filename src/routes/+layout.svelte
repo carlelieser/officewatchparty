@@ -7,6 +7,7 @@
 	import { onNavigate, beforeNavigate, afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import type { OnNavigate } from '@sveltejs/kit';
+	import { SITE_NAME } from '$lib/features/seo';
 	import '../app.css';
 
 	let { children } = $props();
@@ -37,14 +38,17 @@
 
 <svelte:head>
 	<link rel="icon" type="image/svg+xml" href="/party-popper.svg" />
-	<title>OWP</title>
+	<title>{SITE_NAME}</title>
 </svelte:head>
 
 <Toaster />
 <ModeWatcher />
 <Tooltip.Provider>
 	{#if usesSidebar}
-		<div class="w-full min-h-full absolute top-0 left-0 flex flex-col" class:animate-pulse={navigating}>
+		<div
+			class="w-full min-h-full absolute top-0 left-0 flex flex-col"
+			class:animate-pulse={navigating}
+		>
 			{@render children()}
 		</div>
 	{:else}

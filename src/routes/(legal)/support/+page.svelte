@@ -1,19 +1,21 @@
 <script lang="ts">
 	import ProsePage from '$lib/components/prose-page.svelte';
+	import { SeoHead, pageTitle, type SeoMeta } from '$lib/features/seo';
 	import DonateButton from '$lib/components/donate-button.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import StripeWordmark from '$lib/components/stripe-wordmark.svelte';
 	import { HandCoinsIcon, ArrowUpRightIcon } from '@lucide/svelte';
 	import { MONTHLY_COST_LABEL } from '$lib/shared/donation-costs';
+
+	const meta: SeoMeta = {
+		title: pageTitle('Support the Party'),
+		description:
+			"OfficeWatchParty is free and ad-free. Here's what it costs to run, and how to chip in.",
+		path: '/support'
+	};
 </script>
 
-<svelte:head>
-	<title>Support the Party - OWP</title>
-	<meta
-		name="description"
-		content="OfficeWatchParty is free and ad-free. Here's what it costs to run, and how to chip in."
-	/>
-</svelte:head>
+<SeoHead {meta} />
 
 <ProsePage title="Support the Party">
 	<p>
@@ -55,7 +57,8 @@
 	</p>
 
 	<blockquote>
-		Donate whatever you're comfortable with. A couple dollars here and there helps keep the project alive for everyone!
+		Donate whatever you're comfortable with. A couple dollars here and there helps keep the project
+		alive for everyone!
 	</blockquote>
 
 	<div class="not-prose my-8 flex flex-col items-center gap-3">

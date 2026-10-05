@@ -1,10 +1,16 @@
 <script lang="ts">
 	import ProsePage from '$lib/components/prose-page.svelte';
+	import { SeoHead, pageTitle, type SeoMeta } from '$lib/features/seo';
+
+	const meta: SeoMeta = {
+		title: pageTitle('Terms of Service'),
+		description:
+			'The terms for using OfficeWatchParty, a free, fan-made site for watching The Office together in synced watch parties.',
+		path: '/tos'
+	};
 </script>
 
-<svelte:head>
-	<title>Terms of Service - OWP</title>
-</svelte:head>
+<SeoHead {meta} />
 
 <ProsePage title="Terms of Service" lastUpdated="February 11, 2026">
 	<h2>1. Acceptance of Terms</h2>

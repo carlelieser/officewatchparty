@@ -1,10 +1,15 @@
 <script lang="ts">
 	import ProsePage from '$lib/components/prose-page.svelte';
+	import { SeoHead, pageTitle, type SeoMeta } from '$lib/features/seo';
+
+	const meta: SeoMeta = {
+		title: pageTitle('Privacy Policy'),
+		description: 'What OfficeWatchParty collects, why, and how it is stored and protected.',
+		path: '/privacy'
+	};
 </script>
 
-<svelte:head>
-	<title>Privacy Policy - OWP</title>
-</svelte:head>
+<SeoHead {meta} />
 
 <ProsePage title="Privacy Policy" lastUpdated="February 11, 2026">
 	<h2>1. Information We Collect</h2>

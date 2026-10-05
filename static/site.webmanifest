@@ -1,0 +1,13 @@
+{
+	"name": "OfficeWatchParty",
+	"short_name": "OWP",
+	"description": "Watch The Office together in synced watch parties.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#ffffff",
+	"icons": [
+		{ "src": "/party-popper.svg", "sizes": "any", "type": "image/svg+xml" },
+		{ "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+	]
+}

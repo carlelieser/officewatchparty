@@ -8,6 +8,10 @@
 	let { children } = $props();
 </script>
 
+<svelte:head>
+	<meta name="robots" content="noindex" />
+</svelte:head>
+
 <Sidebar.Provider>
 	<AppSidebar />
 	<Sidebar.Inset class="min-w-0">

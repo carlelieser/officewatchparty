@@ -8,7 +8,8 @@
 	import { toast } from 'svelte-sonner';
 	import Logo from '$lib/components/logo.svelte';
 	import { page } from '$app/state';
-	import { REDIRECT_PARAM } from '$lib/features/auth';
+	import { SeoHead, pageTitle, type SeoMeta } from '$lib/features/seo';
+	import { LOGIN_PATH, REDIRECT_PARAM } from '$lib/features/auth';
 
 	let { form } = $props();
 
@@ -18,6 +19,14 @@
 	let loading = $state(false);
 	let verifyForm!: HTMLFormElement;
 	let redirectTo = $derived(page.url.searchParams.get(REDIRECT_PARAM) ?? '');
+
+	const meta: SeoMeta = {
+		title: pageTitle('Sign In'),
+		description:
+			'Sign in to OfficeWatchParty with a one-time email code to start or join a watch party.',
+		path: LOGIN_PATH,
+		isHiddenFromSearch: true
+	};
 
 	function handleTokenInput(value: string): void {
 		token = value;
@@ -56,9 +65,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Sign In - OWP</title>
-</svelte:head>
+<SeoHead {meta} />
 
 <div class="flex flex-col flex-1">
 	<div class="w-full max-w-sm space-y-6 m-auto">
