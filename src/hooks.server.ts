@@ -2,6 +2,7 @@ import { createServerClient } from '@supabase/ssr';
 import { error, redirect, type Handle } from '@sveltejs/kit';
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 import { createRepos } from '$lib/server/repos';
+import { SITE_ORIGIN } from '$lib/features/seo';
 import { buildLoginUrl } from '$lib/features/auth';
 import type { SessionResult } from './app.d.ts';
 
@@ -30,7 +31,22 @@ function isAllowedResponseHeader(name: string): boolean {
 	return name === 'content-range' || name === 'x-supabase-api-version';
 }
 
+const canonicalHost = new URL(SITE_ORIGIN).hostname;
+
+// Both the apex and www domains are routed to the Worker; send www to the apex
+// so search engines index a single host.
+function canonicalHostRedirect(url: URL): string | null {
+	if (url.hostname !== `www.${canonicalHost}`) return null;
+
+	const target = new URL(url);
+	target.hostname = canonicalHost;
+	return target.toString();
+}
+
 export const handle: Handle = async ({ event, resolve }) => {
+	const canonicalUrl = canonicalHostRedirect(event.url);
+	if (canonicalUrl) redirect(308, canonicalUrl);
+
 	event.locals.supabase = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
 		cookies: {
 			getAll: () => event.cookies.getAll(),

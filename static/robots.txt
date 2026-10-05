@@ -1,3 +1,8 @@
-# allow crawling everything by default
 User-agent: *
-Disallow:
+Disallow: /api/
+Disallow: /auth/
+Disallow: /room/
+Disallow: /video/
+Disallow: /watch
+
+Sitemap: https://officewatchparty.com/sitemap.xml
