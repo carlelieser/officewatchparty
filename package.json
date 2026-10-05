@@ -16,7 +16,9 @@
 		"supabase:stop": "supabase stop",
 		"supabase:status": "supabase status",
 		"cf:dev": "wrangler dev",
-		"cf:deploy": "npm run build && wrangler deploy"
+		"cf:deploy": "npm run build && wrangler deploy",
+		"test:unit": "vitest",
+		"test": "npm run test:unit -- --run"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20260210.0",
@@ -28,12 +30,14 @@
 		"@tailwindcss/vite": "^4.1.18",
 		"@typescript-eslint/eslint-plugin": "^8.55.0",
 		"@typescript-eslint/parser": "^8.55.0",
+		"@vitest/browser-playwright": "^4.1.8",
 		"bits-ui": "^2.19.4",
 		"embla-carousel-svelte": "^8.6.0",
 		"eslint": "^9.39.2",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.14.0",
 		"globals": "^17.3.0",
+		"playwright": "^1.60.0",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.4.1",
 		"supabase": "^2.76.6",
@@ -43,6 +47,8 @@
 		"tailwindcss": "^4.1.18",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.1",
+		"vitest": "^4.1.8",
+		"vitest-browser-svelte": "^2.1.1",
 		"wrangler": "^4.63.0"
 	},
 	"dependencies": {
