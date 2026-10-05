@@ -37,9 +37,9 @@
 		{/each}
 	</Carousel.Content>
 	{#if canScrollPrev}
-		<Carousel.Previous class="start-1 hidden bg-background dark:bg-background sm:flex" />
+		<Carousel.Previous class="start-3 hidden bg-background dark:bg-background sm:flex" />
 	{/if}
 	{#if canScrollNext}
-		<Carousel.Next class="end-1 hidden bg-background dark:bg-background sm:flex" />
+		<Carousel.Next class="end-3 hidden bg-background dark:bg-background sm:flex" />
 	{/if}
 </Carousel.Root>
