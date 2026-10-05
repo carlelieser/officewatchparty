@@ -43,13 +43,11 @@
 			config: { presence: { key: page.data.user?.email } }
 		});
 
-		channel
-			.on('presence', { event: 'sync' }, handlePresenceSync)
-			.subscribe(async (status) => {
-				if (status === 'SUBSCRIBED') {
-					await handleChannelSubscribed();
-				}
-			});
+		channel.on('presence', { event: 'sync' }, handlePresenceSync).subscribe(async (status) => {
+			if (status === 'SUBSCRIBED') {
+				await handleChannelSubscribed();
+			}
+		});
 
 		return () => {
 			channel?.unsubscribe();

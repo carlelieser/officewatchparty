@@ -39,7 +39,9 @@
 
 	let userEmail = $derived(page.data.user?.email ?? '');
 	let initials = $derived(userEmail ? emailInitials(userEmail) : '??');
-	let watchHref = $derived((page.data.watchHref as string | undefined) ?? '/watch?season=1&episode=1');
+	let watchHref = $derived(
+		(page.data.watchHref as string | undefined) ?? '/watch?season=1&episode=1'
+	);
 
 	function hrefFor(item: NavItem): string {
 		// Watch resumes the user's last episode; everything else is a plain route.

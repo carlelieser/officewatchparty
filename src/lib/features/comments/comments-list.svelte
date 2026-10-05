@@ -53,7 +53,8 @@
 						<Item.Description class="w-full flex flex-row items-center justify-between">
 							<div class="flex flex-row items-center gap-2">
 								<Avatar class="size-5 flex items-center justify-center">
-									<AvatarFallback class="text-[10px]">{emailInitials(comment.email)}</AvatarFallback>
+									<AvatarFallback class="text-[10px]">{emailInitials(comment.email)}</AvatarFallback
+									>
 								</Avatar>
 								{emailUsername(comment.email)}
 							</div>

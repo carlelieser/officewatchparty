@@ -26,7 +26,8 @@
 	// Progress is bound to the episode it was captured for, so a flush that races
 	// with an episode change (binge "Next", resume) never writes the old position
 	// under the new episode's key.
-	let tracked: { season: number; episode: number; progress: number; duration: number } | null = null;
+	let tracked: { season: number; episode: number; progress: number; duration: number } | null =
+		null;
 	let lastSavedAt = 0;
 
 	function flushProgress(): void {

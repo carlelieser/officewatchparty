@@ -84,10 +84,7 @@
 						</Button>
 					</DropdownMenu.Trigger>
 					<DropdownMenu.Content align="end">
-						<DropdownMenu.RadioGroup
-							value={accessType}
-							onValueChange={handleAccessTypeChange}
-						>
+						<DropdownMenu.RadioGroup value={accessType} onValueChange={handleAccessTypeChange}>
 							<DropdownMenu.RadioItem value="invite_only">Restricted</DropdownMenu.RadioItem>
 							<DropdownMenu.RadioItem value="link">Anyone with the link</DropdownMenu.RadioItem>
 						</DropdownMenu.RadioGroup>

@@ -55,7 +55,10 @@
 			</Button>
 		{/snippet}
 	</Popover.Trigger>
-	<Popover.Content class="w-full max-w-sm md:max-w-124 p-0 min-w-(--bits-popover-anchor-width)" align="start">
+	<Popover.Content
+		class="w-full max-w-sm md:max-w-124 p-0 min-w-(--bits-popover-anchor-width)"
+		align="start"
+	>
 		<div class="max-h-72 overflow-y-auto p-1">
 			{#each grouped as [season, seasonEpisodes]}
 				<Collapsible.Root open={selected?.season === season}>
@@ -64,7 +67,9 @@
 					>
 						<ChevronRight class="size-4 shrink-0 transition-transform" />
 						<span>Season {season}</span>
-						<span class="ml-auto text-xs text-muted-foreground">{seasonEpisodes.length} episodes</span>
+						<span class="ml-auto text-xs text-muted-foreground"
+							>{seasonEpisodes.length} episodes</span
+						>
 					</Collapsible.Trigger>
 					<Collapsible.Content>
 						<div class="ml-2 border-l pl-1">
@@ -73,11 +78,15 @@
 									class="flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm hover:bg-accent"
 									onclick={() => handleSelect(entry)}
 								>
-									<div class="flex size-6 shrink-0 items-center justify-center rounded-full font-mono">
+									<div
+										class="flex size-6 shrink-0 items-center justify-center rounded-full font-mono"
+									>
 										{#if isSelected(entry)}
 											<Check class="size-4" />
 										{:else}
-											<span class="text-xs font-bold text-muted-foreground">{padNumber(entry.episode)}</span>
+											<span class="text-xs font-bold text-muted-foreground"
+												>{padNumber(entry.episode)}</span
+											>
 										{/if}
 									</div>
 									<div class="flex min-w-0 flex-col">

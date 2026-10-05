@@ -18,10 +18,30 @@
 	}
 
 	const EMOJI_GRID: Array<string> = [
-		'😂', '😮', '❤️', '🔥', '👏', '😭',
-		'🤣', '😍', '👀', '🙌', '💀', '😱',
-		'🥳', '👎', '👍', '🤯', '😤', '🫡',
-		'💯', '🎉', '😬', '🥲', '🫠', '🤩'
+		'😂',
+		'😮',
+		'❤️',
+		'🔥',
+		'👏',
+		'😭',
+		'🤣',
+		'😍',
+		'👀',
+		'🙌',
+		'💀',
+		'😱',
+		'🥳',
+		'👎',
+		'👍',
+		'🤯',
+		'😤',
+		'🫡',
+		'💯',
+		'🎉',
+		'😬',
+		'🥲',
+		'🫠',
+		'🤩'
 	];
 
 	let {
@@ -110,9 +130,7 @@
 			config: { broadcast: { self: false } }
 		});
 
-		channel
-			.on('broadcast', { event: 'reaction' }, handleBroadcast)
-			.subscribe();
+		channel.on('broadcast', { event: 'reaction' }, handleBroadcast).subscribe();
 
 		return () => {
 			channel?.unsubscribe();
