@@ -2,6 +2,7 @@ import { createServerClient } from '@supabase/ssr';
 import { error, redirect, type Handle } from '@sveltejs/kit';
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 import { createRepos } from '$lib/server/repos';
+import { buildLoginUrl } from '$lib/features/auth';
 import type { SessionResult } from './app.d.ts';
 
 type CookieToSet = {
@@ -10,7 +11,10 @@ type CookieToSet = {
 	options: Record<string, unknown>;
 };
 
-function setAllCookies(cookiesToSet: Array<CookieToSet>, event: Parameters<Handle>[0]['event']): void {
+function setAllCookies(
+	cookiesToSet: Array<CookieToSet>,
+	event: Parameters<Handle>[0]['event']
+): void {
 	cookiesToSet.forEach(({ name, value, options }) => {
 		try {
 			event.cookies.set(name, value, { ...options, path: '/' });
@@ -64,7 +68,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 			if (event.route.id.includes('/api/')) {
 				error(401, 'Unauthorized');
 			}
-			redirect(303, '/login');
+			redirect(303, buildLoginUrl(event.url));
 		}
 
 		event.locals.user = user;

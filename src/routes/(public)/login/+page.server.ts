@@ -1,5 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
+import { REDIRECT_PARAM, safeRedirectTarget } from '$lib/features/auth';
 
 type OtpSentResult = {
 	otpSent: true;
@@ -13,13 +14,17 @@ type OtpErrorResult = {
 
 function getEmail(formData: FormData): string {
 	const email = formData.get('email');
-	if (typeof email !== 'string' || !email) throw fail(400, { error: 'Email is required', email: '' });
+	if (typeof email !== 'string' || !email)
+		throw fail(400, { error: 'Email is required', email: '' });
 	return email;
 }
 
-export const load: PageServerLoad = async ({ locals: { safeGetSession } }) => {
+export const load: PageServerLoad = async ({ url, locals: { safeGetSession } }) => {
 	const { user } = await safeGetSession();
-	if (user) redirect(303, '/');
+	if (!user) return;
+
+	const target = safeRedirectTarget(url.searchParams.get(REDIRECT_PARAM));
+	redirect(303, target);
 };
 
 export const actions: Actions = {
@@ -37,11 +42,13 @@ export const actions: Actions = {
 		const email = getEmail(formData);
 		const token = formData.get('token');
 
-		if (typeof token !== 'string' || !token) return fail(400, { error: 'Code is required', email } satisfies OtpErrorResult);
+		if (typeof token !== 'string' || !token)
+			return fail(400, { error: 'Code is required', email } satisfies OtpErrorResult);
 
 		const { error } = await supabase.auth.verifyOtp({ email, token, type: 'email' });
 		if (error) return fail(400, { error: error.message, email } satisfies OtpErrorResult);
 
-		redirect(303, '/');
+		const target = safeRedirectTarget(formData.get(REDIRECT_PARAM));
+		redirect(303, target);
 	}
 };

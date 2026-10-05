@@ -7,6 +7,8 @@
 	import { MailIcon } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
 	import Logo from '$lib/components/logo.svelte';
+	import { page } from '$app/state';
+	import { REDIRECT_PARAM } from '$lib/features/auth';
 
 	let { form } = $props();
 
@@ -15,6 +17,7 @@
 	let otpSent = $state(false);
 	let loading = $state(false);
 	let verifyForm!: HTMLFormElement;
+	let redirectTo = $derived(page.url.searchParams.get(REDIRECT_PARAM) ?? '');
 
 	function handleTokenInput(value: string): void {
 		token = value;
@@ -119,6 +122,7 @@
 				class="space-y-4"
 			>
 				<input type="hidden" name="email" value={email} />
+				<input type="hidden" name={REDIRECT_PARAM} value={redirectTo} />
 				<div class="flex justify-center">
 					<InputOTP.Root maxlength={8} value={token} onValueChange={handleTokenInput} name="token">
 						{#snippet children({ cells })}
