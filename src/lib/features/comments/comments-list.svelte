@@ -23,8 +23,8 @@
 	const hasMore = $derived(overflows && !context.expanded);
 
 	$effect(() => {
-		context.comments;
-		if (containerElement && !context.expanded) {
+		const hasComments = context.comments.length > 0;
+		if (hasComments && containerElement && !context.expanded) {
 			overflows = containerElement.scrollHeight > containerElement.clientHeight;
 		}
 	});

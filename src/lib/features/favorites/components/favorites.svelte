@@ -47,7 +47,7 @@
 	{/if}
 	{#if favorites.length > 0}
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-			{#each favorites as favorite, index}
+			{#each favorites as favorite, index (`${favorite.season}-${favorite.episode}`)}
 				<EpisodeCard
 					season={favorite.season}
 					episode={favorite.episode}

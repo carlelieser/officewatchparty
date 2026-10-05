@@ -104,7 +104,7 @@
 			</div>
 
 			<div class="max-h-48 overflow-y-auto px-2">
-				{#each filtered as member}
+				{#each filtered as member (member.user_id)}
 					<div
 						class="flex items-center justify-between rounded-md px-2 py-1.5 text-sm hover:bg-muted"
 					>

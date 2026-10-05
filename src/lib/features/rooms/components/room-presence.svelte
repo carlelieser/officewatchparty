@@ -23,15 +23,8 @@
 
 	function handlePresenceSync(): void {
 		const state = channel!.presenceState<PresenceUser>();
-		const seen = new Set<string>();
-		const list: Array<PresenceUser> = [];
-		for (const key of Object.keys(state)) {
-			if (!seen.has(key)) {
-				seen.add(key);
-				list.push({ email: key });
-			}
-		}
-		users = list;
+		// Presence state is keyed by email, so its keys are already unique.
+		users = Object.keys(state).map((email) => ({ email }));
 	}
 
 	async function handleChannelSubscribed(): Promise<void> {

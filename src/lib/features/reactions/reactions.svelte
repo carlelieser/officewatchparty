@@ -4,6 +4,7 @@
 	import * as Popover from '$lib/components/ui/popover';
 	import { Button } from '$lib/components/ui/button';
 	import { SmilePlus } from '@lucide/svelte';
+	import { SvelteSet } from 'svelte/reactivity';
 
 	interface ReactionsProps {
 		supabase: SupabaseClient;
@@ -56,7 +57,7 @@
 	}: ReactionsProps = $props();
 
 	let counts: Record<string, number> = $state({});
-	let userReactions: Set<string> = $state(new Set());
+	const userReactions = new SvelteSet<string>();
 	let pickerOpen = $state(false);
 
 	const topReactions = $derived.by((): Array<ReactionCount> => {
@@ -74,7 +75,10 @@
 		]);
 
 		counts = Object.fromEntries(countsData.map((entry) => [entry.emoji, entry.count]));
-		userReactions = new Set(userData);
+		userReactions.clear();
+		for (const emoji of userData) {
+			userReactions.add(emoji);
+		}
 	}
 
 	function handleBroadcast(message: { payload: ReactionBroadcast }): void {

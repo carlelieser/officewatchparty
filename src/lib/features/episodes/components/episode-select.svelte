@@ -60,7 +60,7 @@
 		align="start"
 	>
 		<div class="max-h-72 overflow-y-auto p-1">
-			{#each grouped as [season, seasonEpisodes]}
+			{#each grouped as [season, seasonEpisodes] (season)}
 				<Collapsible.Root open={selected?.season === season}>
 					<Collapsible.Trigger
 						class="flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-accent [&[data-state=open]>svg:first-child]:rotate-90"

@@ -37,7 +37,7 @@
 	{/if}
 	{#if rooms.length > 0}
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-			{#each rooms as room, index}
+			{#each rooms as room, index (room.alias)}
 				<EpisodeCard
 					season={room.season}
 					episode={room.episode}

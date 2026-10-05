@@ -123,7 +123,7 @@
 					<InputOTP.Root maxlength={8} value={token} onValueChange={handleTokenInput} name="token">
 						{#snippet children({ cells })}
 							<InputOTP.Group>
-								{#each cells as cell}
+								{#each cells as cell, index (index)}
 									<InputOTP.Slot {cell} />
 								{/each}
 							</InputOTP.Group>
