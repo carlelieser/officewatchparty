@@ -4,6 +4,7 @@
 	import { Avatar, AvatarFallback } from '$lib/components/ui/avatar';
 	import { ChevronsUpDown } from '@lucide/svelte';
 	import { resolve } from '$app/paths';
+	import { useSidebar } from '$lib/components/ui/sidebar';
 	import { emailInitials } from '$lib/shared/user';
 
 	interface SidebarUserMenuProps {
@@ -12,7 +13,11 @@
 
 	let { email }: SidebarUserMenuProps = $props();
 
+	const sidebar = useSidebar();
+
 	let initials = $derived(email ? emailInitials(email) : '??');
+	// The mobile sidebar is a full-width sheet, so there is no room beside it.
+	let side: 'top' | 'right' = $derived(sidebar.isMobile ? 'top' : 'right');
 </script>
 
 <DropdownMenu.Root>
@@ -32,7 +37,7 @@
 			</Sidebar.MenuButton>
 		{/snippet}
 	</DropdownMenu.Trigger>
-	<DropdownMenu.Content side="right" align="end" class="w-56">
+	<DropdownMenu.Content {side} align="end" class="w-56">
 		<DropdownMenu.Label class="truncate text-xs text-muted-foreground">
 			{email}
 		</DropdownMenu.Label>
