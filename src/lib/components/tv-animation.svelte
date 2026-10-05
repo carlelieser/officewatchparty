@@ -8,6 +8,8 @@
 
 <video
 	class="w-full max-w-md m-auto rounded-2xl bg-background dark:bg-orange-200 {className}"
+	poster="/tv-poster.webp"
+	aria-hidden="true"
 	autoplay
 	loop
 	muted
