@@ -24,11 +24,7 @@
 	// Local optimistic state seeded from the layout-loaded favorite keys.
 	let favoriteKeys = $derived((page.data.favoriteKeys as Array<string>) ?? []);
 	let episodeKey = $derived(`${episode.season}-${episode.episode}`);
-	let favorited = $state(false);
-
-	$effect(() => {
-		favorited = favoriteKeys.includes(episodeKey);
-	});
+	let favorited = $derived(favoriteKeys.includes(episodeKey));
 
 	function toggleFavorite(): void {
 		if (favorited) {

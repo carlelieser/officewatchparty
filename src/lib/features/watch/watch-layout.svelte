@@ -38,10 +38,7 @@
 		headerActions
 	}: WatchLayoutProps = $props();
 
-	let selected = $state(episode);
-	$effect(() => {
-		selected = episode;
-	});
+	let selected = $derived(episode);
 
 	const episodes = $derived(page.data.episodes as Array<Episode>);
 	const previousEpisode = $derived(episode ? findPreviousEpisode(episode, episodes) : null);

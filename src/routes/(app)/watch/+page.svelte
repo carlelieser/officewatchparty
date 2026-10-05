@@ -77,10 +77,7 @@
 	let bingeMode = $state(true);
 
 	const favoriteKeys = $derived((page.data.favoriteKeys as Array<string>) ?? []);
-	let favorited = $state(false);
-	$effect(() => {
-		favorited = favoriteKeys.includes(`${season}-${episodeNumber}`);
-	});
+	let favorited = $derived(favoriteKeys.includes(`${season}-${episodeNumber}`));
 
 	function goToEpisode(target: Episode): void {
 		goto(`/watch?season=${target.season}&episode=${target.episode}`);
