@@ -1,21 +1,23 @@
 <script lang="ts" module>
 	import { House, Play, Clapperboard, ListVideo, Heart, Tv } from '@lucide/svelte';
 	import type { Component } from 'svelte';
+	import { resolve } from '$app/paths';
 
 	type NavItem = {
 		title: string;
 		// The route used for the active-state check.
 		match: string;
+		href: string;
 		icon: Component;
 	};
 
 	const navItems: Array<NavItem> = [
-		{ title: 'Home', match: '/home', icon: House },
-		{ title: 'Watch', match: '/watch', icon: Play },
-		{ title: 'Seasons', match: '/seasons', icon: Clapperboard },
-		{ title: 'Episodes', match: '/episodes', icon: ListVideo },
-		{ title: 'Favorites', match: '/favorites', icon: Heart },
-		{ title: 'Rooms', match: '/rooms', icon: Tv }
+		{ title: 'Home', match: '/home', href: resolve('/home'), icon: House },
+		{ title: 'Watch', match: '/watch', href: resolve('/watch'), icon: Play },
+		{ title: 'Seasons', match: '/seasons', href: resolve('/seasons'), icon: Clapperboard },
+		{ title: 'Episodes', match: '/episodes', href: resolve('/episodes'), icon: ListVideo },
+		{ title: 'Favorites', match: '/favorites', href: resolve('/favorites'), icon: Heart },
+		{ title: 'Rooms', match: '/rooms', href: resolve('/rooms'), icon: Tv }
 	];
 </script>
 
@@ -40,12 +42,12 @@
 	let userEmail = $derived(page.data.user?.email ?? '');
 	let initials = $derived(userEmail ? emailInitials(userEmail) : '??');
 	let watchHref = $derived(
-		(page.data.watchHref as string | undefined) ?? '/watch?season=1&episode=1'
+		(page.data.watchHref as string | undefined) ?? `${resolve('/watch')}?season=1&episode=1`
 	);
 
 	function hrefFor(item: NavItem): string {
 		// Watch resumes the user's last episode; everything else is a plain route.
-		return item.match === '/watch' ? watchHref : item.match;
+		return item.match === '/watch' ? watchHref : item.href;
 	}
 
 	function isActive(match: string): boolean {
@@ -56,7 +58,7 @@
 <Sidebar.Root collapsible="icon" style="view-transition-name: app-sidebar;">
 	<Sidebar.Header>
 		<a
-			href="/"
+			href={resolve('/')}
 			class="flex items-center gap-2 p-2 font-display font-bold group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-0"
 		>
 			<PartyPopperIcon class="size-5 shrink-0" />
@@ -72,6 +74,7 @@
 						<Sidebar.MenuItem>
 							<Sidebar.MenuButton isActive={isActive(item.match)} tooltipContent={item.title}>
 								{#snippet child({ props })}
+									<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- resolve() does not accept query strings; nav hrefs are resolved -->
 									<a href={hrefFor(item)} {...props}>
 										<item.icon />
 										<span>{item.title}</span>
@@ -111,7 +114,7 @@
 								{userEmail}
 							</DropdownMenu.Label>
 							<DropdownMenu.Separator />
-							<a href="/auth/logout">
+							<a href={resolve('/auth/logout')}>
 								<DropdownMenu.Item>Log out</DropdownMenu.Item>
 							</a>
 						</DropdownMenu.Content>

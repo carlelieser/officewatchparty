@@ -3,6 +3,7 @@
 	import EpisodeCard from '$lib/features/episodes/components/episode-card.svelte';
 	import EpisodeMenu from '$lib/features/episodes/components/episode-menu.svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import type { ContinueWatchingItem } from '$lib/features/episodes/types';
 
 	interface ContinueWatchingProps {
@@ -13,7 +14,10 @@
 
 	function resume(item: ContinueWatchingItem): void {
 		const resumeTime = Math.floor(item.progressSeconds);
-		goto(`/watch?season=${item.episode.season}&episode=${item.episode.episode}&t=${resumeTime}`);
+		const watchPath = resolve('/watch');
+		const resumeUrl = `${watchPath}?season=${item.episode.season}&episode=${item.episode.episode}&t=${resumeTime}`;
+		// eslint-disable-next-line svelte/no-navigation-without-resolve -- resolve() does not accept query strings; the path is resolved
+		goto(resumeUrl);
 	}
 </script>
 

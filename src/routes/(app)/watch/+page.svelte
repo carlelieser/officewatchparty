@@ -4,6 +4,7 @@
 	import Player from '$lib/features/video/components/player.svelte';
 	import Reactions from '$lib/features/reactions/reactions.svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { formatEpisodeCode } from '$lib/shared/format';
 	import { addFavorite, removeFavorite } from '$lib/features/favorites/api';
@@ -80,7 +81,8 @@
 	let favorited = $derived(favoriteKeys.includes(`${season}-${episodeNumber}`));
 
 	function goToEpisode(target: Episode): void {
-		goto(`/watch?season=${target.season}&episode=${target.episode}`);
+		// eslint-disable-next-line svelte/no-navigation-without-resolve -- resolve() does not accept query strings; the path is resolved
+		goto(`${resolve('/watch')}?season=${target.season}&episode=${target.episode}`);
 	}
 
 	function handleEnded(): void {

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 	import { Avatar, AvatarFallback } from '$lib/components/ui/avatar';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { emailInitials } from '$lib/shared/user';
@@ -19,7 +20,7 @@
 			{user?.email}
 		</DropdownMenu.Label>
 		<DropdownMenu.Separator />
-		<a href="/auth/logout">
+		<a href={resolve('/auth/logout')}>
 			<DropdownMenu.Item>Log out</DropdownMenu.Item>
 		</a>
 	</DropdownMenu.Content>

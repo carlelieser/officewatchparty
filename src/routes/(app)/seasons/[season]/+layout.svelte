@@ -3,6 +3,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { ChevronLeft, ChevronRight } from '@lucide/svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import type { LayoutData } from './$types';
 
 	let { data, children }: { data: LayoutData; children: import('svelte').Snippet } = $props();
@@ -36,7 +37,7 @@
 	function switchSeason(value: string): void {
 		const season = Number(value);
 		if (!season || season === data.season) return;
-		goto(`/seasons/${season}`);
+		goto(resolve(`/seasons/${season}`));
 	}
 </script>
 

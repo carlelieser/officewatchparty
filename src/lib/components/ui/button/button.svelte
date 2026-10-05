@@ -56,6 +56,7 @@
 </script>
 
 {#if href}
+	<!-- eslint-disable svelte/no-navigation-without-resolve -- generic passthrough; callers resolve their hrefs -->
 	<a
 		bind:this={ref}
 		data-slot="button"
@@ -66,6 +67,7 @@
 		tabindex={disabled ? -1 : undefined}
 		{...restProps}
 	>
+		<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		{@render children?.()}
 	</a>
 {:else}

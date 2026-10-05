@@ -1,4 +1,5 @@
 import { goto } from '$app/navigation';
+import { resolve } from '$app/paths';
 import type { Episode } from '$lib/features/episodes/types';
 
 /**
@@ -6,7 +7,8 @@ import type { Episode } from '$lib/features/episodes/types';
  * This replaces the old behavior of creating a brand-new room on every click.
  */
 export async function watchEpisode(episode: Episode): Promise<void> {
-	await goto(`/watch?season=${episode.season}&episode=${episode.episode}`);
+	// eslint-disable-next-line svelte/no-navigation-without-resolve -- resolve() does not accept query strings; the path is resolved
+	await goto(`${resolve('/watch')}?season=${episode.season}&episode=${episode.episode}`);
 }
 
 /**
@@ -14,5 +16,6 @@ export async function watchEpisode(episode: Episode): Promise<void> {
  * the episode and navigate to it.
  */
 export async function createRoom(episode: Episode): Promise<void> {
-	await goto(`/room/new?season=${episode.season}&episode=${episode.episode}`);
+	// eslint-disable-next-line svelte/no-navigation-without-resolve -- resolve() does not accept query strings; the path is resolved
+	await goto(`${resolve('/room/new')}?season=${episode.season}&episode=${episode.episode}`);
 }
