@@ -55,7 +55,7 @@ describe('TriviaCard', () => {
 	it('disables submit until a choice is picked', async () => {
 		render(TriviaCard, { trivia: createTrivia(null), today: TODAY });
 
-		const submitButton = page.getByRole('button', { name: 'Submit answer' });
+		const submitButton = page.getByRole('button', { name: 'Submit' });
 		await expect.element(submitButton).toBeDisabled();
 
 		await page.getByLabelText('Mark Mothersbaugh').click();
@@ -67,7 +67,7 @@ describe('TriviaCard', () => {
 		render(TriviaCard, { trivia: createTrivia(null), today: TODAY, submit: neverResolving });
 
 		await page.getByLabelText('Jay Ferguson').click();
-		await page.getByRole('button', { name: 'Submit answer' }).click();
+		await page.getByRole('button', { name: 'Submit' }).click();
 
 		await expect.element(page.getByRole('button', { name: /Checking/ })).toBeDisabled();
 		await expect.element(page.getByRole('radio', { name: 'Jay Ferguson' })).toBeDisabled();
@@ -78,7 +78,7 @@ describe('TriviaCard', () => {
 		render(TriviaCard, { trivia: createTrivia(null), today: TODAY, submit });
 
 		await page.getByLabelText('Jay Ferguson').click();
-		await page.getByRole('button', { name: 'Submit answer' }).click();
+		await page.getByRole('button', { name: 'Submit' }).click();
 
 		await expect.element(page.getByText('Correct', { exact: true })).toBeVisible();
 		await expect.element(page.getByText(correctResult.explanation)).toBeVisible();
@@ -105,7 +105,7 @@ describe('TriviaCard', () => {
 		render(TriviaCard, { trivia: createTrivia(null), today: TODAY, submit });
 
 		await page.getByLabelText('Jon Brion').click();
-		await page.getByRole('button', { name: 'Submit answer' }).click();
+		await page.getByRole('button', { name: 'Submit' }).click();
 
 		await expect.element(page.getByRole('alert')).toHaveTextContent('Could not save.');
 		await expect.element(page.getByRole('radio', { name: 'Jon Brion' })).toBeChecked();

@@ -28,7 +28,7 @@
 		{:else if isError}
 			Try again
 		{:else}
-			Submit answer
+			Submit
 		{/if}
 	</Button>
 </Card.Footer>
