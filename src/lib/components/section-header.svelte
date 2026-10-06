@@ -13,9 +13,8 @@
 <div class="flex items-center justify-between">
 	<span class="text-xs font-medium uppercase text-muted-foreground">{title}</span>
 	{#if seeAllHref}
-		<Button variant="link" size="sm" href={seeAllHref} class="!px-0">
-			See all
-			<ChevronRight class="size-4" />
+		<Button variant="link" size="icon" href={seeAllHref} aria-label={`See all ${title}`}>
+			<ChevronRight />
 		</Button>
 	{/if}
 </div>
