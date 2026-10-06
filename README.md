@@ -49,6 +49,15 @@ npm run supabase:start
 npm run dev
 ```
 
+### Google sign-in
+
+1. In Google Cloud Console, create an OAuth client (Web application) and configure the consent screen.
+2. Add these **Authorized redirect URIs**:
+   - `http://127.0.0.1:54321/auth/v1/callback` (local Supabase)
+   - `https://<project-ref>.supabase.co/auth/v1/callback` (production)
+3. Locally, set `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID` and `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET` in `.env`, then restart Supabase.
+4. In production, enable the Google provider in the Supabase dashboard with the same credentials and add `https://officewatchparty.com/auth/callback**` to **Redirect URLs**.
+
 ## Scripts
 
 | Command                  | What it does                   |
