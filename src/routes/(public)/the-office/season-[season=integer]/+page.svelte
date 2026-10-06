@@ -21,7 +21,7 @@
 
 	let meta: SeoMeta = $derived({
 		title: pageTitle(`${heading} Episodes`),
-		description: `All ${data.episodes.length} episodes of ${heading}, from "${data.episodes[0].label}" onward, with a summary of each. Watch them together with friends.`,
+		description: `All ${data.episodes.length} episodes of ${heading}, from "${data.episodes[0].label}" onward. Watch them together with friends.`,
 		path: seasonGuidePath(data.season)
 	});
 
