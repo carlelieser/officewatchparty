@@ -1,6 +1,6 @@
 import type { LayoutServerLoad } from './$types';
-import { resolve } from '$app/paths';
 import { Episodes } from '$lib/server/episodes';
+import type { ResumePoint } from '$lib/features/episodes/types';
 
 export const load: LayoutServerLoad = async ({ locals }) => {
 	const [favoritePairs, latestWatch] = await Promise.all([
@@ -14,10 +14,14 @@ export const load: LayoutServerLoad = async ({ locals }) => {
 
 	// The sidebar "Watch" link resumes the most recent episode at its saved
 	// timestamp, defaulting to the series premiere when nothing has been watched.
-	const resume = latestWatch ?? { season: 1, episode: 1, progress_seconds: 0, duration_seconds: 0 };
-	const resumeTime = Math.floor(resume.progress_seconds ?? 0);
-	let watchHref = `${resolve('/watch')}?season=${resume.season}&episode=${resume.episode}`;
-	if (resumeTime > 0) watchHref += `&t=${resumeTime}`;
+	// Returned as data, not a URL: resolve() is page-relative during SSR.
+	// https://svelte.dev/docs/kit/configuration#paths
+	const latest = latestWatch ?? { season: 1, episode: 1, progress_seconds: 0 };
+	const resume: ResumePoint = {
+		season: latest.season,
+		episode: latest.episode,
+		timeSeconds: Math.floor(latest.progress_seconds ?? 0)
+	};
 
-	return { user: locals.user, episodes: Episodes.all, favoriteKeys, watchHref };
+	return { user: locals.user, episodes: Episodes.all, favoriteKeys, resume };
 };

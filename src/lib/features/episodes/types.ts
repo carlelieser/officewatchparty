@@ -15,3 +15,9 @@ export type ContinueWatchingItem = {
 	progressSeconds: number;
 	durationSeconds: number;
 };
+
+export type ResumePoint = {
+	season: number;
+	episode: number;
+	timeSeconds: number;
+};

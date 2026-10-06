@@ -2,6 +2,8 @@
 	import { House, Play, Clapperboard, ListVideo, Heart, Lightbulb, Tv } from '@lucide/svelte';
 	import type { Component } from 'svelte';
 	import { resolve } from '$app/paths';
+	import { watchHref } from '$lib/features/episodes/watch-href';
+	import type { ResumePoint } from '$lib/features/episodes/types';
 
 	type NavItem = {
 		title: string;
@@ -20,6 +22,8 @@
 		{ title: 'Trivia', match: '/trivia', href: resolve('/trivia'), icon: Lightbulb },
 		{ title: 'Rooms', match: '/rooms', href: resolve('/rooms'), icon: Tv }
 	];
+
+	const SERIES_PREMIERE: ResumePoint = { season: 1, episode: 1, timeSeconds: 0 };
 </script>
 
 <script lang="ts">
@@ -39,13 +43,11 @@
 	});
 
 	let userEmail = $derived(page.data.user?.email ?? '');
-	let watchHref = $derived(
-		(page.data.watchHref as string | undefined) ?? `${resolve('/watch')}?season=1&episode=1`
-	);
+	let resumeHref = $derived(watchHref(page.data.resume ?? SERIES_PREMIERE));
 
 	function hrefFor(item: NavItem): string {
 		// Watch resumes the user's last episode; everything else is a plain route.
-		return item.match === '/watch' ? watchHref : item.href;
+		return item.match === '/watch' ? resumeHref : item.href;
 	}
 
 	function isActive(match: string): boolean {
