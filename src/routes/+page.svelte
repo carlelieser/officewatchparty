@@ -12,6 +12,7 @@
 		type JsonLdObject
 	} from '$lib/features/seo';
 	import { GUIDE_PATH } from '$lib/features/guide';
+	import { AccountNotice, FeatureList } from '$lib/features/landing';
 
 	const meta: SeoMeta = {
 		title: `${SITE_NAME} — Watch The Office together`,
@@ -39,7 +40,10 @@
 			<h1 class="leading-tight text-6xl font-bold font-display capitalize">
 				The best way to watch The Office
 			</h1>
-			<p>Sign up, create a party, share, and enjoy!</p>
+			<p>
+				OfficeWatchParty lets you watch The Office with friends in synced watch parties, with live
+				reactions and comments on every episode. Free and ad-free.
+			</p>
 			<p class="text-sm text-muted-foreground">
 				Not sure where to start? Browse the
 				<Button variant="link" class="h-auto p-0" href={resolve(GUIDE_PATH)}>episode guide</Button>.
@@ -59,4 +63,9 @@
 	<div>
 		<TvAnimation />
 	</div>
+</div>
+
+<div class="w-full max-w-screen-lg mx-auto flex flex-col gap-16 px-8 pb-16">
+	<FeatureList />
+	<AccountNotice />
 </div>
