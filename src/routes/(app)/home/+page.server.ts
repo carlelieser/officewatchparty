@@ -9,11 +9,12 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const today = utcDateKey(new Date());
 	const todaysQuestion = Trivia.forDate(today);
 
-	const [favoritesData, roomsData, historyData, todaysAnswer] = await Promise.all([
+	const [favoritesData, roomsData, historyData, todaysAnswer, hiddenSections] = await Promise.all([
 		locals.repos.favorites.findByUserId(locals.user.id),
 		locals.repos.rooms.findByOwnerId(locals.user.id),
 		locals.repos.watchHistory.findContinueWatching(locals.user.id),
-		locals.repos.triviaAnswers.findByDate(locals.user.id, today)
+		locals.repos.triviaAnswers.findByDate(locals.user.id, today),
+		locals.repos.hiddenHomeSections.findByUserId(locals.user.id)
 	]);
 
 	const favorites = Episodes.fromFavorites(favoritesData);
@@ -39,5 +40,5 @@ export const load: PageServerLoad = async ({ locals }) => {
 		? toDailyTrivia({ date: today, question: todaysQuestion }, todaysAnswer)
 		: null;
 
-	return { favorites, rooms, continueWatching, today, dailyTrivia };
+	return { favorites, rooms, continueWatching, today, dailyTrivia, hiddenSections };
 };
