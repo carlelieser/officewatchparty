@@ -12,7 +12,7 @@
 </svelte:head>
 
 <div class="mx-auto flex w-full min-w-0 max-w-screen-lg flex-col gap-8 p-4 md:p-6">
-	<PageHeader title="Episodes" description="Every episode across all nine seasons." />
+	<PageHeader title="Episodes" />
 
 	{#each data.seasons as season (season.season)}
 		<section class="flex min-w-0 flex-col gap-3">

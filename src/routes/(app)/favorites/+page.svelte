@@ -12,6 +12,6 @@
 </svelte:head>
 
 <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-6 p-4 md:p-6">
-	<PageHeader title="Favorites" description="Episodes you've saved to watch again." />
+	<PageHeader title="Favorites" />
 	<Favorites initial={data.favorites} onselect={watchEpisode} showHeading={false} />
 </div>

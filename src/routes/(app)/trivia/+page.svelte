@@ -14,7 +14,7 @@
 </svelte:head>
 
 <div class="mx-auto flex w-full max-w-screen-md flex-col gap-8 p-4 md:p-6">
-	<PageHeader title="Daily Trivia" description="A new question about The Office every day." />
+	<PageHeader title="Daily Trivia" />
 
 	{#if data.current}
 		<TriviaCard trivia={data.current} today={data.today} />

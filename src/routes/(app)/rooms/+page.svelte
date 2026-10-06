@@ -11,6 +11,6 @@
 </svelte:head>
 
 <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-6 p-4 md:p-6">
-	<PageHeader title="Rooms" description="Watch parties you host." />
+	<PageHeader title="Rooms" />
 	<Rooms initial={data.rooms} showHeading={false} />
 </div>
