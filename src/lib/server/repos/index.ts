@@ -8,6 +8,7 @@ import { createEpisodeReactionsRepo } from './episode-reactions';
 import { createWatchHistoryRepo } from './watch-history';
 import { createDonationsRepo } from './donations';
 import { createTriviaAnswersRepo, type TriviaAnswersRepo } from './trivia-answers';
+import { createHiddenHomeSectionsRepo, type HiddenHomeSectionsRepo } from './hidden-home-sections';
 
 export type Repos = {
 	favorites: ReturnType<typeof createFavoritesRepo>;
@@ -19,6 +20,7 @@ export type Repos = {
 	watchHistory: ReturnType<typeof createWatchHistoryRepo>;
 	donations: ReturnType<typeof createDonationsRepo>;
 	triviaAnswers: TriviaAnswersRepo;
+	hiddenHomeSections: HiddenHomeSectionsRepo;
 };
 
 export function createRepos(supabase: SupabaseClient): Repos {
@@ -31,6 +33,7 @@ export function createRepos(supabase: SupabaseClient): Repos {
 		episodeReactions: createEpisodeReactionsRepo(supabase),
 		watchHistory: createWatchHistoryRepo(supabase),
 		donations: createDonationsRepo(supabase),
-		triviaAnswers: createTriviaAnswersRepo(supabase)
+		triviaAnswers: createTriviaAnswersRepo(supabase),
+		hiddenHomeSections: createHiddenHomeSectionsRepo(supabase)
 	};
 }
