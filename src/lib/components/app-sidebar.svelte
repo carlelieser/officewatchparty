@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { House, Play, Clapperboard, ListVideo, Heart, Tv } from '@lucide/svelte';
+	import { House, Play, Clapperboard, ListVideo, Heart, Lightbulb, Tv } from '@lucide/svelte';
 	import type { Component } from 'svelte';
 	import { resolve } from '$app/paths';
 
@@ -17,6 +17,7 @@
 		{ title: 'Seasons', match: '/seasons', href: resolve('/seasons'), icon: Clapperboard },
 		{ title: 'Episodes', match: '/episodes', href: resolve('/episodes'), icon: ListVideo },
 		{ title: 'Favorites', match: '/favorites', href: resolve('/favorites'), icon: Heart },
+		{ title: 'Trivia', match: '/trivia', href: resolve('/trivia'), icon: Lightbulb },
 		{ title: 'Rooms', match: '/rooms', href: resolve('/rooms'), icon: Tv }
 	];
 </script>
