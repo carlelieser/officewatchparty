@@ -8,11 +8,13 @@
 	import SectionHeader from '$lib/components/section-header.svelte';
 	import type { Episode, ContinueWatchingItem } from '$lib/features/episodes/types';
 	import { watchEpisode } from '$lib/features/episodes/start-room';
+	import { TriviaCard, type DailyTrivia } from '$lib/features/trivia';
 
 	let selected: Episode | null = $state(null);
 	let continueWatching = $derived(
 		(page.data.continueWatching as Array<ContinueWatchingItem>) ?? []
 	);
+	let dailyTrivia = $derived((page.data.dailyTrivia as DailyTrivia | null) ?? null);
 </script>
 
 <svelte:head>
@@ -26,6 +28,15 @@
 			<OfficeEpisodeSelect bind:selected onchange={watchEpisode} class="w-full" />
 		</div>
 	</section>
+
+	{#if dailyTrivia}
+		<section class="flex flex-col gap-3">
+			<SectionHeader title="Daily Trivia" seeAllHref="/trivia" />
+			<div class="w-full max-w-md">
+				<TriviaCard trivia={dailyTrivia} today={page.data.today} />
+			</div>
+		</section>
+	{/if}
 
 	{#if continueWatching.length > 0}
 		<section class="flex flex-col gap-3">

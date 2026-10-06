@@ -2,12 +2,18 @@ import type { PageServerLoad } from './$types';
 import { Episodes } from '$lib/server/episodes';
 import type { OwnedRoom } from '$lib/features/rooms/types';
 import type { ContinueWatchingItem } from '$lib/features/episodes/types';
+import { Trivia, toDailyTrivia } from '$lib/server/trivia';
+import { utcDateKey, type DailyTrivia } from '$lib/features/trivia';
 
 export const load: PageServerLoad = async ({ locals }) => {
-	const [favoritesData, roomsData, historyData] = await Promise.all([
+	const today = utcDateKey(new Date());
+	const todaysQuestion = Trivia.forDate(today);
+
+	const [favoritesData, roomsData, historyData, todaysAnswer] = await Promise.all([
 		locals.repos.favorites.findByUserId(locals.user.id),
 		locals.repos.rooms.findByOwnerId(locals.user.id),
-		locals.repos.watchHistory.findContinueWatching(locals.user.id)
+		locals.repos.watchHistory.findContinueWatching(locals.user.id),
+		locals.repos.triviaAnswers.findByDate(locals.user.id, today)
 	]);
 
 	const favorites = Episodes.fromFavorites(favoritesData);
@@ -29,5 +35,9 @@ export const load: PageServerLoad = async ({ locals }) => {
 		})
 		.filter((item): item is ContinueWatchingItem => item !== null);
 
-	return { favorites, rooms, continueWatching };
+	const dailyTrivia: DailyTrivia | null = todaysQuestion
+		? toDailyTrivia({ date: today, question: todaysQuestion }, todaysAnswer)
+		: null;
+
+	return { favorites, rooms, continueWatching, today, dailyTrivia };
 };
