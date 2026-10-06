@@ -12,3 +12,5 @@ export {
 	parseOAuthCallback,
 	type OAuthCallbackParams
 } from './oauth-callback';
+export { default as AuthDivider } from './components/auth-divider.svelte';
+export { default as GoogleSignInForm } from './components/google-sign-in-form.svelte';

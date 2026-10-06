@@ -9,9 +9,15 @@
 	import Logo from '$lib/components/logo.svelte';
 	import { page } from '$app/state';
 	import { SeoHead, pageTitle, type SeoMeta } from '$lib/features/seo';
-	import { LOGIN_PATH, REDIRECT_PARAM } from '$lib/features/auth';
+	import {
+		AuthDivider,
+		GoogleSignInForm,
+		LOGIN_ERROR_MESSAGES,
+		LOGIN_PATH,
+		REDIRECT_PARAM
+	} from '$lib/features/auth';
 
-	let { form } = $props();
+	let { data, form } = $props();
 
 	let email = $state('');
 	let token = $state('');
@@ -19,11 +25,12 @@
 	let loading = $state(false);
 	let verifyForm!: HTMLFormElement;
 	let redirectTo = $derived(page.url.searchParams.get(REDIRECT_PARAM) ?? '');
+	let loginError = $derived(form?.loginError ?? data.loginError);
 
 	const meta: SeoMeta = {
 		title: pageTitle('Sign In'),
 		description:
-			'Sign in to OfficeWatchParty with a one-time email code to start or join a watch party.',
+			'Sign in to OfficeWatchParty with Google or a one-time email code to start or join a watch party.',
 		path: LOGIN_PATH,
 		isHiddenFromSearch: true
 	};
@@ -102,6 +109,13 @@
 					{loading ? 'Sending...' : 'Send code'}
 				</Button>
 			</form>
+			<AuthDivider />
+			<GoogleSignInForm {redirectTo} />
+			{#if loginError}
+				<p role="alert" class="text-sm text-center text-destructive">
+					{LOGIN_ERROR_MESSAGES[loginError]}
+				</p>
+			{/if}
 			<div class="flex flex-row items-center">
 				<Popover.Root>
 					<Popover.Trigger openOnHover={true} class="mx-auto">
