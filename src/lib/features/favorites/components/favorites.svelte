@@ -86,7 +86,7 @@
 			<Dialog.Description>Pick an episode to add to your favorites.</Dialog.Description>
 		</Dialog.Header>
 		<div class="py-2">
-			<OfficeEpisodeSelect bind:selected={pickValue} onchange={onPick} />
+			<OfficeEpisodeSelect bind:selected={pickValue} onchange={onPick} class="w-full" />
 		</div>
 	</Dialog.Content>
 </Dialog.Root>
