@@ -1,2 +1,11 @@
-export { default as AccountNotice } from './components/account-notice.svelte';
+export { default as LandingHero } from './components/landing-hero.svelte';
+export { default as HowItWorks } from './components/how-it-works.svelte';
 export { default as FeatureList } from './components/feature-list.svelte';
+export { default as GuideTeaser } from './components/guide-teaser.svelte';
+export { default as SupportCallout } from './components/support-callout.svelte';
+export { default as AccountNotice } from './components/account-notice.svelte';
+export { default as FinalCta } from './components/final-cta.svelte';
+export { default as RoomMockup } from './components/room-mockup.svelte';
+export { FEATURED_EPISODE_REFERENCES, HERO_EPISODE_REFERENCE } from './featured-episodes';
+export { resolveFeaturedEpisodes, resolveHeroEpisode } from './landing-episodes';
+export type { EpisodeFinder, HowItWorksStep, LandingFeature, MessageText } from './types';

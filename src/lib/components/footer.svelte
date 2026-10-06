@@ -12,52 +12,54 @@
 {/snippet}
 
 {#if page.url.pathname !== '/login'}
-	<footer class="mx-auto w-full max-w-screen-lg p-8">
-		<div class="grid grid-cols-1 gap-8 sm:grid-cols-[1fr_auto_auto] sm:gap-12">
-			<div>
-				<Logo />
-				<p class="mt-2 text-sm text-muted-foreground">
-					Watch
-					{@render link(
-						'The Office',
-						'https://www.peacocktv.com/watch/asset/tv/the-office-superfan-episodes/8229469043710582112'
-					)}
-					together.
+	<footer class="w-full p-8 border-t">
+		<div class="mx-auto max-w-screen-lg">
+			<div class="grid grid-cols-1 gap-8 sm:grid-cols-[1fr_auto_auto] sm:gap-12">
+				<div>
+					<Logo />
+					<p class="mt-2 text-sm text-muted-foreground">
+						Watch
+						{@render link(
+							'The Office',
+							'https://www.peacocktv.com/watch/asset/tv/the-office-superfan-episodes/8229469043710582112'
+						)}
+						together.
+					</p>
+				</div>
+
+				<div class="col-span-2 grid grid-cols-2 gap-8 sm:col-span-2 sm:contents">
+					<div>
+						<h3 class="mb-3 text-sm font-semibold text-foreground">Legal</h3>
+						<ul class="flex flex-col gap-2">
+							<li>{@render link('Terms of Service', '/tos')}</li>
+							<li>{@render link('Privacy Policy', '/privacy')}</li>
+						</ul>
+					</div>
+
+					<div>
+						<h3 class="mb-3 text-sm font-semibold text-foreground">Community</h3>
+						<ul class="flex flex-col gap-2">
+							<li>
+								{@render link(
+									'GitHub',
+									'https://github.com/carlelieser/officewatchparty',
+									'_blank',
+									'noopener noreferrer'
+								)}
+							</li>
+							<li>{@render link('Contact', 'mailto:support@officewatchparty.com')}</li>
+							<li>{@render link('Support', '/support')}</li>
+							<li>{@render link('Episode Guide', GUIDE_PATH)}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-8 border-t border-border py-4">
+				<p class="text-xs text-muted-foreground py-4">
+					&copy; {new Date().getFullYear()} Office Watch Party &middot; v{__APP_VERSION__}
 				</p>
 			</div>
-
-			<div class="col-span-2 grid grid-cols-2 gap-8 sm:col-span-2 sm:contents">
-				<div>
-					<h3 class="mb-3 text-sm font-semibold text-foreground">Legal</h3>
-					<ul class="flex flex-col gap-2">
-						<li>{@render link('Terms of Service', '/tos')}</li>
-						<li>{@render link('Privacy Policy', '/privacy')}</li>
-					</ul>
-				</div>
-
-				<div>
-					<h3 class="mb-3 text-sm font-semibold text-foreground">Community</h3>
-					<ul class="flex flex-col gap-2">
-						<li>
-							{@render link(
-								'GitHub',
-								'https://github.com/carlelieser/officewatchparty',
-								'_blank',
-								'noopener noreferrer'
-							)}
-						</li>
-						<li>{@render link('Contact', 'mailto:support@officewatchparty.com')}</li>
-						<li>{@render link('Support', '/support')}</li>
-						<li>{@render link('Episode Guide', GUIDE_PATH)}</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<div class="mt-8 border-t border-border py-4">
-			<p class="text-xs text-muted-foreground py-4">
-				&copy; {new Date().getFullYear()} Office Watch Party &middot; v{__APP_VERSION__}
-			</p>
 		</div>
 	</footer>
 {/if}

@@ -4,3 +4,6 @@ node_modules
 .wrangler
 package-lock.json
 .claude
+src/lib/paraglide
+project.inlang/*
+!project.inlang/settings.json

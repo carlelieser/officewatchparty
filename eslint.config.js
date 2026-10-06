@@ -60,6 +60,13 @@ export default [
 	prettier,
 	...sveltePlugin.configs['flat/prettier'],
 	{
-		ignores: ['.svelte-kit/', 'build/', 'node_modules/', '.wrangler/', '.claude/']
+		ignores: [
+			'.svelte-kit/',
+			'build/',
+			'node_modules/',
+			'.wrangler/',
+			'.claude/',
+			'src/lib/paraglide/'
+		]
 	}
 ];

@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import { type ProxyOptions } from 'vite';
 
 const PROD_ORIGIN = 'https://officewatchparty.com';
@@ -27,7 +28,16 @@ function r2Proxy(): ProxyOptions {
 }
 
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit()],
+	plugins: [
+		tailwindcss(),
+		sveltekit(),
+		paraglideVitePlugin({
+			project: './project.inlang',
+			outdir: './src/lib/paraglide',
+			strategy: ['baseLocale'],
+			emitTsDeclarations: true
+		})
+	],
 	define: {
 		__APP_VERSION__: JSON.stringify(process.env.npm_package_version)
 	},
