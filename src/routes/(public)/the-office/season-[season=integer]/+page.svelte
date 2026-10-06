@@ -40,12 +40,7 @@
 <GuidePage>
 	<GuideBreadcrumbs {breadcrumbs} />
 
-	<div class="flex flex-col gap-2">
-		<h1 class="text-4xl font-bold font-display">{heading}</h1>
-		<p class="text-muted-foreground">
-			All {data.episodes.length} episodes of season {data.season}, with a short summary of each.
-		</p>
-	</div>
+	<h1 class="text-4xl font-bold font-display">{heading}</h1>
 
 	<SeasonLinks seasonNumbers={data.seasonNumbers} currentSeason={data.season} />
 

@@ -23,7 +23,7 @@
 
 	let meta: SeoMeta = $derived({
 		title: pageTitle(`${SERIES_NAME} Episode Guide: All ${data.seasons.length} Seasons`),
-		description: `Every episode of ${SERIES_NAME}, season by season: all ${episodeCount} episodes with summaries. Pick one and start a watch party with friends.`,
+		description: `Every episode of ${SERIES_NAME}, season by season: all ${episodeCount} episodes. Pick one and start a watch party with friends.`,
 		path: GUIDE_PATH
 	});
 
@@ -47,13 +47,7 @@
 <GuidePage>
 	<GuideBreadcrumbs {breadcrumbs} />
 
-	<div class="flex flex-col gap-2">
-		<h1 class="text-4xl font-bold font-display">{SERIES_NAME} Episode Guide</h1>
-		<p class="text-muted-foreground">
-			All {data.seasons.length} seasons and {episodeCount} episodes of {SERIES_NAME}, with a short
-			summary of each. Pick an episode and watch it together with friends.
-		</p>
-	</div>
+	<h1 class="text-4xl font-bold font-display">{SERIES_NAME} Episode Guide</h1>
 
 	<Item.Group class="gap-2">
 		{#each data.seasons as season (season.season)}
