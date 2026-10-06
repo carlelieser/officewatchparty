@@ -1,0 +1,262 @@
+[
+	{
+		"id": "trivia-037",
+		"category": "episodes",
+		"difficulty": "hard",
+		"question": "In \"Lotto,\" how much do the warehouse workers win in their lottery pool?",
+		"choices": ["$500,000", "$750,000", "$950,000", "$1.2 million"],
+		"correctIndex": 2,
+		"explanation": "The six warehouse workers win $950,000 in a lottery pool and quit.",
+		"episode": {
+			"season": 8,
+			"episode": 3
+		},
+		"sources": [
+			{
+				"title": "Lotto (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Lotto_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-038",
+		"category": "characters",
+		"difficulty": "hard",
+		"question": "What was Andy Bernard's first name at birth?",
+		"choices": ["William", "Warren", "Wallace", "Walter"],
+		"correctIndex": 3,
+		"explanation": "Andy Bernard was born Walter Baines Bernard Jr.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Andy Bernard",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Andy_Bernard",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-039",
+		"category": "production",
+		"difficulty": "hard",
+		"question": "Which Season 3 episode was Ricky Gervais and Stephen Merchant's only original script for the US series?",
+		"choices": ["Gay Witch Hunt", "Branch Closing", "The Convict", "The Merger"],
+		"correctIndex": 2,
+		"explanation": "\"The Convict\" was the only original US Office script written by UK creators Ricky Gervais and Stephen Merchant.",
+		"episode": {
+			"season": 3,
+			"episode": 9
+		},
+		"sources": [
+			{
+				"title": "The Convict (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Convict",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-040",
+		"category": "cast",
+		"difficulty": "hard",
+		"question": "Which cast member wrote the season 2 episode \"The Injury\"?",
+		"choices": ["B. J. Novak", "Paul Lieberstein", "Ed Helms", "Mindy Kaling"],
+		"correctIndex": 3,
+		"explanation": "\"The Injury\" was written by Mindy Kaling, who also played Kelly Kapoor, and directed by Bryan Gordon.",
+		"episode": {
+			"season": 2,
+			"episode": 12
+		},
+		"sources": [
+			{
+				"title": "The Injury",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Injury",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-041",
+		"category": "episodes",
+		"difficulty": "easy",
+		"question": "In \"Niagara,\" where do Jim and Pam secretly get married before the church ceremony?",
+		"choices": [
+			"In the hotel chapel",
+			"On the Maid of the Mist ferry",
+			"At a Scranton courthouse",
+			"On the hotel rooftop"
+		],
+		"correctIndex": 1,
+		"explanation": "Jim and Pam are married by the captain aboard the Maid of the Mist ferry below the falls.",
+		"episode": {
+			"season": 6,
+			"episode": 5
+		},
+		"sources": [
+			{
+				"title": "Niagara (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Niagara_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-042",
+		"category": "characters",
+		"difficulty": "easy",
+		"question": "What is Jim Halpert's job at Dunder Mifflin when the series begins?",
+		"choices": ["Accountant", "Sales representative", "HR representative", "Receptionist"],
+		"correctIndex": 1,
+		"explanation": "Jim is introduced as a sales representative at Dunder Mifflin's Scranton branch.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Jim Halpert",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Jim_Halpert",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-043",
+		"category": "production",
+		"difficulty": "easy",
+		"question": "What was the title of the proposed Dwight Schrute spinoff that NBC passed on?",
+		"choices": ["The Schrutes", "Beets & Bears", "The Farm", "Dwight Country"],
+		"correctIndex": 2,
+		"explanation": "The Farm, a spinoff with Dwight running his family's beet farm and bed-and-breakfast, was not picked up; its backdoor pilot aired as a Season 9 episode.",
+		"episode": {
+			"season": 9,
+			"episode": 17
+		},
+		"sources": [
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "Two Theories As to Why NBC Doesn't Want Dwight Schrute's Office Spinoff",
+				"publisher": "Grantland",
+				"url": "https://grantland.com/hollywood-prospectus/two-theories-as-to-why-nbc-doesnt-want-dwight-schrutes-office-spinoff/",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-044",
+		"category": "cast",
+		"difficulty": "easy",
+		"question": "Which actress played customer service representative Kelly Kapoor?",
+		"choices": ["Ellie Kemper", "Mindy Kaling", "Angela Kinsey", "Kate Flannery"],
+		"correctIndex": 1,
+		"explanation": "Mindy Kaling played Kelly Kapoor, the Scranton branch's customer service representative.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "List of The Office (American TV series) characters",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/List_of_The_Office_(American_TV_series)_characters",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-045",
+		"category": "episodes",
+		"difficulty": "medium",
+		"question": "In Michael's movie \"Threat Level Midnight,\" which coworker plays the villain Goldenface?",
+		"choices": ["Dwight", "Toby", "Andy", "Jim"],
+		"correctIndex": 3,
+		"explanation": "Jim Halpert plays Agent Michael Scarn's archnemesis, Goldenface.",
+		"episode": {
+			"season": 7,
+			"episode": 16
+		},
+		"sources": [
+			{
+				"title": "Threat Level Midnight",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Threat_Level_Midnight",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-046",
+		"category": "characters",
+		"difficulty": "medium",
+		"question": "What is the name of the Philadelphia sports marketing company Jim helps start?",
+		"choices": ["Sportsline", "Prime Athletics", "Big League Marketing", "Athlead"],
+		"correctIndex": 3,
+		"explanation": "Jim helps a friend start Athlead, a sports marketing company in Philadelphia.",
+		"episode": {
+			"season": 9,
+			"episode": 1
+		},
+		"sources": [
+			{
+				"title": "Jim Halpert",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Jim_Halpert",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-047",
+		"category": "production",
+		"difficulty": "medium",
+		"question": "Which director helmed both the pilot and the series finale of The Office?",
+		"choices": ["Paul Feig", "Randall Einhorn", "Jeffrey Blitz", "Ken Kwapis"],
+		"correctIndex": 3,
+		"explanation": "Ken Kwapis directed the 2005 \"Pilot\" and returned to direct the 2013 \"Finale\".",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Pilot (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Pilot_(The_Office)",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "Finale (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Finale_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-048",
+		"category": "cast",
+		"difficulty": "medium",
+		"question": "Which actor played Robert California, introduced after Michael Scott left?",
+		"choices": ["Will Ferrell", "Idris Elba", "James Spader", "Kathy Bates"],
+		"correctIndex": 2,
+		"explanation": "James Spader played Robert California, introduced after Michael Scott left his regional manager job.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "List of The Office (American TV series) characters",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/List_of_The_Office_(American_TV_series)_characters",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	}
+]

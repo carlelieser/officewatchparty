@@ -1,0 +1,246 @@
+[
+	{
+		"id": "trivia-001",
+		"category": "episodes",
+		"difficulty": "easy",
+		"question": "At the Dundies in season 2, which award does Pam win?",
+		"choices": ["Hottest in the Office", "Whitest Sneakers", "Spicy Curry", "Fine Work"],
+		"correctIndex": 1,
+		"explanation": "Pam wins the Dundie for \"Whitest Sneakers\" and gives a drunken, heartfelt acceptance speech.",
+		"episode": {
+			"season": 2,
+			"episode": 1
+		},
+		"sources": [
+			{
+				"title": "The Dundies",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Dundies",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-002",
+		"category": "characters",
+		"difficulty": "easy",
+		"question": "Which Dunder Mifflin employee lives on his family's beet farm?",
+		"choices": ["Jim Halpert", "Dwight Schrute", "Stanley Hudson", "Kevin Malone"],
+		"correctIndex": 1,
+		"explanation": "Dwight Schrute lives on his family's beet farm, Schrute Farms, with his cousin Mose.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Dwight Schrute",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Dwight_Schrute",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-003",
+		"category": "production",
+		"difficulty": "easy",
+		"question": "The American Office was adapted from a British series created by which duo?",
+		"choices": [
+			"Richard Curtis and Ben Elton",
+			"Ricky Gervais and Stephen Merchant",
+			"Graham Linehan and Arthur Mathews",
+			"Steve Coogan and Armando Iannucci"
+		],
+		"correctIndex": 1,
+		"explanation": "The NBC series is based on the BBC's The Office, created by Ricky Gervais and Stephen Merchant.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-004",
+		"category": "cast",
+		"difficulty": "easy",
+		"question": "Which actor played regional manager Michael Scott on The Office?",
+		"choices": ["Steve Carell", "Ed Helms", "Rainn Wilson", "John Krasinski"],
+		"correctIndex": 0,
+		"explanation": "Steve Carell played Michael Scott, the regional manager of Dunder Mifflin Scranton.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "List of The Office (American TV series) characters",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/List_of_The_Office_(American_TV_series)_characters",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-005",
+		"category": "episodes",
+		"difficulty": "medium",
+		"question": "In \"Diversity Day,\" which coworker slaps Michael after his offensive impression?",
+		"choices": ["Pam", "Angela", "Phyllis", "Kelly"],
+		"correctIndex": 3,
+		"explanation": "Kelly slaps Michael after he delivers a racist impression of an Indian person to her.",
+		"episode": {
+			"season": 1,
+			"episode": 2
+		},
+		"sources": [
+			{
+				"title": "Diversity Day (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Diversity_Day_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-006",
+		"category": "characters",
+		"difficulty": "medium",
+		"question": "What is the name of Kevin Malone's Police tribute band?",
+		"choices": ["The Scranton Police", "Electric City Rock", "Lackawanna Blues", "Scrantonicity"],
+		"correctIndex": 3,
+		"explanation": "Kevin plays in Scrantonicity, a tribute band to The Police.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Kevin Malone",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Kevin_Malone",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-007",
+		"category": "production",
+		"difficulty": "medium",
+		"question": "The Season 5 episode \"Stress Relief\" aired immediately after which TV event?",
+		"choices": [
+			"Super Bowl XLIII",
+			"The 2008 Summer Olympics closing ceremony",
+			"The 81st Academy Awards",
+			"The 2008 World Series"
+		],
+		"correctIndex": 0,
+		"explanation": "\"Stress Relief\" aired on February 1, 2009, right after Super Bowl XLIII, and drew 22.9 million viewers, the most of any Office episode.",
+		"episode": {
+			"season": 5,
+			"episode": 14
+		},
+		"sources": [
+			{
+				"title": "Stress Relief (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Stress_Relief_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-008",
+		"category": "cast",
+		"difficulty": "medium",
+		"question": "Which actor played Toby Flenderson and also served as the show's showrunner from seasons five to eight?",
+		"choices": ["Paul Lieberstein", "B. J. Novak", "Brian Baumgartner", "Oscar Nuñez"],
+		"correctIndex": 0,
+		"explanation": "Paul Lieberstein played HR rep Toby Flenderson and was The Office's showrunner from seasons five to eight.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Paul Lieberstein",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Paul_Lieberstein",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-009",
+		"category": "episodes",
+		"difficulty": "easy",
+		"question": "In \"The Injury,\" what does Michael burn his foot on?",
+		"choices": ["A curling iron", "A space heater", "A George Foreman Grill", "A hot plate"],
+		"correctIndex": 2,
+		"explanation": "Michael burns his foot on the George Foreman Grill he keeps next to his bed while grilling bacon.",
+		"episode": {
+			"season": 2,
+			"episode": 12
+		},
+		"sources": [
+			{
+				"title": "The Injury",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Injury",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-010",
+		"category": "characters",
+		"difficulty": "easy",
+		"question": "What is Pam Beesly's job at Dunder Mifflin when the series begins?",
+		"choices": ["Saleswoman", "Accountant", "Receptionist", "HR representative"],
+		"correctIndex": 2,
+		"explanation": "Pam starts the series as the receptionist at Dunder Mifflin's Scranton branch.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Pam Beesly",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Pam_Beesly",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-011",
+		"category": "production",
+		"difficulty": "easy",
+		"question": "Which cast member shot the footage of Scranton used in the show's opening credits?",
+		"choices": ["Rainn Wilson", "B. J. Novak", "John Krasinski", "Ed Helms"],
+		"correctIndex": 2,
+		"explanation": "After being cast as Jim, John Krasinski visited Scranton and filmed the city footage that became part of the opening credits.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "The Office's John Krasinski Had A Hand In Filming The Opening Credits",
+				"publisher": "Looper",
+				"url": "https://www.looper.com/1245445/the-office-john-krasinski-filming-opening-credits",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-012",
+		"category": "cast",
+		"difficulty": "easy",
+		"question": "Which actor played Dwight Schrute?",
+		"choices": ["John Krasinski", "B. J. Novak", "Rainn Wilson", "Craig Robinson"],
+		"correctIndex": 2,
+		"explanation": "Rainn Wilson played Dwight Schrute, the salesman and assistant to the regional manager.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "List of The Office (American TV series) characters",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/List_of_The_Office_(American_TV_series)_characters",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	}
+]

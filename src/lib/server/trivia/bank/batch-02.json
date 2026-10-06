@@ -1,0 +1,277 @@
+[
+	{
+		"id": "trivia-013",
+		"category": "episodes",
+		"difficulty": "medium",
+		"question": "In \"Beach Games,\" what bold act does Pam do on her own that gives her new confidence?",
+		"choices": [
+			"Swims across the lake",
+			"Wins the sumo wrestling match",
+			"Walks barefoot across hot coals",
+			"Wins the hot dog eating contest"
+		],
+		"correctIndex": 2,
+		"explanation": "Pam wanders off and runs barefoot across the hot coals, then berates her colleagues at the Tribal Council.",
+		"episode": {
+			"season": 3,
+			"episode": 22
+		},
+		"sources": [
+			{
+				"title": "Beach Games",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Beach_Games",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-014",
+		"category": "characters",
+		"difficulty": "medium",
+		"question": "What is Creed Bratton's job at the Scranton branch?",
+		"choices": ["Supplier relations", "Quality assurance", "Customer service", "Warehouse foreman"],
+		"correctIndex": 1,
+		"explanation": "Creed is the Scranton branch's quality assurance representative.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "List of The Office (American TV series) characters",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/List_of_The_Office_(American_TV_series)_characters",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-015",
+		"category": "production",
+		"difficulty": "medium",
+		"question": "What halted production and cut Season 4 short of NBC's 30-episode order?",
+		"choices": [
+			"NBC budget cuts",
+			"Steve Carell's film schedule",
+			"Coverage of the 2008 Summer Olympics",
+			"The 2007–08 Writers Guild of America strike"
+		],
+		"correctIndex": 3,
+		"explanation": "The 2007–08 WGA strike stopped production (Steve Carell refused to cross picket lines), leaving Season 4 with 19 episodes instead of 30.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "Key Programs Stall as Strike Continues",
+				"publisher": "Television Academy",
+				"url": "https://www.televisionacademy.com/features/news/key-programs-stall-strike-continues",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-016",
+		"category": "cast",
+		"difficulty": "medium",
+		"question": "Which actress played Holly Flax, who first appeared in \"Goodbye, Toby\"?",
+		"choices": ["Melora Hardin", "Kathy Bates", "Catherine Tate", "Amy Ryan"],
+		"correctIndex": 3,
+		"explanation": "Amy Ryan played Holly Flax, whose first appearance was in \"Goodbye, Toby\" (2008).",
+		"episode": {
+			"season": 4,
+			"episode": 18
+		},
+		"sources": [
+			{
+				"title": "Holly Flax",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Holly_Flax",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-017",
+		"category": "episodes",
+		"difficulty": "hard",
+		"question": "In \"Office Olympics,\" what are Jim and Pam's handmade medals made from?",
+		"choices": [
+			"Bottle caps and string",
+			"Coffee filters and tape",
+			"Paper plates and staples",
+			"Yogurt lids and paper clips"
+		],
+		"correctIndex": 3,
+		"explanation": "The medals for the first Dunder Mifflin Olympiad are made from yogurt lids and paper clips.",
+		"episode": {
+			"season": 2,
+			"episode": 3
+		},
+		"sources": [
+			{
+				"title": "Office Olympics",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Office_Olympics",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-018",
+		"category": "characters",
+		"difficulty": "hard",
+		"question": "What is Dwight Schrute's middle name?",
+		"choices": ["Kurt", "Karl", "Klaus", "Konrad"],
+		"correctIndex": 0,
+		"explanation": "Dwight's full name is Dwight Kurt Schrute III.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Dwight Schrute",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Dwight_Schrute",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-019",
+		"category": "production",
+		"difficulty": "hard",
+		"question": "Who won the 2009 Primetime Emmy for Outstanding Directing for a Comedy Series for \"Stress Relief\"?",
+		"choices": ["Jeffrey Blitz", "Paul Feig", "Ken Kwapis", "Greg Daniels"],
+		"correctIndex": 0,
+		"explanation": "Jeffrey (Jeff) Blitz won the 2009 Emmy for Outstanding Directing for a Comedy Series for \"Stress Relief.\"",
+		"episode": {
+			"season": 5,
+			"episode": 14
+		},
+		"sources": [
+			{
+				"title": "The Office | Emmy Awards and Nominations",
+				"publisher": "Television Academy",
+				"url": "https://www.televisionacademy.com/node/68776",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-020",
+		"category": "cast",
+		"difficulty": "hard",
+		"question": "Which cast member wrote the season 1 episode \"Diversity Day\"?",
+		"choices": ["Mindy Kaling", "Paul Lieberstein", "B. J. Novak", "Rainn Wilson"],
+		"correctIndex": 2,
+		"explanation": "\"Diversity Day\" was written by B. J. Novak, who played Ryan Howard, and directed by Ken Kwapis.",
+		"episode": {
+			"season": 1,
+			"episode": 2
+		},
+		"sources": [
+			{
+				"title": "Diversity Day (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Diversity_Day_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-021",
+		"category": "episodes",
+		"difficulty": "easy",
+		"question": "In \"Fun Run,\" which coworker does Michael accidentally hit with his car?",
+		"choices": ["Meredith", "Phyllis", "Toby", "Creed"],
+		"correctIndex": 0,
+		"explanation": "Michael hits Meredith with his car as he arrives at work, sending her to the hospital.",
+		"episode": {
+			"season": 4,
+			"episode": 1
+		},
+		"sources": [
+			{
+				"title": "Fun Run",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Fun_Run_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-022",
+		"category": "characters",
+		"difficulty": "easy",
+		"question": "Which character adopts the persona of \"Prison Mike\" to convince coworkers that prison is worse than the office?",
+		"choices": ["Dwight Schrute", "Andy Bernard", "Kevin Malone", "Michael Scott"],
+		"correctIndex": 3,
+		"explanation": "Michael Scott becomes \"Prison Mike\" in a meeting meant to show his staff that prison is much worse than the office.",
+		"episode": {
+			"season": 3,
+			"episode": 9
+		},
+		"sources": [
+			{
+				"title": "The Convict",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Convict",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-023",
+		"category": "production",
+		"difficulty": "easy",
+		"question": "In 2006, Steve Carell won which award for playing Michael Scott?",
+		"choices": [
+			"Primetime Emmy Award",
+			"BAFTA TV Award",
+			"Daytime Emmy Award",
+			"Golden Globe Award"
+		],
+		"correctIndex": 3,
+		"explanation": "Carell won the 2006 Golden Globe for Best Performance by an Actor in a Television Series – Musical or Comedy for The Office; he never won an Emmy for the role.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Steve Carell",
+				"publisher": "Golden Globes",
+				"url": "https://goldenglobes.com/person/steve-carell/",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-024",
+		"category": "cast",
+		"difficulty": "easy",
+		"question": "Which Office cast member co-hosts the Office Ladies podcast with Jenna Fischer?",
+		"choices": ["Kate Flannery", "Ellie Kemper", "Mindy Kaling", "Angela Kinsey"],
+		"correctIndex": 3,
+		"explanation": "Office Ladies is a rewatch podcast hosted by Jenna Fischer and Angela Kinsey.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Office Ladies",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Office_Ladies",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	}
+]

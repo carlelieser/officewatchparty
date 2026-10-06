@@ -1,0 +1,264 @@
+[
+	{
+		"id": "trivia-049",
+		"category": "episodes",
+		"difficulty": "easy",
+		"question": "In \"Goodbye, Michael,\" which state is Michael moving to so he can live with Holly?",
+		"choices": ["New Hampshire", "Florida", "Colorado", "Ohio"],
+		"correctIndex": 2,
+		"explanation": "Michael leaves Scranton to move to Colorado with his fiancee, Holly Flax.",
+		"episode": {
+			"season": 7,
+			"episode": 21
+		},
+		"sources": [
+			{
+				"title": "Goodbye, Michael",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Goodbye,_Michael",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-050",
+		"category": "characters",
+		"difficulty": "easy",
+		"question": "What is Stanley Hudson known for working on during staff meetings?",
+		"choices": ["Crossword puzzles", "Sudoku", "Knitting", "Word searches"],
+		"correctIndex": 0,
+		"explanation": "Stanley is known for doing crossword puzzles at work and during staff meetings.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "List of The Office (American TV series) characters",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/List_of_The_Office_(American_TV_series)_characters",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-051",
+		"category": "production",
+		"difficulty": "easy",
+		"question": "The anticipated success of which Steve Carell movie helped The Office get renewed after its first season?",
+		"choices": [
+			"Bewitched",
+			"The 40-Year-Old Virgin",
+			"Anchorman: The Legend of Ron Burgundy",
+			"Little Miss Sunshine"
+		],
+		"correctIndex": 1,
+		"explanation": "Despite mediocre Season 1 ratings, NBC renewed the show partly on the expected success of Carell's 2005 hit The 40-Year-Old Virgin, which also boosted Season 2 viewership.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Steve Carell",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Steve_Carell",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-052",
+		"category": "cast",
+		"difficulty": "easy",
+		"question": "Which actor played Ryan Howard?",
+		"choices": ["Ed Helms", "John Krasinski", "B. J. Novak", "Zach Woods"],
+		"correctIndex": 2,
+		"explanation": "B. J. Novak played Ryan Howard on The Office.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "List of The Office (American TV series) characters",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/List_of_The_Office_(American_TV_series)_characters",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-053",
+		"category": "episodes",
+		"difficulty": "medium",
+		"question": "In the series \"Finale,\" who ends up serving as Dwight's best man at his wedding?",
+		"choices": ["Jim", "Mose", "Michael", "Andy"],
+		"correctIndex": 2,
+		"explanation": "Michael returns from Colorado and becomes Dwight's new best man at his Schrute-tradition wedding.",
+		"episode": {
+			"season": 9,
+			"episode": 23
+		},
+		"sources": [
+			{
+				"title": "Finale (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Finale_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-054",
+		"category": "characters",
+		"difficulty": "medium",
+		"question": "Which of Angela Martin's cats does Dwight kill?",
+		"choices": ["Princess Lady", "Bandit", "Sprinkles", "Lumpy"],
+		"correctIndex": 2,
+		"explanation": "Dwight kills Angela's cat Sprinkles instead of caring for it.",
+		"episode": {
+			"season": 4,
+			"episode": 2
+		},
+		"sources": [
+			{
+				"title": "Angela Martin",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Angela_Martin",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-055",
+		"category": "production",
+		"difficulty": "medium",
+		"question": "The first season of The Office was filmed in a real office building in which California city?",
+		"choices": ["Burbank", "Culver City", "Pasadena", "Glendale"],
+		"correctIndex": 1,
+		"explanation": "Season 1 was shot in a real office in Culver City; later seasons used a replica set at Chandler Valley Center Studios in the San Fernando Valley.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "Here's Why The Pilot Of The Office Was So Difficult To Film",
+				"publisher": "Looper",
+				"url": "https://www.looper.com/584360/heres-why-the-pilot-of-the-office-was-so-difficult-to-film",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-056",
+		"category": "cast",
+		"difficulty": "medium",
+		"question": "Which cast member was working as a casting associate on The Office when she landed a role on the show?",
+		"choices": ["Angela Kinsey", "Phyllis Smith", "Kate Flannery", "Jenna Fischer"],
+		"correctIndex": 1,
+		"explanation": "Phyllis Smith was a casting associate under Allison Jones, reading lines with auditioners, when she was given the role of Phyllis.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Phyllis Smith",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Phyllis_Smith",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "A Major Office Actor Was Never Supposed To Be On The Show",
+				"publisher": "TVLine",
+				"url": "https://tvline.com/2011634/the-office-actor-phyllis-smith-casting-story-explained",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-057",
+		"category": "episodes",
+		"difficulty": "hard",
+		"question": "In \"Golden Ticket,\" which client ends up with all five of Michael's golden tickets?",
+		"choices": [
+			"Lackawanna County",
+			"Blue Cross of Pennsylvania",
+			"Harper Collins",
+			"Scranton White Pages"
+		],
+		"correctIndex": 1,
+		"explanation": "All five golden tickets go to Dunder Mifflin's biggest client, Blue Cross of Pennsylvania, earning it a fifty percent discount.",
+		"episode": {
+			"season": 5,
+			"episode": 18
+		},
+		"sources": [
+			{
+				"title": "Golden Ticket (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Golden_Ticket_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-058",
+		"category": "characters",
+		"difficulty": "hard",
+		"question": "What is Erin Hannon's real first name?",
+		"choices": ["Karen", "Kelly", "Katie", "Kathy"],
+		"correctIndex": 1,
+		"explanation": "Erin's full name is Kelly Erin Hannon; the office uses her middle name to avoid confusion with Kelly Kapoor.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Erin Hannon",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Erin_Hannon",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-059",
+		"category": "production",
+		"difficulty": "hard",
+		"question": "Cinematographer Randall Einhorn was previously director of photography on the first season of which show?",
+		"choices": ["Big Brother", "American Idol", "The Bachelor", "Survivor"],
+		"correctIndex": 3,
+		"explanation": "Randall Einhorn, who gave The Office its handheld documentary look, had been director of photography on Survivor's first season.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "The Camera As A Character On 'The Office Deep Dive'",
+				"publisher": "iHeartRadio",
+				"url": "https://www.iheart.com/content/2021-07-15-the-camera-as-a-character-on-the-office-deep-dive",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-060",
+		"category": "cast",
+		"difficulty": "hard",
+		"question": "Which Office cast member was formerly a member of the rock band the Grass Roots?",
+		"choices": ["Creed Bratton", "Brian Baumgartner", "Leslie David Baker", "Oscar Nuñez"],
+		"correctIndex": 0,
+		"explanation": "Creed Bratton, a former member of the Grass Roots, played a fictionalized version of himself on The Office.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Creed Bratton",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Creed_Bratton",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	}
+]

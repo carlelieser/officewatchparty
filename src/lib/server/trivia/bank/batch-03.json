@@ -1,0 +1,252 @@
+[
+	{
+		"id": "trivia-025",
+		"category": "episodes",
+		"difficulty": "medium",
+		"question": "In \"Dinner Party,\" what does Jan use to destroy Michael's small television?",
+		"choices": ["A wine glass", "A Dundie Award", "A Serenity by Jan candle", "A TV remote"],
+		"correctIndex": 1,
+		"explanation": "Jan destroys Michael's $200 television using one of his Dundie Awards.",
+		"episode": {
+			"season": 4,
+			"episode": 13
+		},
+		"sources": [
+			{
+				"title": "Dinner Party (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Dinner_Party_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-026",
+		"category": "characters",
+		"difficulty": "medium",
+		"question": "Where does Toby Flenderson move, leading to Holly Flax temporarily replacing him in HR?",
+		"choices": ["Costa Rica", "Puerto Rico", "Panama", "Belize"],
+		"correctIndex": 0,
+		"explanation": "Toby moves to Costa Rica, and Holly Flax temporarily replaces him in HR.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "List of The Office (American TV series) characters",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/List_of_The_Office_(American_TV_series)_characters",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-027",
+		"category": "production",
+		"difficulty": "medium",
+		"question": "In which year did The Office win the Primetime Emmy for Outstanding Comedy Series?",
+		"choices": ["2005", "2006", "2007", "2008"],
+		"correctIndex": 1,
+		"explanation": "The Office won five Primetime Emmy Awards, including Outstanding Comedy Series in 2006.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-028",
+		"category": "cast",
+		"difficulty": "medium",
+		"question": "Which actor first appeared as Deangelo Vickers in the season 7 episode \"Training Day\"?",
+		"choices": ["James Spader", "Will Ferrell", "Idris Elba", "Ricky Gervais"],
+		"correctIndex": 1,
+		"explanation": "Will Ferrell debuted as Deangelo Vickers in \"Training Day,\" the first of his four appearances on the show.",
+		"episode": {
+			"season": 7,
+			"episode": 19
+		},
+		"sources": [
+			{
+				"title": "Training Day (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Training_Day_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-029",
+		"category": "episodes",
+		"difficulty": "easy",
+		"question": "In \"Stress Relief,\" which employee has a heart attack during Dwight's fake fire emergency?",
+		"choices": ["Kevin", "Oscar", "Creed", "Stanley"],
+		"correctIndex": 3,
+		"explanation": "Dwight's staged fire drill ends with Stanley suffering a heart attack.",
+		"episode": {
+			"season": 5,
+			"episode": 14
+		},
+		"sources": [
+			{
+				"title": "Stress Relief (The Office)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Stress_Relief_(The_Office)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-030",
+		"category": "characters",
+		"difficulty": "easy",
+		"question": "Which character dresses up as Belsnickel for a Pennsylvania Dutch Christmas celebration?",
+		"choices": ["Dwight Schrute", "Michael Scott", "Creed Bratton", "Andy Bernard"],
+		"correctIndex": 0,
+		"explanation": "Dwight Schrute leads a traditional Schrute Pennsylvania Dutch Christmas and dresses up as Belsnickel.",
+		"episode": {
+			"season": 9,
+			"episode": 9
+		},
+		"sources": [
+			{
+				"title": "Dwight Christmas",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Dwight_Christmas",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-031",
+		"category": "production",
+		"difficulty": "easy",
+		"question": "Who wrote the theme song for the American version of The Office?",
+		"choices": ["Mark Mothersbaugh", "Danny Elfman", "Jay Ferguson", "Jon Brion"],
+		"correctIndex": 2,
+		"explanation": "The theme was an original track written by Jay Ferguson and performed by The Scrantones.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "The Office (American TV series)",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/The_Office_(American_TV_series)",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-032",
+		"category": "cast",
+		"difficulty": "easy",
+		"question": "Which actor played Andy Bernard, introduced in season 3 at the Stamford branch?",
+		"choices": ["Ed Helms", "Zach Woods", "Craig Robinson", "Paul Lieberstein"],
+		"correctIndex": 0,
+		"explanation": "Ed Helms played Andy Bernard, who was introduced in season 3 at Dunder Mifflin Stamford.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "List of The Office (American TV series) characters",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/List_of_The_Office_(American_TV_series)_characters",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-033",
+		"category": "episodes",
+		"difficulty": "medium",
+		"question": "In \"Scott's Tots,\" what does Michael give the students to make up for not paying their college tuition?",
+		"choices": ["Laptop batteries", "Boxes of paper", "Gift cards", "Calculators"],
+		"correctIndex": 0,
+		"explanation": "Unable to pay their tuition, Michael offers the students laptop batteries instead.",
+		"episode": {
+			"season": 6,
+			"episode": 12
+		},
+		"sources": [
+			{
+				"title": "Scott's Tots",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Scott%27s_Tots",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-034",
+		"category": "characters",
+		"difficulty": "medium",
+		"question": "Which art and design school in Brooklyn accepts Pam Beesly?",
+		"choices": [
+			"Parsons School of Design",
+			"School of Visual Arts",
+			"Pratt Institute",
+			"Cooper Union"
+		],
+		"correctIndex": 2,
+		"explanation": "Pam is accepted at the Pratt Institute, an art and design school in Brooklyn.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Pam Beesly",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Pam_Beesly",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-035",
+		"category": "production",
+		"difficulty": "medium",
+		"question": "In 2007, NBC asked Greg Daniels for a new show that became Parks and Recreation. What did NBC originally want?",
+		"choices": [
+			"A remake of a British sitcom",
+			"An Amy Poehler sketch show",
+			"A spinoff of The Office",
+			"A one-hour workplace drama"
+		],
+		"correctIndex": 2,
+		"explanation": "NBC wanted a spinoff of The Office; Daniels and Michael Schur instead developed Parks and Recreation as a standalone series.",
+		"episode": null,
+		"sources": [
+			{
+				"title": "Parks & Recreation at 15: Mike Schur on the Show NBC Wanted to Be an Office Spinoff (Exclusive)",
+				"publisher": "Television Academy",
+				"url": "https://www.televisionacademy.com/features/news/online-originals/parks-and-recreation-nbc-mike-schur-interview-15th-anniversary",
+				"accessedOn": "2026-10-05"
+			},
+			{
+				"title": "Parks and Recreation",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/Parks_and_Recreation",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	},
+	{
+		"id": "trivia-036",
+		"category": "cast",
+		"difficulty": "medium",
+		"question": "Which actor guest-starred as Charles Miner, Michael's new superior, beginning with \"New Boss\"?",
+		"choices": ["Idris Elba", "Will Ferrell", "James Spader", "Timothy Olyphant"],
+		"correctIndex": 0,
+		"explanation": "Idris Elba played Charles Miner, Michael's new Dunder Mifflin superior, starting with \"New Boss.\"",
+		"episode": {
+			"season": 5,
+			"episode": 19
+		},
+		"sources": [
+			{
+				"title": "New Boss",
+				"publisher": "Wikipedia",
+				"url": "https://en.wikipedia.org/wiki/New_Boss",
+				"accessedOn": "2026-10-05"
+			}
+		]
+	}
+]

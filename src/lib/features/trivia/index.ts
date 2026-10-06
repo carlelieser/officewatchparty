@@ -1,3 +1,4 @@
+export { addDays, daysBetween, isDateKey, utcDateKey } from './trivia-date';
 export type {
 	DailyTrivia,
 	InsertTriviaAnswerStatus,
