@@ -1,3 +1,5 @@
+export { default as TriviaCard } from './components/trivia-card.svelte';
+export { submitTriviaAnswer } from './api';
 export { addDays, daysBetween, isDateKey, utcDateKey } from './trivia-date';
 export type {
 	DailyTrivia,
